@@ -1,0 +1,181 @@
+#nprogress .bar {
+  height: 4px !important;
+}
+
+.ql-editor {
+  min-height: 300px
+}
+
+.textClickOnly {
+   display: inline-block;
+}
+
+.featured-image {
+  width: 100%;
+  max-height:500px;
+  object-fit: cover
+}
+
+.main-blog-body {
+  overflow-wrap:break-word; 
+  /* to break long words lines to overflow of the body. Wrap around */
+}
+
+.container a img {width: 100%; height: auto  }
+
+/* .blog-card-excerpt-container {
+  overflow:auto;
+  height: 150px;
+  background: lightblue;
+  border:1px solid red;
+  display: table-cell;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+} */
+
+.blog-card-excerpt-container {
+  /* height: 200px; */
+  /* overflow: scroll; */
+  overflow:hidden;
+}
+
+
+.related-blog-card {
+  position: relative;
+  height:500px;
+  overflow:hidden;
+}
+
+.related-blog-img {
+  
+    /* width: 100%;
+    background-size: cover;
+    background-position: center; */
+ 
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    object-fit: cover; 
+
+    /* object-fit : cover helps in maintaing ratio along with flex, crops image to keep relative size good without distorting image dimension */
+
+}
+
+.blog-title {
+  font-size: 40px;
+  font-size: 7vw;
+  white-space: normal;
+}
+
+.related-blog-excerpt {
+  font-size: 14px;
+  overflow:hidden;
+  max-height:250px;
+  white-space: normal;
+}
+
+.related-blog-author  {
+  position: absolute;
+  max-height: 10px;
+  font-size: 14px;
+  font-weight:400;
+  bottom: 5px;
+  margin-left: 0px;
+}
+
+
+/*  Card */
+
+/* /-----------------------------------------------------------------------------/ */
+
+
+.flip {
+  position: relative;
+}
+
+.flip > .front,
+.flip > .back {
+  display: block;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 0.5s;
+  transition-property: transform, opacity;
+}
+
+.flip > .front {
+  transform: rotateY(0deg);
+}
+
+.flip > .back {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(-180deg);
+}
+
+.flip:hover > .front {
+  transform: rotateY(180deg);
+}
+
+.flip:hover > .back {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.flip.flip-vertical > .back {
+  transform: rotateX(-180deg);
+}
+
+.flip.flip-vertical:hover > .front {
+  transform: rotateX(180deg);
+}
+
+.flip.flip-vertical:hover > .back {
+  transform: rotateX(0deg);
+}
+
+.flip {
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: 1em;
+  width: 100%;
+  /*width: 400px;*/
+}
+
+.flip > .front,
+.flip > .back {
+  display: block;
+  color: white;
+  width: inherit;
+  background-size: cover !important;
+  background-position: center !important;
+  height: 220px;
+  padding: 1em 2em;
+  background: #313131;
+  border-radius: 10px;
+}
+
+.flip > .front p,
+.flip > .back p {
+  font-size: 0.9125rem;
+  line-height: 160%;
+  color: #999;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04), 3px 3px rgba(0, 0, 0, 0.04),
+      4px 4px rgba(0, 0, 0, 0.04), 0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04),
+      7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px rgba(0, 0, 0, 0.04),
+      0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04),
+      13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem rgba(0, 0, 0, 0.04),
+      16px 16px rgba(0, 0, 0, 0.04), 17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04),
+      19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
+}
+
+
+/* /-----------------------------------------------------------------------------/ */
