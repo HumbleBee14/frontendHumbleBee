@@ -2,7 +2,7 @@
 
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-
+// import Cookies from 'js-cookie';
 
 import { GA_TRACKING_ID } from '../lib/gtag';
 
@@ -12,9 +12,13 @@ import { GA_TRACKING_ID } from '../lib/gtag';
 class MyDocument extends Document {
 
 
+
   // ---------------------------------------------
 
   render() {
+
+
+    // ------------------
     return (
       <Html lang="en">
 
@@ -31,7 +35,6 @@ class MyDocument extends Document {
           {/* Custom CSS Stylesheet */}
           <link rel="stylesheet" href="/static/css/styles.css" />
           {/* Note: Now Nextjs has inbuild CSS support- https://nextjs.org/docs/basic-features/built-in-css-support */}
-
 
 
           {/* -------------Global Site Tag (gtag.js) - Google Analytics ------------ */}

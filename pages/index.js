@@ -1,8 +1,17 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
 
+// import Cookies from 'js-cookie';
+
+
+
+
+
+
 const Index = () => {
   // console.log('This is Index Page !');
+
+  // ----------------------------------------------------------
   return (
 
     <Layout>
@@ -10,11 +19,13 @@ const Index = () => {
       <article className="overflow-hidden">
         <div className="container">
           <div className="row">
+
             <div className="col-md-12 text-center">
               <h1 className="display-4 font-weight-bold">
-                PROGRAMMING & WEB DEVELOPMENT BLOGS/TUTORIALS
-                            </h1>
+                PROGRAMMING & WEB DEVELOPMENT BLOGS
+              </h1>
             </div>
+
           </div>
         </div>
 
@@ -22,9 +33,8 @@ const Index = () => {
           <div className="row">
             <div className="col-md-12 text-center pt-4 pb-5">
               <p className="lead">
-                Best programming and web development blogs and tutorials on React Node NextJs and
-                JavaScript
-                            </p>
+                Blogs on various topics that interest me 😵<br />You can share too !🙂
+              </p>
             </div>
           </div>
         </div>
@@ -41,16 +51,16 @@ const Index = () => {
                       ')'
                   }}>
 
-                  <h2 className="text-shadow text-center h1">React</h2>
+                  <h2 className="text-shadow text-center h1">Machine Learning</h2>
                 </div>
                 <div className="back text-center">
-                  <Link href="/categories/react">
+                  <Link href="/categories/machine-learning">
                     <a>
-                      <h3 className="h1">React Js</h3>
+                      <h3 className="h1">Machine Learning</h3>
                     </a>
                   </Link>
 
-                  <p className="lead">The world's most popular frontend web development library</p>
+                  <p className="lead">Hot dog or Not hot dog?<br />I don't know, even I'm training my Model👨‍💻<br />Nope, It's not bunch of if-else (-_-)</p>
                 </div>
               </div>
             </div>
@@ -62,20 +72,21 @@ const Index = () => {
                   style={{
                     backgroundImage:
                       'url(' +
-                      'https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg' +
+                      'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg' +
                       ')'
                   }}>
 
-                  <h2 className="text-shadow text-center h1">Node</h2>
+                  <h2 className="text-shadow text-center h1">Web Development</h2>
                 </div>
                 <div className="back text-center">
-                  <Link href="/categories/node">
+                  <Link href="/categories/web-development">
                     <a>
-                      <h3 className="h1">Node Js</h3>
+                      <h3 className="h1">Web Development</h3>
                     </a>
                   </Link>
                   <p className="lead">
-                    The worlds most popular backend development tool for JavaScript Ninjas</p>
+                    Do you like building, creating, and Crashing things?<br />Are you a JavaScript Ninjas?🐱‍👤<br />
+                  </p>
                 </div>
               </div>
             </div>
@@ -87,19 +98,20 @@ const Index = () => {
                   style={{
                     backgroundImage:
                       'url(' +
-                      'https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg' +
+                      'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?cs=srgb&dl=pexels-pixabay-414860.jpg' +
                       ')'
                   }}>
 
-                  <h2 className="text-shadow text-center h1">Next</h2>
+                  <h2 className="text-shadow text-center h1">Electronics</h2>
                 </div>
                 <div className="back text-center">
-                  <Link href="/categories/nextjs">
+                  <Link href="/categories/electronics">
                     <a>
-                      <h3 className="h1">Next Js</h3>
+                      <h3 className="h1">Electronics</h3>
                     </a>
                   </Link>
-                  <p className="lead">A Production ready web framework for building SEO React apps</p>
+                  <p className="lead">It all started with a spark ⚡<br />Don't be a resistance, be a good conductor.<br />You are an Inductor or Capacitor?<br />What is your curent state?
+                  </p>
                 </div>
               </div>
             </div>

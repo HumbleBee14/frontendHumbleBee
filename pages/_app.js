@@ -2,6 +2,8 @@ import Head from 'next/head';
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+// import '../public/static/css/index.css';
+
 import * as gtag from '../lib/gtag';
 
 // The simplest way to log pageviews in your Next.js app is to subscribe to your router and listen for the routeChangeComplete event. (got Google Analytics )
@@ -50,4 +52,7 @@ const App = ({ Component, pageProps }) => {
     </>
   );
 };
+
+
+
 export default App;
