@@ -6,8 +6,8 @@ const Layout = ({ children }) => {
   // Use either <div> or <React.Fragment> to contain more than one element
   return (
     <React.Fragment>
-      <Header />
-      <hr />
+      {<Header />}
+      {/* <hr /> */}
 
       {children}
 

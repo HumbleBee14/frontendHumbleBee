@@ -43,7 +43,7 @@ const Header = () => {
   const toggle = () => { setIsOpen(!isOpen); };
 
   useEffect(() => {
-    if (!process.browser) return;
+    if (!process.browser) return; // if not running on browser/client - i.e. running on server, return nothing, else run below code if on browser
     const user = isAuth();
     setAuthenticated(user);
   }, []);
@@ -60,7 +60,11 @@ const Header = () => {
 
         <Link href="/" passHref>
           <div>
-            <NavbarBrand className="font-weight-bold" style={{ cursor: 'pointer' }}>{APP_NAME}</NavbarBrand>
+            <NavbarBrand
+              className="font-weight-bold"
+              style={{ cursor: 'pointer' }}>
+              {APP_NAME}
+            </NavbarBrand>
           </div>
         </Link>
         {/* Website Logo / Website Name */}
@@ -81,7 +85,7 @@ const Header = () => {
             <React.Fragment>
               <NavItem>
                 <Link href="/blogs" passHref>
-                  <NavLink>Blogs</NavLink>
+                  <NavLink style={{ cursor: 'pointer' }}>Blogs</NavLink>
                 </Link>
               </NavItem>
             </React.Fragment>
@@ -91,14 +95,14 @@ const Header = () => {
             <React.Fragment>
               <NavItem>
                 <Link href="/contact" passHref>
-                  <NavLink>Contact</NavLink>
+                  <NavLink style={{ cursor: 'pointer' }}>Contact</NavLink>
                 </Link>
               </NavItem>
             </React.Fragment>
 
 
 
-            {isAuth() && isAuth().role === 0 &&
+            {process.browser && isAuth() && isAuth().role === 0 &&
               (
                 <NavItem>
                   <Link href="/user">
@@ -109,7 +113,7 @@ const Header = () => {
             }
 
 
-            {isAuth() && isAuth().role === 1 &&
+            {process.browser && isAuth() && isAuth().role === 1 &&
               (
                 <NavItem>
                   <Link href="/admin">
@@ -124,18 +128,18 @@ const Header = () => {
             {/* //-----------------------------------------------------------
             // option 1 (without state 'authenticated') */}
 
-            {!isAuth() && (
+            {process.browser && !isAuth() && (
               <React.Fragment>
 
                 <NavItem>
                   <Link href="/signin">
-                    <NavLink>Signin</NavLink>
+                    <NavLink style={{ cursor: 'pointer' }}>Signin</NavLink>
                   </Link>
                 </NavItem>
 
                 <NavItem>
                   <Link href="/signup">
-                    <NavLink>Signup</NavLink>
+                    <NavLink style={{ cursor: 'pointer' }}>Signup</NavLink>
                   </Link>
                 </NavItem>
 
@@ -144,7 +148,7 @@ const Header = () => {
 
 
 
-            {isAuth() &&
+            {process.browser && isAuth() &&
               (
                 <NavItem>
 
@@ -202,12 +206,14 @@ const Header = () => {
             </NavItem> */}
 
 
+            {process.browser &&
+              (<NavItem>
+                <Link href="/user/crud/blog">
+                  <NavLink style={{ cursor: 'pointer' }} className="btn btn-primary text-light">Write a blog</NavLink>
+                </Link>
+              </NavItem>)
+            }
 
-            <NavItem>
-              <Link href="/user/crud/blog">
-                <NavLink className="btn btn-primary text-light">Write a blog</NavLink>
-              </Link>
-            </NavItem>
 
 
           </Nav>
@@ -224,7 +230,7 @@ const Header = () => {
       {/* // ----------------- SEARCH ----------------- */}
 
 
-      <Search />;
+      <Search />
 
 
       {/* // ----------------- SEARCH ----------------- */}

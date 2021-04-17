@@ -164,6 +164,7 @@ const ProfileUpdate = () => {
           type='text'
           value={email}
           className='form-control'
+          readOnly
         />
       </div>
 
