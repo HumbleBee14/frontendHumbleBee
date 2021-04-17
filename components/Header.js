@@ -50,7 +50,7 @@ const Header = () => {
 
   // ------------------------------------------------
 
-  return (
+  return process.browser &&
     <React.Fragment>
 
       {/* // ================== ----------------- HEADER TOP NAVIGATION BAR ------------------ ================== */}
@@ -235,8 +235,7 @@ const Header = () => {
 
       {/* // ----------------- SEARCH ----------------- */}
 
-    </React.Fragment >
-  );
+    </React.Fragment >;
 };
 
 export default Header;

@@ -29,7 +29,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
       <title>Programming Blogs | {APP_NAME}</title>
       <meta
         name="description"
-        content="Programming Blogs an Tutorials on React Node Next Vue Php ... Web Development !!" />
+        content="Programming Blogs and Tutorials on React Node Next Vue Php ... Web Development !!" />
 
       <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
 
@@ -206,7 +206,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
   );
 };
 
-
+// ==========================================================================================================================
 // Below we are fetching the data from backend for server side rendering (FOr first time- this will happen on the server side itself). This data will be available as 'props' as properties to the above functional component
 
 // WARNING: 'getInitProps' can be used Only on Pages, Not in components !!

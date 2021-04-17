@@ -1,3 +1,5 @@
+// User Profile details Update page
+
 import Layout from '../../components/Layout';
 import Private from '../../components/authComp/Private';
 import ProfileUpdate from '../../components/authComp/ProfileUpdateComponent';

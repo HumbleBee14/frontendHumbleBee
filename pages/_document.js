@@ -2,6 +2,7 @@
 
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+
 // import Cookies from 'js-cookie';
 
 import { GA_TRACKING_ID } from '../lib/gtag';
@@ -24,6 +25,8 @@ class MyDocument extends Document {
 
         <Head>
           <meta charSet="UTF-8" />
+
+
 
           {/* BootStrap css */}
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />

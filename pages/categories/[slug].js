@@ -67,10 +67,14 @@ const Category = ({ category, blogs, query }) => { // 'category' & 'blog' is pas
 
                 {
                   blogs.map((b, i) =>
-                  (<div>
-                    <Card key={i} blog={b} />
-                    <hr />
-                  </div>)
+                    // (<div>
+                    //   <Card key={i} blog={b} />
+                    //   {/* MISTAKE In this is that the key={i} is passed to Card component instead to the List which will be printed user using map. Card is a single entity(single blog), so that doesn't need it */}
+                    // </div>)
+
+                    <article key={i}>
+                      <Card blog={b} />
+                    </article>
                   )
                 }
 

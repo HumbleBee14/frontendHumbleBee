@@ -92,7 +92,8 @@ const UserProfile = ({ user, blogs, query }) => {
 
                     <div className="col-md-8">
                       <h5>{user.name}</h5>
-                      <Link href={`${user.profile}`} passHref><a>View Profile</a></Link>
+                      {/* <Link href={`${user.profile}`} passHref><a>View Profile</a></Link> */}
+                      <Link href={`/profile/${user.username}`} passHref><a>View Profile</a></Link>
                       <p className="text-muted">Joined {moment(user.createdAt).fromNow()}</p>
                     </div>
 

@@ -176,7 +176,7 @@ const SingleBlog = ({ blog, query }) => {
                 </p>
 
                 <div className="pb-3">
-                  {showBlogCategories(blog)}
+                  {/* {showBlogCategories(blog)} */}
                   {showBlogTags(blog)}
                   <br />
                   <br />

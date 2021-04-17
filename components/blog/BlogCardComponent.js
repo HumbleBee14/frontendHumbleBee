@@ -10,15 +10,15 @@ const Card = ({ blog }) => {
 
 
   // Show Categories associated with the current Blog
-  const showBlogCategories = blog => (
+  const showBlogCategories = blog =>
     blog.categories.map((c, i) => (
 
       <Link key={i} href={`/categories/${c.slug}`} passHref>
         <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
       </Link>
 
-    ))
-  );
+    ));
+
 
   // Show Tags associated with the current Blog
   const showBlogTags = blog => {
@@ -44,16 +44,20 @@ const Card = ({ blog }) => {
       <header>
         <Link href={`/blogs/${blog.slug}`} passHref>
           {/* Blog Link/URL & Blog Title */}
-          <a className="textClickOnly"><h2 className="pt-3 pb-3 font-weight-bold">{blog.title}</h2></a>
+          <a className="textClickOnly">
+            <h2 className="pt-3 pb-3 font-weight-bold">{blog.title}</h2>
+          </a>
         </Link>
       </header>
 
       {/* Meta inforamtion of Blog - Blog Author and Blog Date / update / create date time */}
       <section>
         <p className="mark ml-1 pt-2 pb-2">
-          Written by <Link href={`/profile/${blog.postedBy.username}`} passHref>
+          Written by{' '}
+          <Link href={`/profile/${blog.postedBy.username}`} passHref>
             <a>{blog.postedBy.username}</a>
-          </Link> | Published {moment(blog.updatedAt).fromNow()}
+          </Link>{' '}
+          | Published {moment(blog.updatedAt).fromNow()}
         </p>
       </section>
 
@@ -73,11 +77,18 @@ const Card = ({ blog }) => {
       <div className="row">
 
         {/* each Blog Featured Image */}
+
         <div className="col-md-4">
 
           <section>
 
-            <img onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-thumbnail mb-3" style={{ maxHeight: '150px', width: 'auto' }} />
+            <img
+              onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")}
+              src={`${API}/blog/photo/${blog.slug}`}
+              alt={blog.title}
+              className="img img-thumbnail mb-3"
+              style={{ maxHeight: '150px', width: 'auto' }}
+            />
 
             {/* <img src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} onError={(e) => (e.target.onerror = null, e.target.src = '../../public/ac.jpg')} className="img img-thumbnail mb-3" style={{ maxHeight: '150px', width: 'auto' }} /> */}
 

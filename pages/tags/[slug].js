@@ -67,10 +67,14 @@ const Tag = ({ tag, blogs, query }) => { // 'tag' & 'blog' is passed as PROP fro
 
                 {
                   blogs.map((b, i) =>
-                  (<div>
-                    <Card key={i} blog={b} />
-                    <hr />
-                  </div>)
+                    // (<div>
+                    //   <Card key={i} blog={b} />
+                    //   <hr />
+                    // </div>)
+
+                    <article key={i}>
+                      <Card blog={b} />
+                    </article>
                   )
                 }
 
