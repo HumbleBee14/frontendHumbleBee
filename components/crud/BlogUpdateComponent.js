@@ -306,7 +306,8 @@ const BlogUpdate = ({ router }) => {
   // Change Handler for Photo & Title - can be used for both title and photo based on what 'name' is passed to parameter
   const handleChange = name => e => {
     // console.log(e.target.value)
-    console.log("handleChange ---------- for -----> : ", name);
+    // console.log("handleChange ---------- for -----> : ", name);
+
     // if name ='photo', then grab the image, else it's the 'title' & then it'll grab the e.target.value = title
     const value = name === 'photo' ? e.target.files[0] : e.target.value;
 

@@ -76,7 +76,7 @@ const CreateBlog = ({ router }) => {
   // To instanciate new FormData 
   // FormData() is a Web API - https://javascript.info/formdata
   useEffect(() => {
-    console.log("_______________________ USE EFFECT JUST RAN __________________________");
+    // console.log("_______________________ USE EFFECT JUST RAN __________________________");
 
     setValues({ ...values, formData: new FormData() });
 

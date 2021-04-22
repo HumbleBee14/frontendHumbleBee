@@ -227,15 +227,25 @@ It's the same thing, just different varibles on client and server side
 // for SSR
 SingleBlog.getInitialProps = ({ query }) => { // grabbing the query
 
-  // We get the slug using query passed
-  return getSingleBlog(query.slug).then(data => {
-    if (data.error) {
-      console.log(data.error);
-    } else {
-      // Test to see if getInitialProps runs on Server Side on first visit
-      // console.log('GET INITIAL PROPS IN SINGLE BLOG (CHECK on SERVER SIDE)', data);
+  // We get the slug using query passed (USING FETCH RESPONSE)
+  //   return getSingleBlog(query.slug).then(data => {
+  //     if (data.error) {
+  //       console.log(data.error);
+  //     } else {
+  //       // Test to see if getInitialProps runs on Server Side on first visit
+  //       // console.log('GET INITIAL PROPS IN SINGLE BLOG (CHECK on SERVER SIDE)', data);
 
-      return { blog: data, query }; // returning blog (data) & 'query' (query is similar to 'router' on client side) and now we can access these in our client side props
+  //       return { blog: data, query }; // returning blog (data) & 'query' (query is similar to 'router' on client side) and now we can access these in our client side props
+  //     }
+  //   });
+  // };
+
+  // USING AXIOS RESPONSE
+  return getSingleBlog(query.slug).then(response => {
+    if (response.data.error) {
+      console.log(response.data.error);
+    } else {
+      return { blog: response.data, query };
     }
   });
 };

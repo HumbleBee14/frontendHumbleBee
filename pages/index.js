@@ -87,10 +87,7 @@ const Index = () => {
                   <div
                     className="front"
                     style={{
-                      backgroundImage:
-                        'url(' +
-                        'https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg' +
-                        ')'
+                      backgroundImage: 'url(' + '/static/images/pexels-photo-min.jpg' + ')'
                     }}>
 
                     <h2 className="text-shadow text-center h1">Machine Learning</h2>
@@ -112,10 +109,8 @@ const Index = () => {
                   <div
                     className="front"
                     style={{
-                      backgroundImage:
-                        'url(' +
-                        'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg' +
-                        ')'
+                      // backgroundImage:'url(' +'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg' +')'}}>
+                      backgroundImage: 'url(' + '/static/images/pexels-antonio-batinic-min.jpg' + ')'
                     }}>
 
                     <h2 className="text-shadow text-center h1">Web Development</h2>
@@ -137,12 +132,8 @@ const Index = () => {
                 <div className="flip flip-horizontal">
                   <div
                     className="front"
-                    style={{
-                      backgroundImage:
-                        'url(' +
-                        'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?cs=srgb&dl=pexels-pixabay-414860.jpg' +
-                        ')'
-                    }}>
+                    // style={{ backgroundImage: 'url(' + 'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?cs=srgb&dl=pexels-pixabay-414860.jpg' + ')' }}>
+                    style={{ backgroundImage: 'url(' + '/static/images/pexels-pixabay-min.jpg' + ')' }}>
 
                     <h2 className="text-shadow text-center h1">Electronics</h2>
                   </div>
@@ -164,7 +155,7 @@ const Index = () => {
 
       </Layout>
 
-    </div>
+    </div >
 
   );
 };

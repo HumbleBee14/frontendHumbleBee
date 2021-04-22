@@ -254,6 +254,8 @@ export const loginWithGoogle = user => {
     body: JSON.stringify(user)
   })
     .then(response => {
+      console.log();
+
       return response.json();
     })
     .catch(err => console.log(err));

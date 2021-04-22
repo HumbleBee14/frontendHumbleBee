@@ -165,10 +165,10 @@ const UserProfile = ({ user, blogs, query }) => {
 
 UserProfile.getInitialProps = ({ query }) => {
 
-  // console.log("Query Passed (username): ", query);
+  // console.log("_______________ Query Passed (username): ", query); // output =>  { username: 'humblebee' } // 'username' property is from the page name
 
   return userPublicProfile(query.username).then(data => {
-    // console.log("Data from Backend : ", data);
+    // console.log("__________________ Data from Backend : ", data);
 
     if (data === undefined)  // 'undefined' because the backend didn't return any response
     {

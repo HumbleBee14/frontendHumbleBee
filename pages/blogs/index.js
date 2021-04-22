@@ -169,7 +169,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
           <div className="container-fluid">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold text-center"> Programming Blogs and Tutorials </h1>
+                <h1 className="display-4 font-weight-bold text-center">Blogs & Random Stuff 😁</h1>
               </div>
 
               <section>
@@ -182,6 +182,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
                   {showAllTags()}
 
                 </div>
+
+                {/* <p className="text-muted">[Note: Currently only Admin authorized to create new Categories & Tags ]</p> */}
               </section>
 
 

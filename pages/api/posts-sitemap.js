@@ -1,3 +1,5 @@
+/*
+
 import { SitemapStream, streamToPromise } from 'sitemap';
 
 export default async (req, res) => {
@@ -40,3 +42,5 @@ export default async (req, res) => {
   }
 
 };
+
+*/

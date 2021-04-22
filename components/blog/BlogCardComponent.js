@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'; // useful for Image optimization and lazy loading 
 import renderHTML from 'react-render-html'; // to render html for excerpts for each blog
 import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
 import { API } from '../../config';
@@ -89,6 +90,7 @@ const Card = ({ blog }) => {
               className="img img-thumbnail mb-3"
               style={{ maxHeight: '150px', width: 'auto' }}
             />
+
 
             {/* <img src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} onError={(e) => (e.target.onerror = null, e.target.src = '../../public/ac.jpg')} className="img img-thumbnail mb-3" style={{ maxHeight: '150px', width: 'auto' }} /> */}
 

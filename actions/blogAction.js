@@ -1,9 +1,12 @@
 import fetch from 'isomorphic-fetch';
 // fetch is used (as http client) to send data from frontend (client) to backend (server)
 
+import axios from 'axios';
+
 import { API } from '../config';
 import queryString from 'query-string'; // to parse the Search URLs/ ==>  Parse and stringify URL query strings
 import { isAuth, handleResponse } from './authAction'; // with this we can check the User Role (Regular or Admin) because that info is saved in the localstorage & handleResponse is used t check sesion/token expiry
+// import { xmlLint } from 'sitemap';
 
 
 
@@ -75,15 +78,28 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
 
 // Single Blog Fetch (based on slug)
 
+// export const getSingleBlog = (slug = undefined) => {
+//   return fetch(`${API}/blog/${slug}`, {
+//     method: 'GET'
+//   })
+//     .then(response => {
+//       return response.json();
+//     })
+//     .catch(err => console.log(err));
+// };
+
 export const getSingleBlog = (slug = undefined) => {
-  return fetch(`${API}/blog/${slug}`, {
-    method: 'GET'
-  })
+
+  return axios.get(`${API}/blog/${slug}`)
     .then(response => {
-      return response.json();
+
+      console.log("Response  ------ wohooo  -> : ", response);
+      return response;
     })
     .catch(err => console.log(err));
 };
+
+
 
 // ------------------------------------------------------------
 
