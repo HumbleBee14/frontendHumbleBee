@@ -12,8 +12,8 @@ import { handleResponse } from './authAction';
 
 export const userPublicProfile = (username) => {
   // Backend API Route (where we'll send/get the data)
-  console.log("Query passed username - ", username);
-  console.log(`Fetch API request to be send from frontned --  ${API}/user/${username}`);
+  // console.log("Query passed username - ", username);
+  // console.log(`Fetch API request to be send from frontned --  ${API}/user/${username}`);
 
 
   return fetch(`${API}/user/${username}`, {
@@ -24,11 +24,11 @@ export const userPublicProfile = (username) => {
   })
     .then(response => {
 
-      console.log("Response Status Code : ", response.status);
+      // console.log("Response Status Code : ", response.status);
 
-      console.log("\n Response back from fetch", typeof response, response);
+      // console.log("\n Response back from fetch", typeof response, response);
 
-      console.log("Response.clone().json() -->", response.clone().json());
+      //  console.log("Response.clone().json() -->", response.clone().json());
 
       // If Status code= 400 => User not found!  (Handle this error on page where requested) 
       return response.json();

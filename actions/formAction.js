@@ -24,14 +24,14 @@ export const emailContactForm = (data) => {
   return fetch(`${emailEndPoint}`, {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json, text/plain, */*',
       // Authorization // Not needed here for sending email because anyone can email
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
   })
     .then(response => {
-      // console.log("Response from backend : ", response.clone().json()); // Note: You can not use response.json() more than once, therefore cloning it to read
+      // console.log("Response from backend : ", response.clone().json()); // Note: You can not use response.json more than once, therefore cloning it to read
       return response.json();
     })
     .catch(err => console.log("Form Error : ", err));

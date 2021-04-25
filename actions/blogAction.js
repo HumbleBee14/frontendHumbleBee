@@ -88,12 +88,14 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
 //     .catch(err => console.log(err));
 // };
 
+// Single Blog Fetch (based on slug) [ Using Axios ]
+
 export const getSingleBlog = (slug = undefined) => {
 
   return axios.get(`${API}/blog/${slug}`)
     .then(response => {
 
-      console.log("Response  ------ wohooo  -> : ", response);
+      //console.log("Response  ------ wohooo  -> : ", response);
       return response;
     })
     .catch(err => console.log(err));

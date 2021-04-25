@@ -123,7 +123,7 @@ const Search = () => {
     // 'container-fluid' ==> Full Width
     <div className="container-fluid">
 
-      <div className="pt-3 pb-5">
+      <div className="pt-3 pb-3">
         {searchForm()}
       </div>
 

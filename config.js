@@ -20,3 +20,6 @@ export const GOOGLE_CLIENT_ID = publicRuntimeConfig.GOOGLE_CLIENT_ID;
 export const GA_TRACKING_ID = publicRuntimeConfig.GA_TRACKING_ID;
 
 export const PRODUCTION = publicRuntimeConfig.PRODUCTION;
+
+
+// Note: NEXT.js By Default runs on Port 3000s
