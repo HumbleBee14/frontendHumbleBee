@@ -3,6 +3,9 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
+import UnderMaintSvg from '../public/static/images/svgs/tructor_svg.svg';
+
+
 
 // import Cookies from 'js-cookie';
 
@@ -64,9 +67,14 @@ const Index = () => {
             <div className="row">
 
               <div className="col-md-12 text-center">
-                <h1 className="display-4 font-weight-bold">
-                  PROGRAMMING & WEB DEVELOPMENT BLOGS
-              </h1>
+                <h1
+                  style={{
+                    // display: 'inline',
+                    fontSize: "calc(2em + 1.5vw)",
+                  }}
+                  className="display-4 font-weight-bold pl-20 pr-20">
+                  <small className="text-muted">//</small><br /> PROGRAMMING BLOGS <br /><small className="text-muted">//</small>
+                </h1>
               </div>
 
             </div>
@@ -81,8 +89,11 @@ const Index = () => {
               </div>
             </div>
           </div>
+
+
           <div className="container-fluid">
             <div className="row">
+
               <div className="col-md-4">
                 <div className="flip flip-horizontal">
                   <div
@@ -133,7 +144,6 @@ const Index = () => {
                 <div className="flip flip-horizontal">
                   <div
                     className="front"
-                    // style={{ backgroundImage: 'url(' + 'https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?cs=srgb&dl=pexels-pixabay-414860.jpg' + ')' }}>
                     style={{ backgroundImage: 'url(' + '/static/images/pexels-pixabay-min.jpg' + ')' }}>
 
                     <h2 className="text-shadow text-center h1">Electronics</h2>
@@ -144,7 +154,7 @@ const Index = () => {
                         <h3 className="h1">Electronics</h3>
                       </a>
                     </Link>
-                    <p className="lead">It all started with a spark ⚡<br />Don't be a resistance, be a good conductor.<br />You are an Inductor or Capacitor?<br />What is your curent state?
+                    <p className="lead">It all started with a Shock ⚡<br />To Whom? Obviously to me! 😵<br /> That's how our love story started, which made me realised that don't be a resistance, be a good conductor.<br />Anyway, What's your curent state? <br />You are an Inductor or a Capacitor?
                   </p>
                   </div>
                 </div>
@@ -153,6 +163,62 @@ const Index = () => {
           </div>
 
         </article>
+
+        <br />
+        <hr />
+        <br />
+
+        {/* <div>
+          <img src='/tructor_svg.svg' alt='next' />
+        </div> */}
+
+        <div className="container">
+          <div className="row">
+
+            <div className="col-md-8">
+
+              <div className="front">
+
+                <img src={UnderMaintSvg} style={{
+                  // overflow: 'hidden',
+                  maxWidth: '100%',
+                  // height: 'auto',
+                  flex: '1',
+                  display: 'block',
+                  // width: '100%',
+                  resizeMode: 'contain',
+                  margin: '0'
+                }} />
+              </div>
+
+            </div>
+
+            <div className="col-md-4 text-muted">
+
+              <div className="front">
+                <h2 style={{
+                  position: 'absolute',
+                  // bottom: '0px',
+                  display: 'block',
+                  left: '0px',
+                  height: 'auto',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  margin: '10px',
+                  textAlign: 'justify'
+                }}>
+                  Under Development <br />💨💨💨
+                </h2>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
 
       </Layout>
 

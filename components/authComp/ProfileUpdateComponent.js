@@ -34,7 +34,7 @@ const ProfileUpdate = () => {
         setValues({
           ...values,
           username: data.username,
-          usernameImgSrc: data.username, // using this for user photo (for Image address/API parameter). (Don't update it with event change based on new value in form(untill it is saved), as that may cause issue with actual image address in DB, as the username is passed in the API call for fetching the photo)
+          usernameImgSrc: data.username, // using this for user photo (for Image address/API parameter). (Don't update it with event change based on new value in form (untill it is saved), as that may cause issue with actual image address in DB, as the username is passed in the API call for fetching the photo)
           name: data.name,
           email: data.email,
           about: data.about

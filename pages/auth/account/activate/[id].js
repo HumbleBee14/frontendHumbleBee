@@ -66,7 +66,7 @@ const ActivateAccount = ({ router }) => {
 
   // ------------------------
 
-  const showLoading = () => loading ? (<h2><span class="spinner-grow spinner-grow-sm"></span>  Loading...</h2>) : '';
+  const showLoading = () => loading ? (<h2><span className="spinner-grow spinner-grow-sm"></span>  Loading...</h2>) : '';
 
 
 

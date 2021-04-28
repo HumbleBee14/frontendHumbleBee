@@ -14,7 +14,7 @@ import { getCategories } from '../../actions/categoryAction'; // to Load all the
 import { getTags } from '../../actions/tagAction'; // to Load all the Tags available, for user to select for their current Blog
 import { createBlogAction } from '../../actions/blogAction'; // create Blog action, that'll be used to pass the blog created in this frontend component (on client side) to backend (server-side) to save it in Database.
 
-// Importing react-quill Dynamically in the frontend client side (So that it doesn't run on server side), thereofre we have set SSR (SErver side rendering) to false
+// Importing react-quill Dynamically in the frontend client side (So that it doesn't run on server side), therefore we have set SSR (Server side rendering) to false
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 import '../../node_modules/react-quill/dist/quill.snow.css';  // Note: we are able to import CSS file manually like this because of package - @zeit/next-css. But in new version of nextjs, we can do it I think. Check it out :) 

@@ -5,7 +5,8 @@ import Link from 'next/link';
 import ContactForm from '../components/form/ContactFormComponent'; // Contact Form Component
 
 const Contact = () => {
-  // console.log('This is Index Page !');
+
+  // --------------------------------
   return (
     <Layout>
 

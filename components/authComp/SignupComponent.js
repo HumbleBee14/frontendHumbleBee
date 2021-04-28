@@ -64,11 +64,11 @@ const SignupComponent = () => {
   // name = here (above only) is generic for all - name, email, password
 
   /* try these loading icons - https://www.w3schools.com/bootstrap4/bootstrap_buttons.asp
-  <span class="spinner-grow spinner-grow-sm"></span> Loading...
-  <span class="spinner-border spinner-border-sm"></span> Loading...
+  <span className="spinner-grow spinner-grow-sm"></span> Loading...
+  <span className="spinner-border spinner-border-sm"></span> Loading...
    */
 
-  const showLoading = () => (loading ? <div className="alert alert-info"><span class="spinner-grow spinner-grow-sm"></span> <strong> Loading...</strong></div> : '');
+  const showLoading = () => (loading ? <div className="alert alert-info"><span className="spinner-grow spinner-grow-sm"></span> <strong> Loading...</strong></div> : '');
   const showError = () => (error ? <div className="alert alert-danger alert-dismissible fade show">{error}</div> : '');
   const showMessage = () => (message ? <div className="alert alert-info alert-dismissible fade show">{message}</div> : '');
 

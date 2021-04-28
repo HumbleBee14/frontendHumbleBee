@@ -22,6 +22,9 @@ export const preSignup = (user) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // update with your user-agent
+      'User-Agent':
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
     },
     body: JSON.stringify(user)
   })
@@ -48,6 +51,9 @@ export const signup = (user) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // update with your user-agent
+      'User-Agent':
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
     },
     body: JSON.stringify(user)
   })
@@ -69,6 +75,9 @@ export const signin = (user) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // update with your user-agent
+      'User-Agent':
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
     },
     body: JSON.stringify(user)
   })
@@ -207,6 +216,9 @@ export const forgotPassword = email => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // update with your user-agent
+      'User-Agent':
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
     },
     body: JSON.stringify(email) // Note: We have to send 'email' as an json object like {email: 'xxxxxx@email.com'}
   })
@@ -230,6 +242,9 @@ export const resetPassword = resetInfo => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // update with your user-agent
+      'User-Agent':
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
     },
     body: JSON.stringify(resetInfo)
   })
@@ -248,8 +263,11 @@ export const loginWithGoogle = user => {
   return fetch(`${API}/google-login`, {
     method: 'POST',
     headers: {
-      Accept: 'application/json',
+      Accept: "application/json; charset=UTF-8",
       'Content-Type': 'application/json',
+      // update with your user-agent
+      'User-Agent':
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
     },
     body: JSON.stringify(user)
   })

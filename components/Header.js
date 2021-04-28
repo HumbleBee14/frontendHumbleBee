@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { APP_NAME } from '../config';
 import Link from 'next/link';
 import Router from 'next/router';
-import Search from './blog/SearchComponent';
+
+import dynamic from 'next/dynamic';
+
+const Search = dynamic(() => import('./blog/SearchComponent'), { ssr: false });
+// Dynamically importing Search Component in the frontend client side (So that it doesn't run on server side), therefore we have set SSR (Server side rendering) to false
+
+// import Search from './blog/SearchComponent';
 
 import { signout, isAuth } from '../actions/authAction';
 
@@ -217,6 +223,7 @@ const Header = () => {
 
 
           </Nav>
+
         </Collapse>
 
         {/* // ----------------- Collapsable ---------------- */}

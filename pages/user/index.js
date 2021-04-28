@@ -64,7 +64,7 @@ const UserIndex = () => {
 
             <div className="col-md-4">
 
-              RIGHT SIDE LIST
+              {/* RIGHT SIDE LIST */}
 
             </div>
 

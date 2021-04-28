@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.funfacebody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  background: #f1f2f3;
+}
+svg {
+  display: block;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+circle.eye {
+  fill: #a1a1b6;
+}
+path.top, path.bottom {
+  fill: transparent;
+  stroke: #a1a1b6;
+  stroke-width: 1.3px;
+  stroke-linecap: round;
+}
+.eye-outer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 15px;
+}
+.face {
+  border: 8px solid #a1a1b6;
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+}
+.mouth-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mouth-outer svg {
+  width: 100px;
+  height: 100px;
+}
+.mouth-outer path.top, .mouth-outer path.bottom {
+  stroke-width: 2px;
+}

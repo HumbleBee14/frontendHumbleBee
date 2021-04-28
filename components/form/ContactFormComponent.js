@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { emailContactForm } from '../../actions/formAction';
+// import { stripHtml } from "string-strip-html"; // To Strim HTML Tags from message
 
 
 
@@ -26,8 +27,18 @@ const ContactForm = ({ authorEmail, authorName }) => {
 
   // handle the handlechange
   const handleChange = name => e => {
+
+    // Strip unwanted Tags from Text (to prevent XSS atack)
+
+    // var sanitizedValue = stripHtml(e.target.value).result;
+
+    // console.log(`Santized Value ------->${name}`, sanitizedValue);
+
     // clearing out everything and setting state for whatever user is typing in
+
     setValues({ ...values, [name]: e.target.value, error: false, success: false, buttonText: 'Send Message' });
+
+    // setValues({ ...values, [name]: sanitizedValue, error: false, success: false, buttonText: 'Send Message' });
   };
 
   // Submit handler
