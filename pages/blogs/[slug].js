@@ -30,8 +30,17 @@ const SingleBlog = ({ blog, query }) => {
     // make call to backend to get related blogs using this action
     listRelated({ blog }).then(data => {
 
+      // Error Handling 
+      // Check if there's any error while fetching related blogs from backend
+      if (data === undefined) {
+        console.log("Error Fetching Data (Related blogs) from Backend (Related Blogs)");
+
+        return;  // returning nothing, just to stop function execution here
+      }
+
+      // -----------------------------
       if (data.error) {
-        console.log(data.error);
+        console.log("Related blogs error --> ", data.error);
       } else {
         setRelatedBlogs(data); // this will update the relatedBlogs in the 'relatedBlogs' state 
       }
@@ -39,7 +48,7 @@ const SingleBlog = ({ blog, query }) => {
   };
 
 
-  // loading the related blogs when the component mounts
+  // loading the related blogs only when the component mounts
   useEffect(() => {
     loadRelatedBlogs();
 
@@ -143,79 +152,113 @@ const SingleBlog = ({ blog, query }) => {
 
 
   // ---------------------- RENDERING ------------------------
-  return (<React.Fragment>
+  return ((!blog) ?
+    (
+      <div>
+        <Layout>
+          <br />
+          {
+            (blog === undefined) ?
+              (
+                <>
+                  <h2 className="alert alert-heading alert-warning" style={{ textAlign: 'center' }}>ERROR FETCHING BLOG 😕</h2>
+                  <br />
+                  <h5 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>Connection issue, please contact developer 👽</h5>
+                </>
+              ) : (
+                <>
+                  <h2 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>NO BLOG FOUND! 🤔</h2>
+                  <br />
+                  <h4 className="quote-error" style={{ textAlign: 'center' }}>One should live like a Humble Bee 🐝 Drink the nectar of flowers and make honey with everyone and share with everyone :)</h4>
+                </>
+              )
+          }
+          <br />
+        </Layout >
+      </div >
+    ) : (
 
-    {head()}
+      <React.Fragment>
 
-    <Layout>
-      <main>
-        <article>
-          <div className="container-fluid">
-            <section>
-              {/* {JSON.stringify(router)} */}
-              {/* {JSON.stringify(blog)} */}
+        {head()}
 
-              <div className="row" style={{ marginTop: '-30px' }}>
+        <Layout>
+          <main>
+            <article>
+              <div className="container-fluid">
+                <section>
+                  {/* {JSON.stringify(router)} */}
+                  {/* {JSON.stringify(blog)} */}
 
-                <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image" />
+                  <div className="row" style={{ marginTop: '-30px' }}>
+
+                    <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image" />
+
+                  </div>
+
+                </section>
+
+                <section>
+
+                  <div className="container">
+
+                    <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title">{blog.title}</h1>
+
+                    <p className="lead mt-3 mark">
+                      Written by {(blog.postedBy) ?
+                        (
+                          <Link href={`/profile/${blog.postedBy.username}`} passHref>
+                            <a>{blog.postedBy.username}</a>
+                          </Link>
+                        ) : (
+                          <a className="text-muted">&lt; User Removed &gt;</a>
+                        )
+                      } | Published {moment(blog.updatedAt).fromNow()}
+                    </p>
+
+                    <div className="pb-3">
+                      {/* {showBlogCategories(blog)} */}
+                      {showBlogTags(blog)}
+                      <br />
+                      <br />
+                    </div>
+
+                  </div>
+
+                </section>
 
               </div>
-
-            </section>
-
-            <section>
 
               <div className="container">
+                <section>
+                  <div className="col-md-12 lead main-blog-body">
+                    {renderHTML(blog.body)}
+                  </div>
+                </section>
+              </div>
 
-                <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title">{blog.title}</h1>
+              <div className="container pb-5">
+                <h4 className="text-center pt-5 pb-5 h2">Related Blogs</h4>
+                <hr />
 
-                <p className="lead mt-3 mark">
-                  Written by <Link href={`/profile/${blog.postedBy.username}`} passHref>
-                    <a>{blog.postedBy.username}</a>
-                  </Link> | Published {moment(blog.updatedAt).fromNow()}
-                </p>
-
-                <div className="pb-3">
-                  {/* {showBlogCategories(blog)} */}
-                  {showBlogTags(blog)}
-                  <br />
-                  <br />
-                </div>
+                {/* {JSON.stringify(relatedBlogs)} */}
+                <div className="row ml-4 mr-4" style={{ display: 'flex' }}>{showRelatedBlogs()}</div>
 
               </div>
 
-            </section>
+              <hr />
 
-          </div>
-
-          <div className="container">
-            <section>
-              <div className="col-md-12 lead main-blog-body">
-                {renderHTML(blog.body)}
+              <div className="container pt-5 pb-5">
+                {showComments()}
               </div>
-            </section>
-          </div>
 
-          <div className="container pb-5">
-            <h4 className="text-center pt-5 pb-5 h2">Related Blogs</h4>
-            <hr />
+            </article>
+          </main>
+        </Layout>
 
-            {/* {JSON.stringify(relatedBlogs)} */}
-            <div className="row ml-4 mr-4" style={{ display: 'flex' }}>{showRelatedBlogs()}</div>
+      </React.Fragment>)
 
-          </div>
-
-          <hr />
-
-          <div className="container pt-5 pb-5">
-            {showComments()}
-          </div>
-
-        </article>
-      </main>
-    </Layout>
-
-  </React.Fragment>);
+  );
 
 };
 
@@ -224,32 +267,68 @@ const SingleBlog = ({ blog, query }) => {
 and on Server Side, we grab the router details using the variable = 'query'
 It's the same thing, just different varibles on client and server side
 */
-// for SSR
+// for SSR (Server Side Rendering)
 SingleBlog.getInitialProps = ({ query }) => { // grabbing the query
 
-  // We get the slug using query passed (USING FETCH RESPONSE)
-  //   return getSingleBlog(query.slug).then(data => {
-  //     if (data.error) {
-  //       console.log(data.error);
-  //     } else {
-  //       // Test to see if getInitialProps runs on Server Side on first visit
-  //       // console.log('GET INITIAL PROPS IN SINGLE BLOG (CHECK on SERVER SIDE)', data);
+  // We get the slug using query passed in url [USING FETCH RESPONSE]
+  return getSingleBlog(query.slug).then(data => {
 
-  //       return { blog: data, query }; // returning blog (data) & 'query' (query is similar to 'router' on client side) and now we can access these in our client side props
-  //     }
-  //   });
-  // };
-
-  // USING AXIOS RESPONSE
-  return getSingleBlog(query.slug).then(response => {
-    if (response.data.error) {
-      console.log(response.data.error);
-    } else {
-      return { blog: response.data, query };
+    // Error handling
+    if (data === undefined) {
+      // Uable to fetch data from backend API (connection faiure)
+      return { blog: undefined, query };
     }
-  });
+
+    else if (data.error) {
+      // Able to connect to backend but There's no Data related to this query in database (BLOG NOT FOUND)
+
+      // console.log({ data });
+      console.log("Error while fetching this blog -->", data.error);
+
+      return { blog: null, query };
+    }
+    else {
+      // on successfully getting Blog from backend database
+
+      // Test to see if getInitialProps runs on Server Side on first visit
+      // console.log('GET INITIAL PROPS IN SINGLE BLOG (CHECK on SERVER SIDE, not on Browser)', data);
+
+      return { blog: data, query }; // returning blog (data) & 'query' (query is similar to 'router' on client side) and now we can access these in our client side (browser) props
+    }
+  })
+    .catch(err => {
+      console.log("Error caught -->", err);
+    });
 };
 
+/*
+// USING AXIOS RESPONSE (incomplete)
+return getSingleBlog(query.slug).then(res => {
+            console.log("response received -->", { res });
+
+  // console.log(res.response.status, res.response.data.error);
+
+  // // response = undefined (Backend Connection Failure, unable to Connect)
+  // if (res.response === undefined) {
+  //   console.log("Backend Connection Failure! Please check");
+  //   return;
+  // }
+
+  // if (response.data.error) {
+  if (res.response.data.error) {
+            console.log(response.data.error);
+  } else {
+    return {blog: res.data, query };
+  }
+})
+  .catch(err => {
+            console.log("\n Error getting this Blog from Backend --> ", err);
+    return { };
+  });
+};
+*/
+
+//-------------------------------------------
 
 
 

@@ -50,8 +50,16 @@ const ContactForm = ({ authorEmail, authorName }) => {
     // SEND EMAIL 
     // send data to backend using this action for Sending EMAIL
     emailContactForm({ authorEmail, name, email, sub, message }).then(data => {
+      if (typeof data === 'undefined') {
+        // console.log("Unable to connect to backend API from Contact us Form");
+
+        setValues({ ...values, buttonText: 'Send Message', error: "Problem sending email. Connection issue! Please retry after sometime." });
+        return;
+      }
+
+
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({ ...values, buttonText: 'Send Message', error: data.error });
       }
       else {
         setValues({
@@ -61,6 +69,7 @@ const ContactForm = ({ authorEmail, authorName }) => {
           sub: '',
           email: '',
           message: '',
+          error: '',
           buttonText: 'Sent',
           success: data.success // from backend
         });
@@ -124,7 +133,15 @@ const ContactForm = ({ authorEmail, authorName }) => {
 
 
         <div>
-          <button className="btn btn-primary">{buttonText}</button>
+
+          {/* <button className="btn btn-primary">{buttonText}</button> */}
+
+          {
+            (buttonText === 'Sending...') ?
+              <button className="btn btn-primary"><span className="spinner-grow spinner-grow-sm"></span> {buttonText}</button> :
+              <button className="btn btn-primary">{buttonText}</button>
+          }
+
         </div>
 
 
@@ -141,11 +158,12 @@ const ContactForm = ({ authorEmail, authorName }) => {
   return (
     <React.Fragment>
 
-      {showSuccessMessage()}
-      {showErrorMessage()}
-
       {/* <p>Show Contact Form</p> */}
       {contactForm()}
+
+
+      {showSuccessMessage()}
+      {showErrorMessage()}
 
     </React.Fragment>
   );

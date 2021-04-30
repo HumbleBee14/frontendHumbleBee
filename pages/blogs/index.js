@@ -98,6 +98,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
     // Error Handling 
 
     // Check if there's any error while fetching Blogs from backend
+    // if (blogs === undefined) {
     if (typeof blogs === 'undefined') {
       console.log("Error Fetching Data (Blogs)");
 

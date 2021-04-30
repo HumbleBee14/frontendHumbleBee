@@ -51,14 +51,20 @@ const Card = ({ blog }) => {
         </Link>
       </header>
 
-      {/* Meta inforamtion of Blog - Blog Author and Blog Date / update / create date time */}
+      {/* Meta information of Blog - Blog Author and Blog Date / update / create date time.
+      NOTE: We are checking if the user who created the original blog Exists or not. If not, then we will show <User Removed> in place of author's username, else it'll crash the app if user deletes accounts */}
       <section>
         <p className="mark ml-1 pt-2 pb-2">
           Written by{' '}
-          <Link href={`/profile/${blog.postedBy.username}`} passHref>
-            <a>{blog.postedBy.username}</a>
-          </Link>{' '}
-          | Published {moment(blog.updatedAt).fromNow()}
+          {(blog.postedBy) ?
+            (
+              <Link href={`/profile/${blog.postedBy.username}`} passHref>
+                <a>{blog.postedBy.username}</a>
+              </Link>
+            ) : (
+              <a className="text-muted">&lt; User Removed &gt;</a>
+            )
+          }{' '}| Published {moment(blog.updatedAt).fromNow()}
         </p>
       </section>
 

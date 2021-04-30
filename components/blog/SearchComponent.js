@@ -29,6 +29,26 @@ const Search = () => {
 
     // 'ListSearch' Action that further makes request to backend & fetch results and passes here (saves it in state variable- 'results')
     listSearch({ search }).then(data => {
+
+      // Error handling
+      if (typeof data === 'undefined') {
+        console.log("Error fetching Data from Backend");
+
+        setValues({ ...values, searched: true, message: "Error fetching Data" });
+
+        return; // Show ERROR Popup here <pending>
+      }
+
+      if (!data.length) {
+        // console.log("No Related Blog Found!");
+
+        setValues({ ...values, searched: true, message: "No related Blog Found ! Try something else." });
+
+        return; // Show WARNING Popup here <pending>
+      }
+
+
+      // -------------------------------- On Finding Blog
       setValues({ ...values, results: data, searched: true, message: `${data.length} Blogs found` });
     });
   };

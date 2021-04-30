@@ -73,9 +73,15 @@ const SmallCard = ({ blog }) => {
       </div>
 
       <div className="card-body related-blog-author">
-        Posted {moment(blog.updatedAt).fromNow()} by <Link href={`/profile/${blog.postedBy.username}`} passHref>
-          <a>{blog.postedBy.username}</a>
-        </Link>
+        Posted {moment(blog.updatedAt).fromNow()} by {(blog.postedBy) ?
+          (
+            <Link href={`/profile/${blog.postedBy.username}`} passHref>
+              <a>{blog.postedBy.username}</a>
+            </Link>
+          ) : (
+            <a className="text-muted">&lt; User Removed &gt;</a>
+          )
+        }
       </div>
 
     </div >

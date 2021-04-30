@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 // fetch is used (as http client) to send data from frontend (client) to backend (server)
 
-import axios from 'axios';
+// import axios from 'axios';
 
 import { API } from '../config';
 import queryString from 'query-string'; // to parse the Search URLs/ ==>  Parse and stringify URL query strings
@@ -49,7 +49,7 @@ export const createBlogAction = (blog, token) => {
 
 // -------------------------------------------------------------
 
-// End Point to get all the blogs alongwith all the Categories & tags (SEO optimized)
+// End Point to get all the blogs alongwith all the Categories & tags (SEO optimized, Good for SEO)
 export const listBlogsWithCategoriesAndTags = (skip, limit) => {
 
   const data = {
@@ -78,33 +78,36 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
 };
 
 
-// -----------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-// Single Blog Fetch (based on slug)
-
-// export const getSingleBlog = (slug = undefined) => {
-//   return fetch(`${API}/blog/${slug}`, {
-//     method: 'GET'
-//   })
-//     .then(response => {
-//       return response.json();
-//     })
-//     .catch(err => console.log(err));
-// };
-
-// Single Blog Fetch (based on slug) [ Using Axios ]
+// Single Blog Fetch (based on slug) [using Fetch API]
 
 export const getSingleBlog = (slug = undefined) => {
-
-  return axios.get(`${API}/blog/${slug}`)
+  return fetch(`${API}/blog/${slug}`, {
+    method: 'GET'
+  })
     .then(response => {
-
-      //console.log("Response  ------ wohooo  -> : ", response);
-      return response;
+      return response.json();
+      // Note: If there's no blog found in database, that Error will be send from this response only as data.error we are getting from backend as response
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      // this error will most probably come in case of backend API connect failure
+      console.log("blockAction error caught! --> ", err);
+    });
 };
 
+/*
+// Single Blog Fetch (based on slug) [ Using Axios ]
+export const getSingleBlog = async (slug = undefined) => {
+  try {
+    const response = await axios.get(`${API}/blog/${slug}`);
+    return response;
+  } catch (err) {
+    console.log("blockAction error caught !");
+    return err;
+  }
+};
+*/
 
 
 // ------------------------------------------------------------

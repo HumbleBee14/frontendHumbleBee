@@ -75,86 +75,119 @@ const UserProfile = ({ user, blogs, query }) => {
 
   // ===================================================
 
-  return (
-    <React.Fragment>
+  return (!user ?
+    (
+      <div>
+        <Layout>
+          <br />
 
-      {head()}
+          {
+            (user === undefined) ? (
+              <>
+                <h1 className="alert alert-heading alert-warning" style={{ textAlign: 'center' }}>ERROR FETCHING USER DATA 😕</h1>
+                <br />
+                <h5 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>Connection issue, please contact developer 👽</h5>
+              </>
+            ) : (
+              <>
+                <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>NO USER FOUND! 😕</h1>
+                <br />
+                <h4 className="" style={{ textAlign: 'center' }}>One should live like a Humble Bee 🐝 Drink the nectar of flowers and make honey with everyone and share with everyone :)</h4>
+              </>
+            )
+          }
+          <br />
+        </Layout >
+      </div >
+    ) : (
 
-      <Layout>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="card">
-                <div className="card-body">
+      <React.Fragment >
+
+        { head()}
+
+        <Layout>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="card-body">
 
 
-                  <div className="row">
+                    <div className="row">
 
-                    <div className="col-md-8">
-                      <h5>{user.name}</h5>
-                      {/* <Link href={`${user.profile}`} passHref><a>View Profile</a></Link> */}
-                      <Link href={`/profile/${user.username}`} passHref><a>View Profile</a></Link>
-                      <p className="text-muted">Joined {moment(user.createdAt).fromNow()}</p>
-                    </div>
+                      <div className="col-md-8">
+                        <h5>{user.name}</h5>
+                        {/* <Link href={`${user.profile}`} passHref><a>View Profile</a></Link> */}
+                        <Link href={`/profile/${user.username}`} passHref><a>View Profile</a></Link>
+                        <p className="text-muted">Joined {moment(user.createdAt).fromNow()}</p>
+                      </div>
 
-                    <div className="col-md-4">
-                      <img
-                        src={`${API}/user/photo/${user.username}`}
-                        className="img img-fluid img-thumbnail mb-3"
-                        style={{ maxHeight: '150px', maxWidth: '100%' }}
-                        alt="User Profile Photo"
-                      />
+                      <div className="col-md-4">
+                        <img
+                          src={`${API}/user/photo/${user.username}`}
+                          className="img img-fluid img-thumbnail mb-3"
+                          style={{ maxHeight: '150px', maxWidth: '100%' }}
+                          alt="User Profile Photo"
+                        />
+
+                      </div>
 
                     </div>
 
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
 
-        <br />
+          <br />
 
-        <div className="container pb-5">
-          <div className="row">
+          <div className="container pb-5">
+            <div className="row">
 
 
-            <div className="col-md-6">
-              <div className="card">
-                <div className="card-body">
+              <div className="col-md-6">
+                <div className="card">
+                  <div className="card-body">
 
-                  <h5 className="card-title bg-primary pt-4 pb-4 pl-4 pr-4 text-light">Recent Blogs by {user.name}</h5>
+                    <h5 className="card-title bg-primary pt-4 pb-4 pl-4 pr-4 text-light">Recent Blogs by {user.name}</h5>
 
-                  {showUserBlogs()}
+                    {showUserBlogs()}
 
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="col-md-6">
-              <div className="card">
-                <div className="card-body">
+              <div className="col-md-6">
+                <div className="card">
+                  <div className="card-body">
 
-                  <h5 className="card-title bg-primary pt-4 pb-4 pl-4 pr-4 text-white">Message {user.name}</h5>
+                    <h5 className="card-title bg-primary pt-4 pb-4 pl-4 pr-4 text-white">Message {user.name}</h5>
 
-                  <br />
+                    <br />
 
-                  <ContactForm authorEmail={user.email} authorName={user.name} />
+                    {/* <ContactForm authorEmail={user.email} authorName={user.name} /> */}
 
+                    {/* SECURITY ISSUE !!! Show Contact Form only if the User Exists! Else Anyone can send email by typing wrong username and sending to that user from ADMIN's email. So DON"t SHOW This MESSAGE FORM if no AUTHOR / USER exists with that username. <pending> */}
+
+                    {
+                      <ContactForm authorEmail={user.email} authorName={user.name} />
+                    }
+
+                  </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
-        </div>
 
-      </Layout>
+        </Layout >
 
 
-    </React.Fragment>
+      </React.Fragment >
+    )
+
   );
 };
 
@@ -173,13 +206,19 @@ UserProfile.getInitialProps = ({ query }) => {
     if (data === undefined)  // 'undefined' because the backend didn't return any response
     {
       console.log("Backend Connection Failure!! (No response from userAction)");
+      console.log(data);
 
-      return;
+      // return;
+      return { user: undefined }; // Uable to get User data due to connection failure
     }
+
     if (data.error) {
       console.log("Error @[username] -->", data.error);
       // 400, error: User Not Found ! Show Error on this page (or redirect or Error page)
-      return;
+
+      // return;
+      return { user: null }; // User Not Found 
+
     }
     else {
       // console.log("Data Received (from backend) : ================> ", data.user);
