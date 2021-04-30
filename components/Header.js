@@ -56,7 +56,8 @@ const Header = () => {
 
   // ------------------------------------------------
 
-  return process.browser &&
+  // return process.browser && (
+  return (
     <React.Fragment>
 
       {/* // ================== ----------------- HEADER TOP NAVIGATION BAR ------------------ ================== */}
@@ -85,7 +86,7 @@ const Header = () => {
         {/* // ----------------- Collapsable ---------------- */}
         <Collapse isOpen={isOpen} navbar>
 
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto" navbar >
 
 
             <React.Fragment>
@@ -118,7 +119,6 @@ const Header = () => {
               )
             }
 
-
             {process.browser && isAuth() && isAuth().role === 1 &&
               (
                 <NavItem>
@@ -128,6 +128,7 @@ const Header = () => {
                 </NavItem>
               )
             }
+
 
             {/* If not authenticated (not logged in), then only we'll see SIGNIN & SIGNUP, else not (only signout) */}
 
@@ -242,7 +243,8 @@ const Header = () => {
 
       {/* // ----------------- SEARCH ----------------- */}
 
-    </React.Fragment >;
+    </React.Fragment >
+  );
 };
 
 export default Header;

@@ -94,6 +94,25 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 
   // Looping through each blog available through 'props' from getInitialProps()
   const showAllBlogs = () => {
+
+    // Error Handling 
+
+    // Check if there's any error while fetching Blogs from backend
+    if (typeof blogs === 'undefined') {
+      console.log("Error Fetching Data (Blogs)");
+
+      return <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>ERROR FETCHING DATA 😕</h1>;
+    }
+
+    if (!blogs.length) {
+      // blog.length = 0
+      console.log("No Blog Exists. Please check Database!");
+
+      return <h1 className="alert alert-heading alert-warning" style={{ textAlign: 'center' }}>NO BLOG FOUND! 🙄</h1>;
+    }
+
+
+    //-------------------- On Successfully getting Blogs Data
     return blogs.map((blog, i) => { // () if you use bracket (..)then you don't have to mention return, else in case curly braces {..} you have to mention return <.../>
 
       // Looping through each blog using 'map'. Each Blog we want to be as an Article
@@ -111,9 +130,16 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
     });
   };
 
+  //-----------------------------------------
 
   // This is for showing new Loaded blogs that will be shown after user clicks on Load More button. (new loaded blogs will be stored in 'loadedBlogs' state)
   const showLoadedBlogs = () => {
+
+    // Check if there's any error while fetching more Blogs from backend
+    // if (typeof loadedBlogs === 'undefined') {
+    //   return <p className="alert alert-danger">ERROR FETCHING DATA</p>;
+    // }
+
     return loadedBlogs.map((blog, i) => (
 
       <article key={i}>
@@ -132,6 +158,16 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 
   // Looping through all the blog Categories
   const showAllCategories = () => {
+
+    // Check if there's any error while fetching data from backend
+    if (typeof categories === 'undefined') {
+      console.log("Error Fetching Data (Categories list)");
+
+      return;
+      // return <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>ERROR WHILE FETCHING DATA 😕</h1>;
+    }
+
+    // -----------------------
     return categories.map((c, i) => (
       <Link href={`/categories/${c.slug}`} key={i} passHref>
         <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
@@ -144,6 +180,16 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 
   // Looping through all the blog Tags
   const showAllTags = () => {
+
+    // Check if there's any error while fetching data from backend
+    if (typeof tags === 'undefined') {
+      console.log("Error Fetching Data (Tags list)");
+
+      return;
+      // return <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>ERROR WHILE FETCHING DATA 😕</h1>;
+    }
+
+    // -----------------------
     return tags.map((t, i) => (
       <Link href={`/tags/${t.slug}`} key={i} passHref>
         <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
@@ -221,8 +267,9 @@ Blogs.getInitialProps = () => { // Here we just request to backend to get the da
 
 
   return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
+
     if (data.error) {
-      console.log(data.error);
+      console.log("Data Error --> ", data.error);
     }
     else {
       return {
@@ -235,7 +282,25 @@ Blogs.getInitialProps = () => { // Here we just request to backend to get the da
         blogsSkip: skip
       };
     }
-  });
+  })
+    .catch(err => {
+      console.log("\n Error getting BLOGS from Backend --> ", err, "\n\n");
+      console.log("------------- END --------------");
+
+      return {};
+      // return { blogs: [] };
+
+      // throw new Error(err); // Error objects are thrown when runtime errors occur. 
+      // It is more like a return ERROR Object and if there's no further function that will be handling this error, it'll then HALT here with the error , else we can capture it in further function calls where it's called and handle it as we want to.
+
+      /*
+      try {
+        throw new Error('Whoops!')
+        } catch (e) {
+            console.error(e.name + ': ' + e.message)
+        }
+      */
+    });
 };
 
 

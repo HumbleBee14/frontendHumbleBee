@@ -192,13 +192,15 @@
 
   /* // ----------------------------------------- Fun Face ---------------------------------------------------- */
 
-  svg {
+  svg.funFace {
     display: block;
     width: 80px;
     height: 80px;
     pointer-events: none;
     transform-style: preserve-3d;
-  }
+  } 
+
+
   circle.eye {
     fill: #a1a1b6;
   }
@@ -225,12 +227,13 @@
     align-items: center;
     justify-content: center;
   }
-  .mouth-outer svg {
+  .mouth-outer svg_f {
     width: 100px;
     height: 100px;
   }
   .mouth-outer path.top, .mouth-outer path.bottom {
     stroke-width: 2px;
   }
+
 
    /* // ----------------------------------------- --------- ---------------------------------------------------- */

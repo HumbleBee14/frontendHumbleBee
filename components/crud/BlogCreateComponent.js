@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import Router from 'next/router';
+// import Router from 'next/router';
 import dynamic from 'next/dynamic';
 /* We are using this because we'll be using 'react-quill' as rich text editor for blog section. 
 And 'react-quill' only runs on the Client Side !!
@@ -14,17 +14,51 @@ import { getCategories } from '../../actions/categoryAction'; // to Load all the
 import { getTags } from '../../actions/tagAction'; // to Load all the Tags available, for user to select for their current Blog
 import { createBlogAction } from '../../actions/blogAction'; // create Blog action, that'll be used to pass the blog created in this frontend component (on client side) to backend (server-side) to save it in Database.
 
+
+// ------------------------------------------------------------------------------------------------------------------
+/*
+
 // Importing react-quill Dynamically in the frontend client side (So that it doesn't run on server side), therefore we have set SSR (Server side rendering) to false
+
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-import '../../node_modules/react-quill/dist/quill.snow.css';  // Note: we are able to import CSS file manually like this because of package - @zeit/next-css. But in new version of nextjs, we can do it I think. Check it out :) 
+import '../../node_modules/react-quill/dist/quill.snow.css';  
+
+// Note: we are able to import CSS file manually like this because of package - @zeit/next-css. But in new version of nextjs, we can do it I think. Check it out :) 
 // CDN url: https://cdnjs.cloudflare.com/ajax/libs/react-quill/0.4.1/quill.snow.css
 
 import { QuillModules, QuillFormats } from '../../helpers/quill'; // for making rich text editor has more advanced featured 
 
+*/
+// ------------------------------------------------------------------------------------------------------------------
+
+// -============================================================================
+/*
+
+// Dynamically Importing CKEDITOR Rich Text Editor  (to load only on client side)
+
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+
+const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), { ssr: false });
+
+import InlineEditor from '@ckeditor/ckeditor5-editor-inline';
 
 
+// const CustomEditor = dynamic(() => import('../../public/static/ckeditor5-custom-build/build/ckeditor'), { ssr: false });
 
+*/
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+
+// const InlineEditor = dynamic(() => import('@ckeditor/ckeditor5-build-inline'), { ssr: false });
+
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import CustomEditor from '../../public/static/ckeditor5-custom-build/build/ckeditor'; // Designed using ckeditor online builder
+
+import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
+
+// -============================================================================
+
+//-----------------------------------------------------------------------------------
 
 const CreateBlog = ({ router }) => {
 
@@ -35,11 +69,26 @@ const CreateBlog = ({ router }) => {
     }
 
     if (localStorage.getItem('blog')) {
-      return JSON.parse(localStorage.getItem('blog'));
+
+      console.log("LocalStorage Saved Data---->", JSON.parse(localStorage.getItem('blog')));
+
+      return JSON.parse(localStorage.getItem('blog')); // to return previously saved blog 'body' (if not published and present in user's local storage) which is stored in localstorage to 'body' state variable
     } else {
       return false;
+      // return "";
     }
   };
+
+  // Creating state variables for different elements of Blogs
+
+  // const [data, setData] = useState(""); // Using this or body state for Blog Editor Data
+
+  // Blog body data (blog content)
+  const [body, setBody] = useState(blogFromLS());
+  // Note: here blogFromLS() function is used to pull localstorage FORM data to populate in case of any page reload/refresh to prevent data loss efforts
+  // 'body' by default will have values that is in localstorage, and anytime we make any change it'll update as it'll be always synced
+  // this will update the localstorage -> then state -> then formdata - everything will be updated -it'll keep it in sync
+
 
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
@@ -48,15 +97,6 @@ const CreateBlog = ({ router }) => {
   const [checkedCat, setCheckedCat] = useState([]); // categories
   const [checkedTags, setCheckedTags] = useState([]); // tags
 
-
-
-
-  // Creating state variables for different elements of Blogs
-
-  const [body, setBody] = useState(blogFromLS());
-  // Note: here blogFromLS() function is used to pull localstorage FORM data to populate in case of any page reload/refresh to prevent data loss efforts
-  // body by default will have values that is in localstorage, and anytime we make any change it'll update as it'll be always synced
-  // this will update the localstorage -> then state -> then formdata - everything will be updated -it'll keep it in sync
 
   const [values, setValues] = useState({
     error: '', // // this will be used later for activating Error component -showError()
@@ -90,18 +130,25 @@ const CreateBlog = ({ router }) => {
   // So this way, when the component Mounts, we will have FORM data ready to use
 
 
+  //-------------------------------------
   // to Load Categories & Tags on page load, we have called them in useEffect. So we'll get them from backend and update in state variable
   const initCategories = () => {
     getCategories().then(data => {
+
       if (data.error) {
         setValues({ ...values, error: data.error });
       }
       else {
         setCategories(data);
       }
-    });
+    })
+      .catch(err => {
+        console.log("Error getting Categories from Backend -->", err);
+        setCategories([]);
+      });
   };
 
+  //-------------------------------------
   // Loading Tags from backend, & set them in useEffect for frontend to use
   const initTags = () => {
     getTags().then(data => {
@@ -111,10 +158,14 @@ const CreateBlog = ({ router }) => {
       else {
         setTags(data);
       }
-    });
+    })
+      .catch(err => {
+        console.log("Error getting Tags from Backend -->", err);
+        setTags([]);
+      });
   };
 
-
+  //--------------------------------------------------------------------
   // Publish Blog Function to Submit the Blog (sending the blog to backend DB)
 
   const publishBlog = (e) => {
@@ -134,7 +185,9 @@ const CreateBlog = ({ router }) => {
     // console.log('Ready to publish Blog');
     // console.log("___________ About to Publish FormData___________ ", { formData });
 
-    // Sending data to Backend
+    //--------------------------------------------------------
+
+    // Sending data to Backend (to save in Database)
     createBlogAction(formData, token).then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
@@ -155,7 +208,7 @@ const CreateBlog = ({ router }) => {
       }
     });
   };
-
+  //-----------------------------------------------------
 
   // to get the Photo or Title (based on what is changed, where it's called) and save it in formData object
   const handleChange = name => e => {
@@ -169,9 +222,11 @@ const CreateBlog = ({ router }) => {
 
   };
 
-
+  //-----------------------------------------------------
   // Anytime user starts typing in the React Quill rich text editor, following below things will happen
-  // Blog Body Event handler
+
+  // Blog Body Event handler (for React QUILL)
+  /*
   const handleBody = e => {
     // console.log(e); // e = event
     setBody(e);
@@ -184,9 +239,30 @@ const CreateBlog = ({ router }) => {
     }
     // typeof window !== 'undefined' =====>>>> This checks if browser window is available, i.e. not closed 
   };
+  */
+
+  // -----------------------------------------------------
+
+  // Blog Body Event handler (for CKEDITOR Rich Text Editor)
+
+  const handleBody = bdata => {
+    console.log("Return value from Editor Component---->", typeof bdata, bdata);
+
+    setBody(bdata);
+
+    // console.log("Updated 'body'--->", body); // Updated body state
+
+    formData.set('body', bdata); // this will be used to save data in formData that will be used to send data to Backend
+
+    // To save content in localstorage to prevent data loss on page refresh/reload
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('blog', JSON.stringify(bdata));
+    };
+    // typeof window !== 'undefined' =====>>>> This checks if browser window is available, i.e. not closed 
+  };
 
 
-
+  //-----------------------------------------------------
 
   const handleCategoryToggle = (c_id) => () => {
     setValues({ ...values, error: '' }); // clear out any error first
@@ -215,7 +291,7 @@ const CreateBlog = ({ router }) => {
     formData.set('categories', all); // saving selected categories in Form for sending data to backend
   };
 
-
+  //-----------------------------------------------------
   const handleTagsToggle = (t_id) => () => {
     setValues({ ...values, error: '' });
 
@@ -240,6 +316,7 @@ const CreateBlog = ({ router }) => {
     formData.set('tags', all); // Saving selected tags list in the formdata through which it'll send all the data to backend
   };
 
+  //-----------------------------------------------------
 
   // Sort function
   const sortByStringFunction = (a, b) => {
@@ -253,6 +330,10 @@ const CreateBlog = ({ router }) => {
 
 
   const showCategories = () => {
+
+    if (!categories.length) {
+      return <p className="alert alert-danger">ERROR FETCHING DATA</p>;
+    }
 
     const sortedCategories = categories.slice().sort(sortByStringFunction);
 
@@ -270,6 +351,10 @@ const CreateBlog = ({ router }) => {
 
   const showTags = () => {
 
+    if (!categories.length) {
+      return <p className="alert alert-danger">ERROR FETCHING DATA</p>;
+    }
+
     const sortedTags = tags.slice().sort(sortByStringFunction);
 
     return (
@@ -285,6 +370,7 @@ const CreateBlog = ({ router }) => {
     );
   };
 
+  //-----------------------------------------------------
 
   // Warning/Alerts functions
 
@@ -310,7 +396,7 @@ const CreateBlog = ({ router }) => {
     </div>
   );
 
-
+  //-----------------------------------------------------
 
 
   // ----------------------- BLOG FORM Section -----------------------
@@ -324,8 +410,10 @@ const CreateBlog = ({ router }) => {
           <input type="text" className="form-control" value={title} onChange={handleChange('title')} />
         </div>
 
+        {/* // -------------------------------------------------------------------- */}
+
         {/* // Text Area (Blog Body) - Using react-quill. Note: To add more advanced text options, we have added modules and formats below*/}
-        <div className="form-group">
+        {/* <div className="form-group">
           <ReactQuill
             // modules={CreateBlog.modules}
             modules={QuillModules}
@@ -335,7 +423,58 @@ const CreateBlog = ({ router }) => {
             placeholder="Write something amazing ..."
             onChange={handleBody}
           />
+        </div> */}
+
+        {/* // ---------------------------------------------------------------------- */}
+
+
+
+        {/* // ---------------------------------------------------------------------- */}
+        {/* CKEDITOR Rich Text Editor */}
+
+
+
+        <div className="form-group">
+
+
+          <div className='custom-ckeditor-editable'>
+
+            {console.log("Body Data --->", typeof body, body)}
+
+            <TextEditor text={body} onChangeProp={handleBody} />
+
+            {/*
+          Question: How to pass the Data back from Child Component to it's calling Parent Component ?  
+
+            // In Parent Component:
+            <ChildComponent toChild={isParentData} sendToParent={setIsParentData} />
+            
+            In Child Component:
+            return (
+            <button onClick={() => {props.sendToParent(False)}}>Update</button>
+            )
+
+            // Note: We have just used the above in our <TextEditor> component by passing CALLBACK FUNCTIOn through props - 'onChangeProp' and getting response back from child component to here
+            */}
+
+          </div>
+
+
         </div>
+
+
+
+        {/* 
+Note that CKEditor uses the window object of the browser and
+therefore cannot be rendered on the server (on the server side of NextJS).
+So make sure that the 'WYSIWYGCKEditor' is imported (dynamically)
+and used only in the browser of your NextJS application.
+    */}
+
+
+        {/* // ---------------------------------------------------------------------- */}
+
+
 
         <div>
           <button type="submit" className="btn btn-primary">
@@ -426,11 +565,11 @@ const CreateBlog = ({ router }) => {
   );
 };
 
-//------------------------------------------
+//---------------------------------------------------------------
 /*  $$$$$$$$$$$$_____ MOVING THE BELOW RICH TEXT MODULE to different file ____$$$$$$$$$$$$$$$
 // To make Rich Text editor has more advanced options
 CreateBlog.modules = {
-        toolbar: [
+          toolbar: [
     [{ header: '1' }, { header: '2' }, { header: [3, 4, 5, 6] }, { font: [] }],
     [{ size: [] }],
     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
@@ -440,7 +579,7 @@ CreateBlog.modules = {
     ['code-block']
   ]
 };
-
+ 
 CreateBlog.formats = [
   'header',
   'font',

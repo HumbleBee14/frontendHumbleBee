@@ -19,9 +19,9 @@ export default function NotFound() {
   return (
     <div className="layout">
       <div className="window" >
-        <h1>404</h1>
-        <h2>Ooops! That page cannot be found :(</h2>
-        <p>Redirecting to <Link href="/">Homepage</Link> 🐱‍🏍</p>
+        <h1>SORRY!</h1>
+        <h2>You don't have permission to view this page :(</h2>
+        <p>Redirecting to <Link href="/">Homepage</Link> 😊</p>
 
         <style> {`
  .layout {

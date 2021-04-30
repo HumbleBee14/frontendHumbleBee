@@ -16,7 +16,9 @@ import {
   FaTwitter,
   FaLinkedin,
   FaGithub,
-  FaMedium
+  FaMedium,
+  FaStackOverflow,
+  FaReddit
 } from "react-icons/fa";
 
 import {
@@ -75,10 +77,11 @@ const PageFooter = () => {
         <FooterSubscription>
 
           <FooterSubHeading>
+            {/* <p className="pl-5 pr-5">Join our exclusive HumbleBee group to share your blogs with, the world? Nope! only Me 🤖</p> */}
             Join our exclusive HumbleBee group to share your blogs with, the world? Nope! only Me 🤖
-        </FooterSubHeading>
+          </FooterSubHeading>
           {/* <FooterSubText>You can unsubscribe at any time</FooterSubText> */}
-          <FooterSubText>__Under Development__ ;</FooterSubText>
+          <FooterSubText> &lt; Under 👨‍💻 Development &gt; </FooterSubText>
           <Form>
             <FormInput name="email" type="email" placeholder="Your Email" />
             {/* <Button fontBig>Subscribe</Button> */}
@@ -157,14 +160,16 @@ const PageFooter = () => {
 
               {/* <SocialIconLink href="/" target="_blank" aria-label="Facebook">
                 <FaFacebook />
-              </SocialIconLink> */}
-              {/* <SocialIconLink href="/" target="_blank" aria-label="Instagram">
+              </SocialIconLink>
+              <SocialIconLink href="/" target="_blank" aria-label="Instagram">
                 <FaInstagram />
-              </SocialIconLink> */}
-              {/* </SocialIconLink>
+              </SocialIconLink>
               <SocialIconLink href="/" target="_blank" aria-label="Twitter">
                 <FaTwitter />
               </SocialIconLink> */}
+
+
+
 
               <SocialIconLink href="//www.github.com/HumbleBee14" target="_blank" aria-label="Github">
                 <FaGithub />
@@ -186,6 +191,14 @@ const PageFooter = () => {
               <SocialIconLink href="https://www.linkedin.com/in/dineshyd"
                 target="_blank" aria-label="LinkedIn">
                 <FaLinkedin />
+              </SocialIconLink>
+
+              <SocialIconLink href="/" target="_blank" aria-label="StackOverflow">
+                <FaStackOverflow />
+              </SocialIconLink>
+
+              <SocialIconLink href="/" target="_blank" aria-label="Reddit">
+                <FaReddit />
               </SocialIconLink>
 
             </SocialIcons>

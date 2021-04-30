@@ -16,12 +16,13 @@ import { getTags } from '../../actions/tagAction'; // to Load all the Tags avail
 import { getSingleBlog, updateBlog } from '../../actions/blogAction'; // update Blog action, that'll be used to pass the blog created/updated in this frontend component (on client side) to backend (server-side) to save it in Database.
 
 // Importing react-quill Dynamically in the frontend client side (So that it doesn't run on server side), thereofre we have set SSR (SErver side rendering) to false
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-import '../../node_modules/react-quill/dist/quill.snow.css';  // Note: we are able to import CSS file manually like this because of package - @zeit/next-css. But in new version of nextjs, we can do it I think. Check it out :) 
+// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
+// import '../../node_modules/react-quill/dist/quill.snow.css';  // Note: we are able to import CSS file manually like this because of package - @zeit/next-css. But in new version of nextjs, we can do it I think. Check it out :) 
 // CDN url: https://cdnjs.cloudflare.com/ajax/libs/react-quill/0.4.1/quill.snow.css
 
-import { QuillModules, QuillFormats } from '../../helpers/quill'; // for making rich text editor has more advanced featured 
+// import { QuillModules, QuillFormats } from '../../helpers/quill'; // for making rich text editor has more advanced featured 
 import { API } from '../../config';
 // import FormData from 'form-data'; // not needed separetly, as we get access to FormData web API through Browser itself
 
