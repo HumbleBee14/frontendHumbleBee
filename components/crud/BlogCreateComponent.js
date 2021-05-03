@@ -50,9 +50,10 @@ import InlineEditor from '@ckeditor/ckeditor5-editor-inline';
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 // const InlineEditor = dynamic(() => import('@ckeditor/ckeditor5-build-inline'), { ssr: false });
-
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 // import CustomEditor from '../../public/static/ckeditor5-custom-build/build/ckeditor'; // Designed using ckeditor online builder
+
 
 import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
 
@@ -246,6 +247,7 @@ const CreateBlog = ({ router }) => {
   // Blog Body Event handler (for CKEDITOR Rich Text Editor)
 
   const handleBody = bdata => {
+
     console.log("Return value from Editor Component---->", typeof bdata, bdata);
 
     setBody(bdata);
@@ -412,7 +414,7 @@ const CreateBlog = ({ router }) => {
 
         {/* // -------------------------------------------------------------------- */}
 
-        {/* // Text Area (Blog Body) - Using react-quill. Note: To add more advanced text options, we have added modules and formats below*/}
+        {/* // Rich Text Editor Area (Blog Body) - Using react-quill. Note: To add more advanced text options, we have added modules and formats below*/}
         {/* <div className="form-group">
           <ReactQuill
             // modules={CreateBlog.modules}
@@ -439,11 +441,15 @@ const CreateBlog = ({ router }) => {
 
           <div className='custom-ckeditor-editable'>
 
-            {console.log("Body Data --->", typeof body, body)}
+            {/* {console.log("Blog Create Body Data --->", typeof body, body)} */}
 
             <TextEditor text={body} onChangeProp={handleBody} />
 
-            {/*
+          </div>
+
+        </div>
+
+        {/*
           Question: How to pass the Data back from Child Component to it's calling Parent Component ?  
 
             // In Parent Component:
@@ -456,11 +462,6 @@ const CreateBlog = ({ router }) => {
 
             // Note: We have just used the above in our <TextEditor> component by passing CALLBACK FUNCTIOn through props - 'onChangeProp' and getting response back from child component to here
             */}
-
-          </div>
-
-
-        </div>
 
 
 

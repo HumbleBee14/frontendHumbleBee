@@ -183,6 +183,7 @@ const SingleBlog = ({ blog, query }) => {
         {head()}
 
         <Layout>
+
           <main>
             <article>
               <div className="container-fluid">
@@ -190,7 +191,9 @@ const SingleBlog = ({ blog, query }) => {
                   {/* {JSON.stringify(router)} */}
                   {/* {JSON.stringify(blog)} */}
 
-                  <div className="row" style={{ marginTop: '-30px' }}>
+                  <div className="row" style={{
+                    // marginTop: '30px'
+                  }}>
 
                     <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image" />
 
@@ -202,7 +205,13 @@ const SingleBlog = ({ blog, query }) => {
 
                   <div className="container">
 
-                    <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title">{blog.title}</h1>
+                    <h1
+                      className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title"
+                      style={{
+                        fontSize: "clamp(2.3rem, 5vw, 5rem)",
+                      }}>
+                      {blog.title}
+                    </h1>
 
                     <p className="lead mt-3 mark">
                       Written by {(blog.postedBy) ?
@@ -217,7 +226,7 @@ const SingleBlog = ({ blog, query }) => {
                     </p>
 
                     <div className="pb-3">
-                      {/* {showBlogCategories(blog)} */}
+                      {showBlogCategories(blog)}
                       {showBlogTags(blog)}
                       <br />
                       <br />
@@ -256,7 +265,7 @@ const SingleBlog = ({ blog, query }) => {
           </main>
         </Layout>
 
-      </React.Fragment>)
+      </React.Fragment >)
 
   );
 

@@ -73,7 +73,7 @@ const Index = () => {
                     fontSize: "calc(2em + 1.5vw)",
                   }}
                   className="display-4 font-weight-bold pl-20 pr-20">
-                  <small className="text-muted">//</small><br /> PROGRAMMING BLOGS <br /><small className="text-muted">//</small>
+                  <small className="text-muted">- - - - - - - - - - - - -</small><br /> PROGRAMMING BLOGS <br /><small className="font-bold">;</small>
                 </h1>
               </div>
 

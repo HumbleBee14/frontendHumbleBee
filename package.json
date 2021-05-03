@@ -13,8 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@ckeditor/ckeditor5-build-inline": "^27.1.0",
+    "@ckeditor/ckeditor5-build-classic": "^27.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@ckeditor/ckeditor5-upload": "^27.1.0",
     "@zeit/next-css": "^1.0.1",
     "antd": "^4.15.1",
     "form-data": "^4.0.0",

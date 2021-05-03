@@ -1,10 +1,16 @@
 import dynamic from 'next/dynamic';
 
-const Editor = dynamic(() => import('../components/crud/Editor'), { ssr: false });
+import TextEditor from '../components/crud/Editor';;
 
 const Home = () => {
+
+  const handleBody = bdata => {
+    console.log("Return value from Editor Component---->", typeof bdata, bdata);
+  };
+
+
   return (
-    <Editor value="" onChange={(v) => console.log("Check----<>", v)} />
+    <TextEditor text="Hello Buddy" onChangeProp={handleBody} />
   );
 };
 export default Home;

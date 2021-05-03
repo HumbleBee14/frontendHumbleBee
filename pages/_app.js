@@ -1,15 +1,17 @@
 import Head from 'next/head';
-import { DOMAIN, APP_NAME, FB_APP_ID } from '../config';
+// import { DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import '../public/static/css/index.css';
 
+
 import * as gtag from '../lib/gtag';
 
-// The simplest way to log pageviews in your Next.js app is to subscribe to your router and listen for the routeChangeComplete event. (got Google Analytics )
+// The simplest way to log pageviews in your Next.js app is to subscribe to your router and listen for the routeChangeComplete event. (for Google Analytics )
 // --------------------------------------------------------------------
 const App = ({ Component, pageProps }) => {
+
 
   // --------------- for Google Analytics gtag --------------------------
   const router = useRouter();

@@ -32,6 +32,9 @@ import {
 
 
 
+
+// -------------------------------------------------------------------
+
 // https://nextjs.org/docs/api-reference/next/router#routerevents
 
 Router.onRouteChangeStart = url => NProgress.start();
@@ -54,11 +57,14 @@ const Header = () => {
     setAuthenticated(user);
   }, []);
 
-  // ------------------------------------------------
+
+
+  // ---------------------------------------------------------------
 
   // return process.browser && (
   return (
     <React.Fragment>
+
 
       {/* // ================== ----------------- HEADER TOP NAVIGATION BAR ------------------ ================== */}
 
@@ -77,7 +83,6 @@ const Header = () => {
         {/* Website Logo / Website Name */}
         {/* <NavLink className="font-weight-bold" style={{ cursor: 'pointer' }}>{APP_NAME}</NavLink> */}
 
-        {/* <Search /> */}
 
         {/* // ---------------------------------------------- */}
 
@@ -232,6 +237,7 @@ const Header = () => {
 
       </Navbar>
 
+
       {/* // ================== ----------------- HEADER TOP NAVIGATION BAR ------------------ ================== */}
 
 
@@ -242,6 +248,7 @@ const Header = () => {
 
 
       {/* // ----------------- SEARCH ----------------- */}
+
 
     </React.Fragment >
   );

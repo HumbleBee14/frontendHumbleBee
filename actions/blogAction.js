@@ -242,6 +242,10 @@ export const listSearch = (params) => { // params (SEARCH TERM) will come from S
 
   // console.log('Query params (After Parsing/Stringifying - creating query URL) which will be sent to the backend : ', query); // After URL parsed/stringified
 
+
+
+  // ------------------------------
+
   return fetch(`${API}/blogs/search?${query}`, {
     method: 'GET'
   })

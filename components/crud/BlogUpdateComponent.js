@@ -15,6 +15,8 @@ import { getCategories } from '../../actions/categoryAction'; // to Load all the
 import { getTags } from '../../actions/tagAction'; // to Load all the Tags available, for user to select for their current Blog
 import { getSingleBlog, updateBlog } from '../../actions/blogAction'; // update Blog action, that'll be used to pass the blog created/updated in this frontend component (on client side) to backend (server-side) to save it in Database.
 
+
+/* ----------------------------------------------------------------------------
 // Importing react-quill Dynamically in the frontend client side (So that it doesn't run on server side), thereofre we have set SSR (SErver side rendering) to false
 
 // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
@@ -23,11 +25,21 @@ import { getSingleBlog, updateBlog } from '../../actions/blogAction'; // update 
 // CDN url: https://cdnjs.cloudflare.com/ajax/libs/react-quill/0.4.1/quill.snow.css
 
 // import { QuillModules, QuillFormats } from '../../helpers/quill'; // for making rich text editor has more advanced featured 
+
+*/
+
+// CKEDITOR Rich Text Editor Component
+import TextEditor from './Editor';
+
 import { API } from '../../config';
+
 // import FormData from 'form-data'; // not needed separetly, as we get access to FormData web API through Browser itself
 
 
-// --------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
 
 // Router props - to grab the slug
 const BlogUpdate = ({ router }) => {
@@ -69,13 +81,16 @@ const BlogUpdate = ({ router }) => {
 
   // when the component mounts (useEffect) -> make request to backend to get blog
   useEffect(() => {
-    // console.log("_______________________ USE EFFECT STARTED __________________________");
+    // console.log("______________ USE EFFECT STARTED _______________");
 
-
-    // setValues({ ...values, title: "", formData: new FormData() });
     setValues({ ...values });
-    // Note: this 'new FormData()' is not initialized on first page load sadly(bcoz setValues doesn't run on server side SSR), which is creating errors - [formdata.set is not a function], bcoz it's object is not initlaized. 
+    // setValues({ ...values, title: "", formData: new FormData() });
+    // Note: this 'new FormData()' is not initialized on first page load sadly(bcoz setValues doesn't run on server side SSR), which is creating errors - [formdata.set is not a function], bcoz it's object is not initlaized.
     // setValues({ ...values, formData: new FormData() }); //Don't know why this isn't working!!  Seems like setValues/state doesn't run on first page load !!
+
+    // REASON FOUND !!! Why this doesn't run on Server Side ?
+    // Because -> ' useEffect ' runs on client side on First Page Render!! which will run once it gets loaded / mounted on browser
+
     // FormData() is a browser API to create new Formdata
 
 
@@ -89,12 +104,12 @@ const BlogUpdate = ({ router }) => {
   }, [router]); // whenever router changes
 
 
-
+  // ----------------------------------------------------------
   //It gets the blog data from backend in the current state Variables, which we can now use to Populate it in the formData to show on client side;
 
   const initBlog = () => {
     // InitiBlog will load / 
-    if (router.query.slug) { // Note: We will have access to Router only when the component Mounts, else not
+    if (router.query.slug) { // Note: We will have access to Router only when the component Mounts (because 'router' is available on client side only), else not
       getSingleBlog(router.query.slug).then(data => {
         if (data.error) {
           console.log(data.error); // useful for developers only, not user
@@ -113,7 +128,8 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
-  // Updating frontend (updating state) with already checked categories of the blog selected for update
+  // -----------------------------------------------------------
+  // Updating frontend (updating state) with already checked categories of the blog which is selected for update
   const setCategoriesArray = blogCategories => {
     let ca = []; // Array of categories (which will keep list of already selected categories in the current blog and wil be used to update on frontend through its set state variable)
     blogCategories.map((c, i) => {
@@ -123,6 +139,7 @@ const BlogUpdate = ({ router }) => {
     setCheckedCat(ca); // setting category state variable for already selected/checked categories of the blog
   };
 
+  // ----------------------------------------------------
   // Updating frontend (updating state) with already checked tags of the blog selected for update
   const setTagsArray = blogTags => {
     let ta = []; // Array of tags 
@@ -134,7 +151,7 @@ const BlogUpdate = ({ router }) => {
   };
 
 
-  //-------------------------------------------------
+  //----------------------------------------------------
   // Categories Toggle Handler
 
   const handleCategoryToggle = (c_id) => () => {
@@ -194,7 +211,7 @@ const BlogUpdate = ({ router }) => {
     // Moved the above formData.set to the 'editBlog' function. (was facing FormData object not instanciated error - formData.set is not function)
   };
 
-
+  //----------------------------------------------
 
   // to Load Categories & Tags on page load, we have called them in useEffect. So we'll get them from backend and update in state variable
   const initCategories = () => {
@@ -208,6 +225,7 @@ const BlogUpdate = ({ router }) => {
     });
   };
 
+  //------------------------------------
   // Loading Tags from backend, & set them in useEffect for frontend to use
   const initTags = () => {
     getTags().then(data => {
@@ -220,6 +238,7 @@ const BlogUpdate = ({ router }) => {
     });
   };
 
+  //----------------------------------------------------------
   // To checked if this Category is checked or not (in the checkedCategories state)
 
   const findOutCheckedCategories = c => {
@@ -233,6 +252,7 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
+  //-----------------------------------------------
   // To checked if this Tag is checked or not (in the checkedTags state)
   const findOutCheckedTags = t => {
     const result = checkedTags.indexOf(t);  // Checking if the selected tag 't' is present or not in the Checked Tags state variable 'checkedTags' (which we had updated in setTagsArray() function )
@@ -246,7 +266,7 @@ const BlogUpdate = ({ router }) => {
   };
 
 
-
+  // --------------------------------------------------------------
 
   // Sort function
   const sortByStringFunction = (a, b) => {
@@ -258,7 +278,7 @@ const BlogUpdate = ({ router }) => {
     return 0;
   };
 
-
+  //------------------------------------
   const showCategories = () => {
 
     const sortedCategories = categories.slice().sort(sortByStringFunction);
@@ -279,6 +299,7 @@ const BlogUpdate = ({ router }) => {
     );
   };
 
+  //------------------------------------
 
   const showTags = () => {
 
@@ -302,7 +323,7 @@ const BlogUpdate = ({ router }) => {
     );
   };
 
-
+  // ------------------------------------------------------------------------
 
   // Change Handler for Photo & Title - can be used for both title and photo based on what 'name' is passed to parameter
   const handleChange = name => e => {
@@ -324,7 +345,8 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
-  // New Uploaded Image Preview
+  // New Uploaded Image Preview (Check just Above!)
+
   // const previewImage = () => {
   //   // const newImage = e.target.files[0];
   //   return (
@@ -332,6 +354,7 @@ const BlogUpdate = ({ router }) => {
   //   );
   // };
 
+  // --------------------------------------------------------------
 
   // Body Event Handler 
   const handleBody = e => {
@@ -363,8 +386,9 @@ const BlogUpdate = ({ router }) => {
 
 
     // console.log('Ready to Submit Blog');
-    console.log("___________ About to Publish FormData___________ ", { formData });
+    // console.log("___________ About to Publish FormData___________ ", { formData });
 
+    // -------------------------
     // sending the formData which has Updated Blog Content to Backend
     updateBlog(formData, token, router.query.slug).then(data => {
       if (data.error) {
@@ -438,7 +462,7 @@ const BlogUpdate = ({ router }) => {
 
 */
 
-  //-------------------------------------------
+  //------------------------------------------------------------
 
   // Warnings / Error Alert functions
 
@@ -458,7 +482,8 @@ const BlogUpdate = ({ router }) => {
 
 
 
-  //--------- UPDATE BLOG FORM Section -------------
+  //------------------------ UPDATE BLOG FORM Section ----------------------
+
   const updateBlogForm = () => {
 
     return (
@@ -469,7 +494,11 @@ const BlogUpdate = ({ router }) => {
           <input type="text" className="form-control" value={title} onChange={handleChange('title')} />
         </div>
 
-        {/* // Text Area (Blog Body) - Using react-quill*/}
+        {/* --------------------------------------------------------- */}
+        {/* // Text Editor Area (Blog Body) - using React - Quill*/}
+
+        {/*
+         
         <div className="form-group">
           <ReactQuill
             // modules={CreateBlog.modules}
@@ -481,6 +510,25 @@ const BlogUpdate = ({ router }) => {
             onChange={handleBody}
           />
         </div>
+ */}
+
+        {/* --------------------------------------------------------- */}
+
+        {/* CKEDITOR Rich Text Editor */}
+
+        <div className="form-group">
+          <div className='custom-ckeditor-editable'>
+
+            {/* {console.log("Blog Update Body Data --->", typeof body, body)} */}
+
+            <TextEditor text={body} onChangeProp={handleBody} />
+
+          </div>
+        </div>
+
+        {/* // Note: We have used callback function ('handleBody') by passing function through props ('onChangeProp') of the <TextEditor> component and getting response back from child component to here */}
+
+        {/* ------------------------------------------------------------------- */}
 
         <div>
           <button type="submit" className="btn btn-primary">

@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import renderHTML from 'react-render-html'; // to render html for excerpts for each blog 
-// {renderHTML(blog.excerpt)} - Not using it because we don;t want to render HTML tags inside excerpt for now. May be later
-import { stripHtml } from 'string-strip-html'; // to strip / remove HTML tags & styles from html text
+
+// import renderHTML from 'react-render-html'; // to render html for excerpts for each blog 
+// {renderHTML(blog.excerpt)} - Not using it because we don't want to render HTML tags inside excerpt for now. May be later
+
+// import { stripHtml } from 'string-strip-html'; // to strip / remove HTML tags & styles from html text
 
 import { htmlToText } from 'html-to-text';// Refer:  https://www.npmjs.com/package/html-to-text 
 

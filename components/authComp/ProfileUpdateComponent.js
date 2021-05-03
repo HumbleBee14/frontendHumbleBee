@@ -1,6 +1,6 @@
 // import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import Router from "next/router";
+// import Router from "next/router";
 import { getCookie, isAuth, updateUser } from "../../actions/authAction"; // updateUser - to update localStorage (of browser) when there's update in profile data
 import { getProfile, updateProfile } from "../../actions/userAction";
 import { API, DOMAIN } from '../../config';

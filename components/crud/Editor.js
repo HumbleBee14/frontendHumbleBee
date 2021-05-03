@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-
 // -----------------------------------------------------------------------
 
 export default function MyEditor(props) {
@@ -11,7 +10,8 @@ export default function MyEditor(props) {
   const editorRef = useRef();
 
   const [editorLoaded, setEditorLoaded] = useState(false);
-  const { CKEditor, InlineEditor } = editorRef.current || {};
+  const { CKEditor, ClassicEditor, Base64UploadAdapter } = editorRef.current || {};
+
 
 
   // To Make Sure to import and Run (& import modules) this Rich Text Editor only on the page render - client side, we are using useEffect
@@ -19,14 +19,17 @@ export default function MyEditor(props) {
     editorRef.current = {
 
       CKEditor: require('@ckeditor/ckeditor5-react').CKEditor,
-      // ClassicEditor: require('@ckeditor/ckeditor5-build-classic')
-      InlineEditor: require('@ckeditor/ckeditor5-build-inline')
+      ClassicEditor: require('@ckeditor/ckeditor5-build-classic'),
+      // Base64UploadAdapter: require('@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter'),
+
     };
     setEditorLoaded(true);
+
+    // console.log(ClassicEditor.builtinPlugins.map(plugin => plugin.pluginName));
   }, []);
 
   // Check props passed
-  console.log("Props to Editor--> ", props);
+  // console.log("Props to Editor--> ", props);
 
 
   // --------------------------------------------
@@ -34,23 +37,30 @@ export default function MyEditor(props) {
   return editorLoaded ? (
 
     <CKEditor
-      editor={InlineEditor}
+      editor={ClassicEditor}
+      // editor={CustomEditor}
       // data='<p>Hello from CKEditor 5!</p>'
       data={props.text}
       // data={(text) ? text : ""}
       // data=""
 
-      config={{ placeholder: "Let's Write something amazing today ..." }}
+      config={{
+        placeholder: "Let's Write something amazing today ...",
+        // plugins: [Base64UploadAdapter],
+        // toolbar: ['imageUpload'],
+
+      }}
 
       onReady={editor => {
         // You can store the "editor" and use when it is needed.
         console.log('Editor is Now ready to use!', editor);
 
         // Insert the toolbar before the editable area.
-        editor.ui.view.editable.element.parentElement.insertBefore(
-          editor.ui.view.toolbar.element,
-          editor.ui.view.editable.element,
-        );
+        // editor.ui.view.editable.element.parentElement.insertBefore(
+        //   editor.ui.view.toolbar.element,
+        //   editor.ui.view.editable.element,
+        // );
+
 
         // to change Editable area Editor Height
         editor.editing.view.change(writer => {
@@ -60,13 +70,15 @@ export default function MyEditor(props) {
             editor.editing.view.document.getRoot()
           );
         });
+
+        this.editor = editor;
       }}
 
       onChange={(event, editor) => {
         const data = editor.getData(); // Text Box Area data
 
         // console.log({ event, editor, data });
-        console.log(event);
+        // console.log(event);
 
         // Passing back the Editor Data to handle it (Save and update in state and send to backend)
         props.onChangeProp(data); // Returning Editor Body data to callback function 
