@@ -71,7 +71,7 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
       return response.json();
     })
     .catch(err => {
-      console.log("\n API Fetching Error-->", err, "\n\n");
+      // console.log("\n API Fetching Error -->", err, "\n\n");
       // return err;
       throw new Error(err); // so that you can catch it in later functions where this function was called
     });

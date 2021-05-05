@@ -29,15 +29,15 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
       <title>Programming Blogs | {APP_NAME}</title>
       <meta
         name="description"
-        content="Programming Blogs and Tutorials on React Node Next Vue Php ... Web Development !!" />
+        content="Programming Blogs and Tutorials" />
 
       <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
 
 
-      <meta property="og:title" content={`Latest web Developments Tutorials | ${APP_NAME}`} />
+      <meta property="og:title" content={`Latest Programming Tutorials | ${APP_NAME}`} />
       <meta
         property="og:description"
-        content="Programming Blogs an Tutorials on React Node Next Vue Php ... Web Development !!" />
+        content="Programming Blogs and Tutorials." />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
       <meta property="og:site_name" content={`${APP_NAME}`} />
@@ -100,9 +100,15 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
     // Check if there's any error while fetching Blogs from backend
     // if (blogs === undefined) {
     if (typeof blogs === 'undefined') {
-      console.log("Error Fetching Data (Blogs)");
+      // console.log("Error Fetching Data (Blogs)");
 
-      return <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>ERROR FETCHING DATA 😕</h1>;
+      return (<div>
+        <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>ERROR FETCHING DATA 😕</h1>
+        <br />
+        <blockquote className="blockquote text-center">
+          <p className="lead" style={{ fontSize: "clamp(20px, calc(20px + (35 - 20) * ((100vw - 420px) / (1200 - 420))), 35px)" }}>"People fill their homes with excess things and travel to be free of them"</p>
+        </blockquote>
+      </div>);
     }
 
     if (!blogs.length) {
@@ -171,10 +177,18 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
     // -----------------------
     return categories.map((c, i) => (
       <Link href={`/categories/${c.slug}`} key={i} passHref>
-        <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
-      </Link>
+        <a className="btn btn-primary mr-1 ml-1 mt-2" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{c.name}</a>
+      </Link >
     ));
   };
+
+  // Dynamic Responsive font size based on screen
+  // font-size: min(max(16px, 4vw), 22px) === fontSize: "clamp(12px, 2vw, 15px)"
+
+  // Try this smooth transition for responsive text font size
+  // style={{
+  //   fontSize: "clamp(25px, calc(25px + (53 - 25) * ((100vw - 420px) / (1200 - 420))), 53px)"
+  // }}
 
 
   // --------------------------------
@@ -193,7 +207,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
     // -----------------------
     return tags.map((t, i) => (
       <Link href={`/tags/${t.slug}`} key={i} passHref>
-        <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
+        <a className="btn btn-outline-primary mr-1 ml-1 mt-2" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{t.name}</a>
       </Link>
     ));
   };
@@ -216,7 +230,11 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
           <div className="container-fluid">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold text-center">Blogs & Random Stuff 😁</h1>
+                <br />
+                <br />
+                <h1 className="display-4 font-weight-bold text-center" style={{
+                  fontSize: "clamp(35px, calc(35px + (53 - 35) * ((100vw - 420px) / (1200 - 420))), 53px)"
+                }}>Blogs & Random Stuff 😁</h1>
               </div>
 
               <section>
@@ -286,12 +304,13 @@ Blogs.getInitialProps = () => { // Here we just request to backend to get the da
   })
     .catch(err => {
       console.log("\n Error getting BLOGS from Backend --> ", err, "\n\n");
-      console.log("------------- END --------------");
+      // console.log("------------- END --------------");
 
-      return {};
-      // return { blogs: [] };
+      // return; // undefined - could throw eror
+      return {}; // send empty object, instead of nothing (undefined)
+      // return {blogs: [] };
 
-      // throw new Error(err); // Error objects are thrown when runtime errors occur. 
+      // throw new Error(err); // Error objects are thrown when runtime errors occur.
       // It is more like a return ERROR Object and if there's no further function that will be handling this error, it'll then HALT here with the error , else we can capture it in further function calls where it's called and handle it as we want to.
 
       /*
@@ -299,7 +318,7 @@ Blogs.getInitialProps = () => { // Here we just request to backend to get the da
         throw new Error('Whoops!')
         } catch (e) {
             console.error(e.name + ': ' + e.message)
-        }
+          }
       */
     });
 };

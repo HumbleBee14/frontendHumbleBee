@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FaMagento } from "react-icons/fa";
+// import { FaMagento } from "react-icons/fa";
+import { CgBee } from "react-icons/cg"; // Refer: https://react-icons.github.io/react-icons/
 
 
 // ------------------------------------------------
@@ -148,7 +149,10 @@ export const SocialLogo = styled.a`
 
 `;
 
-export const SocialIcon = styled(FaMagento)`
+// Website Logo Icon
+
+// export const SocialIcon = styled(FaMagento)`
+export const SocialIcon = styled(CgBee)`
   margin-right: 10px;
 `;
 

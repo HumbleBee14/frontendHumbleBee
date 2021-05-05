@@ -272,11 +272,13 @@ export const loginWithGoogle = user => {
     body: JSON.stringify(user)
   })
     .then(response => {
-      console.log();
+      // console.log();
 
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log("GLogin Catch Action Error --> ", err);
+    });
 };
 
 

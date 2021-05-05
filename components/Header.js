@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Router from 'next/router';
 
 import dynamic from 'next/dynamic';
+// import useKeypress from '../hooks/useKeypress';
 
-const Search = dynamic(() => import('./blog/SearchComponent'), { ssr: false });
+const Search = dynamic(() => import('./SearchComponent'), { ssr: false });
 // Dynamically importing Search Component in the frontend client side (So that it doesn't run on server side), therefore we have set SSR (Server side rendering) to false
 
 // import Search from './blog/SearchComponent';
@@ -23,11 +24,11 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+  // UncontrolledDropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem,
+  // NavbarText
 } from 'reactstrap';
 
 
@@ -51,6 +52,21 @@ const Header = () => {
 
   const toggle = () => { setIsOpen(!isOpen); };
 
+
+  // -----------------------------------
+  // Key Press HOOK (to close Menu on Escape Key press)
+
+  // function -> useKeypress(key, action)
+
+  // useKeypress(
+  //   'Escape', toggle
+  //   // () => { alert('you pressed escape!'); }
+  // );
+
+  // ------------------------------------
+
+
+
   useEffect(() => {
     if (!process.browser) return; // if not running on browser/client - i.e. running on server, return nothing, else run below code if on browser
     const user = isAuth();
@@ -69,7 +85,7 @@ const Header = () => {
       {/* // ================== ----------------- HEADER TOP NAVIGATION BAR ------------------ ================== */}
 
       {/* <Navbar color="light" light expand="md"> */}
-      <Navbar color="dark" dark expand="md">
+      <Navbar color="dark" dark expand="md" className="header-sticky">
 
         <Link href="/" passHref>
           <div>

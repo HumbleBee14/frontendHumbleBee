@@ -92,7 +92,7 @@ const UserProfile = ({ user, blogs, query }) => {
               <>
                 <h1 className="alert alert-heading alert-danger" style={{ textAlign: 'center' }}>NO USER FOUND! 😕</h1>
                 <br />
-                <h4 className="" style={{ textAlign: 'center' }}>One should live like a Humble Bee 🐝 Drink the nectar of flowers and make honey with everyone and share with everyone :)</h4>
+                <h4 className="" style={{ textAlign: 'center' }}>Ouija boards say “Ages 8+”. So you have to be 18 to drink, but can summon the devil at 8 !</h4>
               </>
             )
           }

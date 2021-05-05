@@ -5,6 +5,7 @@ import { DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
 import UnderMaintSvg from '../public/static/images/svgs/tructor_svg.svg';
 
+import FetchQuote from "../components/quotesFetch";
 
 
 // import Cookies from 'js-cookie';
@@ -62,6 +63,9 @@ const Index = () => {
 
       <Layout>
 
+        <FetchQuote />
+
+
         <article className="overflow-hidden">
           <div className="container">
             <div className="row">
@@ -72,8 +76,8 @@ const Index = () => {
                     // display: 'inline',
                     fontSize: "calc(2em + 1.5vw)",
                   }}
-                  className="display-4 font-weight-bold pl-20 pr-20">
-                  <small className="text-muted">- - - - - - - - - - - - -</small><br /> PROGRAMMING BLOGS <br /><small className="font-bold">;</small>
+                  className="display-4 font-weight-bold pl-20 pr-20 ">
+                  <small className="text-muted">- - - - - - - - - - - - -</small><br /> PROGRAMMING BLOGS <p className="text-muted">;)</p>
                 </h1>
               </div>
 
@@ -127,6 +131,7 @@ const Index = () => {
 
                     <h2 className="text-shadow text-center h1">Web Development</h2>
                   </div>
+
                   <div className="back text-center">
                     <Link href="/categories/web-development">
                       <a>
@@ -154,7 +159,7 @@ const Index = () => {
                         <h3 className="h1">Electronics</h3>
                       </a>
                     </Link>
-                    <p className="lead">It all started with a Shock ⚡<br />To Whom? Obviously to me! 😵<br /> That's how our love story started, which made me realised that don't be a resistance, be a good conductor.<br />Anyway, What's your curent state? <br />You are an Inductor or a Capacitor?
+                    <p className="lead">It all started with a Shock ⚡<br />To Whom? Obviously to me! 😵<br /> That's how our love story started, which made me realised that don't be a resistance, be a good conductor.<br />Anyway, What's your curent state?
                   </p>
                   </div>
                 </div>
@@ -217,7 +222,6 @@ const Index = () => {
 
           </div>
         </div>
-
 
 
       </Layout>

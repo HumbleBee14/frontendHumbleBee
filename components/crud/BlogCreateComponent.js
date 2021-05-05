@@ -71,7 +71,7 @@ const CreateBlog = ({ router }) => {
 
     if (localStorage.getItem('blog')) {
 
-      console.log("LocalStorage Saved Data---->", JSON.parse(localStorage.getItem('blog')));
+      // console.log("LocalStorage Saved Data---->", JSON.parse(localStorage.getItem('blog')));
 
       return JSON.parse(localStorage.getItem('blog')); // to return previously saved blog 'body' (if not published and present in user's local storage) which is stored in localstorage to 'body' state variable
     } else {

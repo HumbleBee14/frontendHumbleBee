@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
 import { preSignup, signup, isAuth } from '../../actions/authAction'; // frontend to backend data transfer and getting back response from backend to here using "signup"
+import LoginGoogle from './LoginGoogle';
 
 const SignupComponent = () => {
 
@@ -37,6 +38,14 @@ const SignupComponent = () => {
 
     // signup(user).then(...)  // Disabled this because first we will Verify Account Email using preSignup method, then only we will initiate the account creation using signup later
     preSignup(user).then(data => {
+
+      // Error handling
+      if (data === undefined) {
+        console.log("Error connecting to backend service for Signup");
+        setValues({ ...values, error: "Error connecting Sign up service", loading: false });
+        return;
+      }
+
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       }
@@ -52,7 +61,11 @@ const SignupComponent = () => {
           showForm: false
         });
       }
-    });
+    })
+      .catch(err => {
+        console.log("Error signing up user --> ", err);
+        setValues({ ...values, error: err, loading: false });
+      });
   };
 
   // e = event
@@ -75,8 +88,12 @@ const SignupComponent = () => {
   // -----------------------------------------------
 
   const signupForm = () => {
+
+
+
     return (
       <form onSubmit={handleSubmit}>
+
         <div className="form-group">
           <input
             value={name}
@@ -112,16 +129,19 @@ const SignupComponent = () => {
         <div>
           <button className="btn btn-primary">Signup</button>
         </div>
+
       </form>
     );
   };
 
-
+  // -----------------------------------------------------------
   return (
     <React.Fragment>
       {showError()}
       {showLoading()}
       {showMessage()}
+
+      <LoginGoogle />
 
       {/*  'signupForm()' will be displayed only when showForm is TRUE */}
       {showForm && signupForm()}
@@ -132,15 +152,15 @@ const SignupComponent = () => {
 
       <div className="row">
 
-        <div className="m-1">
+        <div className="pl-2 pt-2">
           <Link href="/signin">
-            <a className="btn btn-outline-light btn-sml text-muted">Already have an account?</a>
+            <a className="btn btn-outline-primary btn-sml">Already have account?</a>
           </Link>
         </div>
 
-        <div className="m-1">
+        <div className="pl-2 pt-2">
           <Link href="/auth/password/forgot">
-            <a className="btn btn-outline-light btn-sml text-muted">Forgot Password?</a>
+            <a className="btn btn-outline-secondary btn-sml">Forgot Password?</a>
           </Link>
         </div>
 

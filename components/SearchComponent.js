@@ -9,9 +9,11 @@ import { useState, useEffect } from 'react';
 // import 'antd/dist/antd.css'; // to get Font Styles for Ant-design buttons or other elements.
 // Warning!! -> ants-  CSS files changes my websites design. Try not to use it !
 
-import { listSearch } from '../../actions/blogAction'; // Search Action (which will send search query request to backend API to return JSON list of blogs that match the search)
+import { listSearch } from '../actions/blogAction'; // Search Action (which will send search query request to backend API to return JSON list of blogs that match the search)
 
 import { SearchOutlined, CloseCircleTwoTone } from "@ant-design/icons";
+
+import useKeypress from '../hooks/useKeypress'; // for Closing Menus or some action on ESC key press
 
 
 
@@ -28,6 +30,8 @@ const Search = () => {
 
 
   const { search, results, searched, message } = values;
+
+
 
   // ------------------------------------------------------
   // Search Submit handler
@@ -84,16 +88,16 @@ const Search = () => {
 
     return (
       // <div className="jumbotron bg-white">
-      <div className="bg-white">
+      <div style={{ width: "fit-content", maxWidth: "auto", backgroundColor: "white", }}>
 
         {/* {message && <p className="pt-5 text-muted font-italic">{message}</p>} */}
-        {message && <p className="pt-1 pl-3 text-muted font-italic">{message}</p>}
+        {message && <p className="pt-1 pl-3 pr-3 text-muted font-italic">{message}</p>}
         {/* X number of Blogs found */}
 
 
         {/* Show list of blogs - Search Results */}
 
-        <div className="pb-2 pl-2">
+        <div className="pb-0 pl-2 pr-2">
 
           {results.map((blog, i) => {
             return (
@@ -101,21 +105,25 @@ const Search = () => {
               <div key={i}>
 
                 <Link href={`/blogs/${blog.slug}`} passHref>
+
                   <p className="search-results"
                     style={{
+                      display: "inline-block",
                       cursor: 'pointer',
                       // lineHeight: "2.0em",
                       // lineHeight: "26pt",
                       // fontFamily: "sans-serif",
-                      fontFamily: "Arial",
-                      // fontFamily: "'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans- serif, 'Apple Color Emoji','Segoe UI Emoji', 'Segoe UI Symbol'",
-                      fontSize: "1.12rem",
+                      // fontFamily: "Arial",
+                      fontFamily: "'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji','Segoe UI Emoji', 'Segoe UI Symbol'",
+                      fontSize: "1.25rem",
                       fontStyle: "normal",
                       fontWeight: "500",
+                      overflowWrap: "break-word",
                       color: "black !important",
                     }}>
                     &bull;  {blog.title}
                   </p>
+
                 </Link>
 
               </div>
@@ -128,11 +136,11 @@ const Search = () => {
     );
   };
 
-  //
+  //---------------------------------------------------------
   // Search Animation script called using custom hook
 
-  useEffect(() => {
 
+  useEffect(() => {
     // Search Animation Script
 
     const searchBox = document.querySelector(".search-box");
@@ -156,11 +164,46 @@ const Search = () => {
       cancelBtn.classList.remove("active");
       searchInput.value = "";
     };
+    // Note: We have also added cancel / close option on Escape Key Press
 
   }, []);
 
-  // --------------------------------------------------------
-  // Note: Search form will be 'inline' horiztonal block having Unput field + button
+  // Close Search Box on Key Press
+  const closeSearchBox = () => {
+    // console.log("Close Search Box Function Called");
+
+    const searchBox = document.querySelector(".search-box");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const searchInput = document.querySelector("input");
+
+
+    searchBox.classList.remove("active");
+    searchBtn.classList.remove("active");
+    searchInput.classList.remove("active");
+    cancelBtn.classList.remove("active");
+    searchInput.value = "";
+
+  };
+
+
+  // -----------------------------------
+  // Key Press HOOK (to close search bar on Escape Key press)
+
+  // function -> useKeypress(key, action)
+
+  useKeypress(
+    'Escape',
+    closeSearchBox
+    // () => { alert('you pressed escape!'); }
+  );
+
+  // ------------------------------------
+
+
+
+  // -------------------------------------------------------------------------------
+  // Note: Search form will be 'inline' horiztonal block having Input field + Button
 
 
   const searchForm = () => (
@@ -176,7 +219,7 @@ const Search = () => {
           {/* <Button shape="circle" type="link" block="true" onClick={searchSubmit} icon={<SearchOutlined style={{ verticalAlign: "0", fontSize: '30px' }} />} /> */}
         </div>
 
-        <div className="cancel-icon">
+        <div className="cancel-icon" >
           <CloseCircleTwoTone style={{ verticalAlign: "middle" }} onClick={() => setValues({ ...values, search: undefined, searched: false, message: "" })} />
         </div>
 
@@ -199,7 +242,7 @@ const Search = () => {
 
   /*
    // Modified above using reactstrap
-  
+   
    const searchForm = () => (
      <Fragment>
         <Form onSubmit={searchSubmit}>
@@ -222,7 +265,7 @@ const Search = () => {
 
   return (
     // 'container-fluid' ==> Full Width
-    <div className="container-fluid" style={{ position: "relative", display: "inline-block" }}>
+    <div className="container-fluid search-element" style={{ position: "fixed", display: "inline-block", zIndex: "1" }}>
 
       <div className="pt-3 pb-3">
         {searchForm()}

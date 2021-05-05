@@ -10,10 +10,10 @@ import { Button } from "./Button/index";
 
 
 import {
-  FaFacebook,
-  FaInstagram,
+  // FaFacebook,
+  // FaInstagram,
   FaYoutube,
-  FaTwitter,
+  // FaTwitter,
   FaLinkedin,
   FaGithub,
   FaMedium,
@@ -44,7 +44,7 @@ import {
 } from "./Footer.elements";
 
 
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
 
 // --------------------------------------------------------------------
@@ -78,7 +78,7 @@ const PageFooter = () => {
 
           <FooterSubHeading>
             {/* <p className="pl-5 pr-5">Join our exclusive HumbleBee group to share your blogs with, the world? Nope! only Me 🤖</p> */}
-            Join our exclusive HumbleBee group to share your blogs with, the world? Nope! only Me 🤖
+            Would you like to become a <b>HumbleBee</b>🐝 & share the <b>nectar of knowledge</b> with everyone?
           </FooterSubHeading>
           {/* <FooterSubText>You can unsubscribe at any time</FooterSubText> */}
           <FooterSubText> &lt; Under 👨‍💻 Development &gt; </FooterSubText>
@@ -175,20 +175,11 @@ const PageFooter = () => {
                 <FaGithub />
               </SocialIconLink>
 
-              <SocialIconLink
-                href={"//www.youtube.com/channel/humblebee"}
-                rel="noopener noreferrer"
-                target="_blank"
-                aria-label="Youtube"
-              >
-                <FaYoutube />
-              </SocialIconLink>
-
               <SocialIconLink href="//medium.com/@humble_bee" target="_blank" aria-label="Medium">
                 <FaMedium />
               </SocialIconLink>
 
-              <SocialIconLink href="https://www.linkedin.com/in/dineshyd"
+              <SocialIconLink href="/"
                 target="_blank" aria-label="LinkedIn">
                 <FaLinkedin />
               </SocialIconLink>
@@ -199,6 +190,14 @@ const PageFooter = () => {
 
               <SocialIconLink href="/" target="_blank" aria-label="Reddit">
                 <FaReddit />
+              </SocialIconLink>
+
+              <SocialIconLink
+                href={"//www.youtube.com/channel/humblebee"}
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label="Youtube">
+                <FaYoutube />
               </SocialIconLink>
 
             </SocialIcons>

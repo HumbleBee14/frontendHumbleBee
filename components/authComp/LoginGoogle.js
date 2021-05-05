@@ -18,11 +18,13 @@ const LoginGoogle = () => {
     const tokenId = response.tokenId;
     const user = { tokenId };
 
+    console.log();
+
     // make login request to backend
     loginWithGoogle(user).then(data => {
       // Error Handling
       if (data === undefined) {
-        console.log("GoogleSigin Unable to connect to backend");
+        console.log("GoogleSignin Unable to connect to backend");
         return; //  if the backend server is down
       }
 
@@ -44,7 +46,10 @@ const LoginGoogle = () => {
         });
 
       }
-    });
+    })
+      .catch(err => {
+        console.log("GLogin Catch Error --> ", err);
+      });
 
   };
 
@@ -56,10 +61,12 @@ const LoginGoogle = () => {
 
       <GoogleLogin
         clientId={`${GOOGLE_CLIENT_ID}`}
+        // render={renderProps => (<button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>)} //Google button without styling or custom button
         buttonText="Login with Google"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        uxMode="redirect" // popup (default) or redirect
+        isSignedIn={true}
+      // uxMode="redirect" // popup (default) or redirect
       // theme="dark"
       // cookiePolicy={'single_host_origin'}
       />

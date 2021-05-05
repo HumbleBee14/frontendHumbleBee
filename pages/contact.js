@@ -14,7 +14,7 @@ const Contact = () => {
         <div className="row">
           <div className="col-md-8 offset-md-2">
 
-            <h2>
+            <h2 style={{ textAlign: "center" }}>
               Contact Form
             </h2>
 

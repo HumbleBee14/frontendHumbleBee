@@ -11,7 +11,7 @@ const AdminIndex = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12 pt-5 pb-5">
-              <h2> ADMIN Dashboard 🕵️‍♀️ </h2>
+              <h2 style={{ textAlign: "center" }}> ADMIN Dashboard 🕵️‍♀️ </h2>
             </div>
 
             <div className="col-md-4">

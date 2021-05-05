@@ -9,6 +9,7 @@ import LoginGoogle from './LoginGoogle';
 
 
 
+
 // ---------------------------------------------------------------------------
 
 const SigninComponent = () => {
@@ -47,18 +48,23 @@ const SigninComponent = () => {
 
     signin(user)
       .then(data => {
+
+        // Error handling
+        if (data === undefined) {
+          console.log("Error connecting to backend service for Login");
+          setValues({ ...values, error: "Error connecting Login service", loading: false });
+          return;
+        }
+
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false });
         }
         else {
           // Save user token to Cookie
           // Save user info to localstorage
-          // Authenticate the user
+          // Authenticate the user (above all functionalities are implemented through authenticate function)
           authenticate(data, () => {
-            // Redirect to Root / index page (on Successful Signin / Login)
-            // Router.push(`/`);
-
-            // Redirecting to Dashboard (user & admin based on role (& they should be logged in))
+            // Redirecting to Dashboard (user & admin based on role ,after successfull login)
 
             if (isAuth() && isAuth().role === 1) {
               Router.push(`/admin`);
@@ -69,10 +75,16 @@ const SigninComponent = () => {
           });
 
         }
+      })
+      .catch(err => {
+        console.log("Error signing in --> ", err);
+        setValues({ ...values, error: err, loading: false });
       });
 
   };
 
+
+  // -----------------------------------------------
   // e = event
 
   const handleChange = name => (e) => {
@@ -102,6 +114,7 @@ const SigninComponent = () => {
 
         <div className="form-group">
           <input
+            // style={{ maxWidth: "25em" }}
             value={email}
             onChange={handleChange('email')}
             type="email"
@@ -113,6 +126,7 @@ const SigninComponent = () => {
 
         <div className="form-group">
           <input
+            // style={{ maxWidth: "25em" }}
             value={password}
             onChange={handleChange('password')}
             type="password"
@@ -123,15 +137,20 @@ const SigninComponent = () => {
         </div>
 
         <div>
-          <button className="btn btn-primary">Signin</button>
+
+          <button className="btn btn-primary signin-button-style"> Signin</button>
+
         </div>
+
       </form>
     );
   };
 
-
+  // -------------------------------------------------------------
   return (
     <React.Fragment>
+
+
       {showError()}
       {showLoading()}
       {showMessage()}
@@ -146,23 +165,22 @@ const SigninComponent = () => {
       <br />
 
 
-
-
       <div className="row">
 
-        <div className="m-1">
+        <div className="pl-3 pt-2">
           <Link href="/signup">
             <a className="btn btn-outline-dark btn-sml">Create new account</a>
           </Link>
         </div>
 
-        <div className="m-1">
+        <div className="pl-3 pt-2">
           <Link href="/auth/password/forgot">
             <a className="btn btn-outline-danger btn-sml">Forgot Password?</a>
           </Link>
         </div>
 
       </div>
+
 
     </React.Fragment>
   );
