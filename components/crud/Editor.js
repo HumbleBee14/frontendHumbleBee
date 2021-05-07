@@ -17,6 +17,8 @@ export default function MyEditor(props) {
   // const { CKEditor, ClassicEditor } = editorRef.current || {};
   const { CKEditor, Editor } = editorRef.current || {};
 
+  const [wordsCount, setWordsCount] = useState();
+  const [charactersCount, setCharactersCount] = useState();
 
 
   // To Make Sure to import and Run (& import modules) this Rich Text Editor only on the page render - client side, we are using useEffect
@@ -48,6 +50,8 @@ export default function MyEditor(props) {
 
   return editorLoaded ? (
 
+    // <div>
+
     <CKEditor
       // editor={ClassicEditor}
       editor={Editor}
@@ -55,6 +59,8 @@ export default function MyEditor(props) {
       data={props.text}
       // data={(text) ? text : ""}
       // data=""
+
+
 
       config={{
         placeholder: "Let's write something amazing today ...",
@@ -64,6 +70,7 @@ export default function MyEditor(props) {
 
 
         removePlugins: ['Title',],
+
 
 
         // ------------------------------------------------------------------------------------
@@ -333,28 +340,28 @@ export default function MyEditor(props) {
               url: /^example\.com\/media\/(\w+)/,
               html: match => `The HTML representing the media with ID=${match[1]}`
             },
-
+ 
             // You can allow any sort of media in the editor using the "allow–all" RegExp. 
             {
               name: 'allow-all',
               url: /^.+/,
-
+ 
               // To implement responsive media, you can use the following HTML structure:
-
+ 
               html: match =>
                 '<div style="position:relative; padding-bottom:100%; height:0">' +
                 '<iframe src="..." frameborder="0" ' +
                 'style="position:absolute; width:100%; height:100%; top:0; left:0">' +
                 '</iframe>' +
                 '</div>'
-
+ 
             },
-
+ 
           ],
-
+ 
           // removeProviders: ['instagram', 'twitter', 'googleMaps', 'flickr', 'facebook'],
         },
-
+ 
         */
 
         // -------------------------------------------------------------------------------
@@ -501,9 +508,15 @@ export default function MyEditor(props) {
         // ------------------------------------------------------------------------
         // Count number of characters and words
         wordCount: {
+          // container
+          displayWords: true,
+          displayCharacters: true,
           onUpdate: stats => {
+
             // Prints the current content statistics.
 
+            setWordsCount(stats.words);
+            setCharactersCount(stats.characters);
             // console.log(`Characters: ${stats.characters}\nWords: ${stats.words}`);
           }
         },
@@ -511,16 +524,17 @@ export default function MyEditor(props) {
         // ------------------------------------------------------------------------
         // Side Block Toobar 
 
-        blockToolbar: {
-          items: [
-            'paragraph', 'heading1', 'heading2', 'heading3',
-            '|',
-            'bulletedList', 'numberedList',
-            '|',
-            'blockQuote', 'uploadImage'
-          ],
-          shouldNotGroupWhenFull: true
-        },
+        // blockToolbar: {
+        //   items: [
+        //     'paragraph', 'heading1', 'heading2', 'heading3',
+        //     '|',
+        //     'bulletedList', 'numberedList',
+        //     '|',
+        //     'blockQuote', 'uploadImage'
+        //   ],
+        //   shouldNotGroupWhenFull: true
+        // },
+
         // ------------------------------------------------------------------------
 
         // Refer: https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
@@ -569,11 +583,11 @@ export default function MyEditor(props) {
             'superscript',
             'horizontalLine',
             'pageBreak',
-            '|',
             'selectAll',
-            'removeFormat',
+            '|',
             'undo',
             'redo',
+            'removeFormat',
             // 'lineHeight', // not available
             // '-',// Explicit break point
             // '|', 'clipboard',
@@ -583,7 +597,7 @@ export default function MyEditor(props) {
           // -----------------------------------------------------------
 
           // viewportTopOffset: 30,
-          // shouldNotGroupWhenFull: true,
+          shouldNotGroupWhenFull: true,
           licenseKey: ''
         },
 
@@ -610,7 +624,8 @@ export default function MyEditor(props) {
         );
 
 
-        // to change Editable area Editor Height
+        // to change Editable area Editor Height 
+        // editor size resize height
         editor.editing.view.change(writer => {
           writer.setStyle(
             "height",
@@ -627,6 +642,10 @@ export default function MyEditor(props) {
         // console.log({ event, editor, data });
         // console.log(event);
 
+        // Word Count test --------------------------------
+
+
+        // --------------------------------------------------
         // Passing back the Editor Data to handle it (Save and update in state and send to backend)
         props.onChangeProp(data); // Returning Editor Body data to callback function 
 
@@ -641,6 +660,16 @@ export default function MyEditor(props) {
     // }}
 
     />
+
+
+
+    //   <div className="ck ck-word-count" style={{ border: "1px solid" }}>
+    //     <div className="ck-word-count__words pl-2">Words: <b>{wordsCount}</b></div>
+    //     <div className="ck-word-count__characters pl-2">Characters: <b>{charactersCount}</b></div>
+    //   </div>
+
+
+    // </div>
   ) : (
     <div><h2>Editor Loading . . .</h2></div>
   );

@@ -173,9 +173,7 @@ const Index = () => {
         <hr />
         <br />
 
-        {/* <div>
-          <img src='/tructor_svg.svg' alt='next' />
-        </div> */}
+
 
         <div className="container">
           <div className="row">

@@ -186,7 +186,9 @@ const SingleBlog = ({ blog, query }) => {
 
           <main>
             <article>
-              <div className="container-fluid">
+
+              <div>
+
                 <section>
                   {/* {JSON.stringify(router)} */}
                   {/* {JSON.stringify(blog)} */}
@@ -200,7 +202,7 @@ const SingleBlog = ({ blog, query }) => {
                   </div>
 
                 </section>
-
+                {/* ------------------------------------------------------------ */}
                 <section>
 
                   <div className="container">
@@ -209,11 +211,12 @@ const SingleBlog = ({ blog, query }) => {
                       className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title"
                       style={{
                         fontSize: "clamp(2.3rem, 5vw, 5rem)",
+                        whiteSpace: "normal"
                       }}>
                       {blog.title}
                     </h1>
 
-                    <p className="lead mt-3 mark">
+                    <p className="lead mt-3 mark" style={{}}>
                       Written by {(blog.postedBy) ?
                         (
                           <Link href={`/profile/${blog.postedBy.username}`} passHref>
@@ -238,14 +241,21 @@ const SingleBlog = ({ blog, query }) => {
 
               </div>
 
-              <div className="container">
+              {/* ------------------------------------------------------------ */}
+
+              <div className="container" style={{
+                overflow: "hidden",
+              }}>
+
                 <section>
-                  <div className="col-md-12 lead main-blog-body">
+                  <div className="col-md-12 lead main-blog-body ck-content">
                     {renderHTML(blog.body)}
                   </div>
                 </section>
+
               </div>
 
+              {/* ------------------------------------------------------------ */}
               <div className="container pb-5">
                 <h4 className="text-center pt-5 pb-5 h2">Related Blogs</h4>
                 <hr />
@@ -254,13 +264,13 @@ const SingleBlog = ({ blog, query }) => {
                 <div className="row ml-4 mr-4" style={{ display: 'flex' }}>{showRelatedBlogs()}</div>
 
               </div>
-
+              {/* ------------------------------------------------------------ */}
               <hr />
 
               <div className="container pt-5 pb-5">
                 {showComments()}
               </div>
-
+              {/* ------------------------------------------------------------ */}
             </article>
           </main>
         </Layout>

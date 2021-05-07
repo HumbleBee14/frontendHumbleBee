@@ -88,12 +88,18 @@ const BlogRead = ({ username }) => {
   // list / show all the blogs
 
   const showAllBlogs = () => {
+
+
     return blogs.map((blog, i) => {
       return (
         <div key={i} className="pb-5">
 
-          <h3>{blog.title}</h3>
-          <p className="mark">
+          <Link href={`/blogs/${blog.slug}`} passHref>
+            <a className="lead" style={{ fontWeight: "600", fontSize: "1.4rem" }}>{blog.title}</a>
+          </Link>
+
+
+          <p className="mark medium">
             Written by{' '}
             {(blog.postedBy) ?
               (

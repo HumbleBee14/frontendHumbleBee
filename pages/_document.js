@@ -37,6 +37,10 @@ class MyDocument extends Document {
 
           {/* Custom CSS Stylesheet */}
           <link rel="stylesheet" href="/static/css/styles.css" />
+
+          {/* Blog Editor content created Styleshet */}
+          <link rel="stylesheet" href="/static/css/content-styles.css" type="text/css" />
+
           {/* Note: Now Nextjs has inbuild CSS support- https://nextjs.org/docs/basic-features/built-in-css-support */}
 
 

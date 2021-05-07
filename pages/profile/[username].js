@@ -61,7 +61,7 @@ const UserProfile = ({ user, blogs, query }) => {
 
       return (
         <div className="mt-4 mb-4" key={i}>
-          <Link href={`/blogs/${blog.slug}`}>
+          <Link href={`/blogs/${blog.slug}`} passHref>
             <a className="lead">{blog.title}</a>
           </Link>
         </div>

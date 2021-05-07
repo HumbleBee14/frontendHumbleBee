@@ -265,7 +265,14 @@ const Search = () => {
 
   return (
     // 'container-fluid' ==> Full Width
-    <div className="container-fluid search-element" style={{ position: "fixed", display: "inline-block", zIndex: "1" }}>
+    <div className="container-fluid search-element" style={{
+      // position: "fixed",
+      // position: "-webkit-sticky",
+      // position: "sticky",
+      // top: "0",
+      display: "inline-block",
+      // zIndex: "1"
+    }}>
 
       <div className="pt-3 pb-3">
         {searchForm()}
@@ -274,7 +281,7 @@ const Search = () => {
       {/* Search Result (if 'searched' = true) */}
       {searched &&
         // <div style={{ marginTop: '-120px', marginBottom: '-80px' }}>
-        <div style={{}}>
+        <div style={{ position: "absolute", zIndex: "1" }}>
           {searchedBlogs(results)}
         </div>}
 

@@ -11,7 +11,6 @@
     "@ckeditor/ckeditor5-autoformat": "^27.1.0",
     "@ckeditor/ckeditor5-basic-styles": "^27.1.0",
     "@ckeditor/ckeditor5-block-quote": "^27.1.0",
-    "@ckeditor/ckeditor5-clipboard": "^27.1.0",
     "@ckeditor/ckeditor5-code-block": "^27.1.0",
     "@ckeditor/ckeditor5-dev-utils": "^24.4.2",
     "@ckeditor/ckeditor5-dev-webpack-plugin": "^24.4.2",
@@ -24,6 +23,7 @@
     "@ckeditor/ckeditor5-html-embed": "^27.1.0",
     "@ckeditor/ckeditor5-image": "^27.1.0",
     "@ckeditor/ckeditor5-indent": "^27.1.0",
+    "@ckeditor/ckeditor5-language": "^27.1.0",
     "@ckeditor/ckeditor5-link": "^27.1.0",
     "@ckeditor/ckeditor5-list": "^27.1.0",
     "@ckeditor/ckeditor5-markdown-gfm": "^27.1.0",
@@ -52,6 +52,5 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "npx http-server -o ./sample -s -c-1"
-  },
-  "dependencies": {}
+  }
 }

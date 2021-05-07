@@ -45,7 +45,7 @@ const Card = ({ blog }) => {
       <header>
         <Link href={`/blogs/${blog.slug}`} passHref>
           {/* Blog Link/URL & Blog Title */}
-          <a className="textClickOnly">
+          <a className="textClickOnly" style={{ display: "inline-block" }}>
             <h2 className="pt-3 pb-3 font-weight-bold">{blog.title}</h2>
           </a>
         </Link>
@@ -53,7 +53,7 @@ const Card = ({ blog }) => {
 
       {/* Meta information of Blog - Blog Author and Blog Date / update / create date time.
       NOTE: We are checking if the user who created the original blog Exists or not. If not, then we will show <User Removed> in place of author's username, else it'll crash the app if user deletes accounts */}
-      <section>
+      <section style={{ fontSize: "1.01rem" }}>
         <p className="mark ml-1 pt-2 pb-2">
           Written by{' '}
           {(blog.postedBy) ?
@@ -97,11 +97,6 @@ const Card = ({ blog }) => {
               style={{ maxHeight: '150px', width: 'auto' }}
             />
 
-
-            {/* <img src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} onError={(e) => (e.target.onerror = null, e.target.src = '../../public/ac.jpg')} className="img img-thumbnail mb-3" style={{ maxHeight: '150px', width: 'auto' }} /> */}
-
-            {/* <img src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} onError="this.onerror=null; this.src='../../public/ac.jpg';" className="img img-thumbnail mb-3" style={{ maxHeight: '150px', width: 'auto' }} /> */}
-
           </section>
 
         </div>
@@ -109,7 +104,11 @@ const Card = ({ blog }) => {
 
         <div className="col-md-8">
           <section>
-            <div className="pb-3 blog-card-excerpt-container">
+            <div className="pb-3 blog-card-excerpt-container" style={{
+              overflow: "hidden",
+              height: "200px",
+              // overflow: "scroll",
+            }}>
               {renderHTML(blog.excerpt)}
             </div>
 

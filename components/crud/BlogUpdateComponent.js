@@ -2,7 +2,9 @@
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
 // import { DOMAIN } from '../../config';
-import dynamic from 'next/dynamic';
+
+// import dynamic from 'next/dynamic';
+
 /* We are using this because we'll be using 'react-quill' as rich text editor for blog section. 
 And 'react-quill' only runs on the Client Side !!
 So to make sure this component does not run on Server side, we need to import it Dynamically , so that SSR is False ! hence we'll load this component dynamically load it only on client side.
