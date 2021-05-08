@@ -14,8 +14,8 @@ export default function MyEditor(props) {
   const editorRef = useRef();
 
   const [editorLoaded, setEditorLoaded] = useState(false);
-  // const { CKEditor, ClassicEditor } = editorRef.current || {};
-  const { CKEditor, Editor } = editorRef.current || {};
+  const { CKEditor, ClassicEditor } = editorRef.current || {};
+  // const { CKEditor, Editor } = editorRef.current || {};
 
   const [wordsCount, setWordsCount] = useState();
   const [charactersCount, setCharactersCount] = useState();
@@ -26,8 +26,8 @@ export default function MyEditor(props) {
     editorRef.current = {
 
       CKEditor: require('@ckeditor/ckeditor5-react').CKEditor,
-      // ClassicEditor: require('@ckeditor/ckeditor5-build-classic'),
-      Editor: require('ckeditor5-custom-build'),
+      ClassicEditor: require('@ckeditor/ckeditor5-build-classic'),
+      // Editor: require('ckeditor5-custom-build'),
 
     };
     setEditorLoaded(true);
@@ -53,8 +53,8 @@ export default function MyEditor(props) {
     // <div>
 
     <CKEditor
-      // editor={ClassicEditor}
-      editor={Editor}
+      editor={ClassicEditor}
+      // editor={Editor}
       // data='<p>Hello from CKEditor 5!</p>'
       data={props.text}
       // data={(text) ? text : ""}
