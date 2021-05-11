@@ -65,7 +65,7 @@ const LoginGoogle = () => {
         buttonText="Login with Google"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        isSignedIn={true}
+      // isSignedIn={true}
       // uxMode="redirect" // popup (default) or redirect
       // theme="dark"
       // cookiePolicy={'single_host_origin'}
