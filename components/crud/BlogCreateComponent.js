@@ -426,7 +426,9 @@ const CreateBlog = ({ router }) => {
 
             {/* {console.log("Blog Create Body Data --->", typeof body, body)} */}
 
-            <TextEditor text={body} onChangeProp={handleBody} />
+            {/* <TextEditor text={body} onChangeProp={handleBody} /> */}
+
+            <TextEditor onChangeProp={handleBody} />
 
             {/* onChange={(e, editor) => { handleBody(editor.getData()); }} */}
 
