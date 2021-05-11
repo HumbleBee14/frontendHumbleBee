@@ -9,7 +9,11 @@ import React, { useState, useEffect } from 'react';
 // import Router from 'next/router';
 import { getCookie, isAuth } from '../../actions/authAction'; // getCookie to get the "token"
 import { list, removeBlog } from '../../actions/blogAction';
-import moment from 'moment';
+
+
+import dayjs from 'dayjs';
+import relativeTimePlugin from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTimePlugin);
 
 
 
@@ -109,7 +113,7 @@ const BlogRead = ({ username }) => {
               ) : (
                 <a className="text-muted">&lt; User Removed &gt;</a>
               )
-            }{' '}| Published {moment(blog.updatedAt).fromNow()}
+            }{' '}| Published {dayjs(blog.updatedAt).fromNow()}
           </p>
 
           <button className="btn btn-danger btn-sm" onClick={() => deleteConfirm(blog.slug)}>

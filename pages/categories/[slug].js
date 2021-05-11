@@ -7,7 +7,8 @@ import Layout from '../../components/Layout';
 import { singleCategory } from '../../actions/categoryAction'; // Function defined in actions for fetching Blogs from backend
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 // import renderHTML from 'react-render-html';
-// import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+
+
 import Card from '../../components/blog/BlogCardComponent';
 
 

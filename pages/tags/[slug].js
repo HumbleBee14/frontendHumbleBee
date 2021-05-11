@@ -6,8 +6,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import { singleTag } from '../../actions/tagAction'; // Function defined in actions for fetching Blogs from backend
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-// import renderHTML from 'react-render-html';
-// import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+
 import Card from '../../components/blog/BlogCardComponent';
 
 
@@ -18,7 +17,7 @@ import Card from '../../components/blog/BlogCardComponent';
 const Tag = ({ tag, blogs, query }) => { // 'tag' & 'blog' is passed as PROP from the getInitialProps from the server
 
 
-  // ------------------- PAGE HEAD --------------------
+  // -------------------- PAGE HEAD --------------------
   const head = () => (
 
     <Head>

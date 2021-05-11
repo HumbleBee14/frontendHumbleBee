@@ -4,10 +4,16 @@ import Link from 'next/link';
 // {renderHTML(blog.excerpt)} - Not using it because we don't want to render HTML tags inside excerpt for now, may be later
 
 // import { stripHtml } from 'string-strip-html'; // to strip / remove HTML tags & styles from html text
+import parseHTML from 'html-react-parser';
 
-import { htmlToText } from 'html-to-text';// Refer:  https://www.npmjs.com/package/html-to-text 
+// import { htmlToText } from 'html-to-text';// Refer:  https://www.npmjs.com/package/html-to-text 
 
-import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+
+import dayjs from 'dayjs';
+import relativeTimePlugin from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTimePlugin);
+
+
 import { API } from '../../config';
 
 
@@ -44,7 +50,7 @@ const SmallCard = ({ blog }) => {
         <Link href={`/blogs/${blog.slug}`} passHref>
           <a>
             <img
-              onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")}
+              onError={(image) => image.target.setAttribute("src", `https://via.placeholder.com/150`)}
               src={`${API}/blog/photo/${blog.slug}`}
               alt={blog.title}
               className="img related-blog-img"
@@ -89,9 +95,11 @@ const SmallCard = ({ blog }) => {
 
           {/* {renderHTML(blog.excerpt)} */}
 
+          {parseHTML(blog.excerpt)}
+
           {/* {stripHtml(blog.excerpt).result} */}
 
-          {htmlToText(blog.excerpt, {
+          {/* {htmlToText(blog.excerpt, {
             wordwrap: 360,
             tags: {
               'a': { options: { ignoreHref: true } }, // to Hide href/urls
@@ -100,7 +108,7 @@ const SmallCard = ({ blog }) => {
               'table': { options: { uppercaseHeaderCells: true } }
             }
           })
-          }
+          } */}
 
         </div>
 
@@ -117,8 +125,8 @@ const SmallCard = ({ blog }) => {
         right: "0",
         background: "#FFFAFA",
       }}>
-        <p style={{ marginBottom: "0px", }}>
-          Posted {moment(blog.updatedAt).fromNow()} by {(blog.postedBy) ?
+        <p style={{ marginBottom: "0px", fontStyle: "italic" }}>
+          Posted {dayjs(blog.updatedAt).fromNow()} by {(blog.postedBy) ?
             (
               <Link href={`/profile/${blog.postedBy.username}`} passHref>
                 <a>{blog.postedBy.username}</a>

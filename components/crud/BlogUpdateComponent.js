@@ -30,8 +30,11 @@ import { getSingleBlog, updateBlog } from '../../actions/blogAction'; // update 
 
 */
 
-// CKEDITOR Rich Text Editor Component
-import TextEditor from './Editor';
+
+// import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
+
+import TextEditor from './EditorTinyMCE'; // TinyMCE Rich Text Editor Component
+
 
 import { API } from '../../config';
 

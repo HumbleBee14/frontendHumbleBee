@@ -8,7 +8,10 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import { userPublicProfile } from '../../actions/userAction'; // Function defined in actions for fetching User Public Profile (with user blogs) from backend
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+
+import dayjs from 'dayjs';
+import relativeTimePlugin from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTimePlugin);
 
 import ContactForm from '../../components/form/ContactFormComponent'; // Contact Form Component
 
@@ -119,7 +122,7 @@ const UserProfile = ({ user, blogs, query }) => {
                         <h5>{user.name}</h5>
                         {/* <Link href={`${user.profile}`} passHref><a>View Profile</a></Link> */}
                         <Link href={`/profile/${user.username}`} passHref><a>View Profile</a></Link>
-                        <p className="text-muted">Joined {moment(user.createdAt).fromNow()}</p>
+                        <p className="text-muted">Joined {dayjs(user.createdAt).fromNow()}</p>
                       </div>
 
                       <div className="col-md-4">

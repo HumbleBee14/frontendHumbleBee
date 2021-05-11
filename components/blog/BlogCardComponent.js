@@ -1,7 +1,14 @@
 import Link from 'next/link';
 // import Image from 'next/image'; // useful for Image optimization and lazy loading 
-import renderHTML from 'react-render-html'; // to render html for excerpts for each blog
-import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+// import renderHTML from 'react-render-html'; // to render html for excerpts for each blog
+import parseHTML from 'html-react-parser';// to render html for excerpts for each blog
+
+// import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+
+import dayjs from 'dayjs';
+import relativeTimePlugin from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTimePlugin);
+
 import { API } from '../../config';
 
 
@@ -64,9 +71,11 @@ const Card = ({ blog }) => {
             ) : (
               <a className="text-muted">&lt; User Removed &gt;</a>
             )
-          }{' '}| Published {moment(blog.updatedAt).fromNow()}
+          }{' '}| Published {dayjs(blog.updatedAt).fromNow()}
         </p>
       </section>
+
+      {/* moment(blog.updatedAt).fromNow() */}
 
       {/* Note: In Article <article> we can have Multiple Sections <section>*/}
       <section>
@@ -109,13 +118,16 @@ const Card = ({ blog }) => {
               height: "200px",
               // overflow: "scroll",
             }}>
-              {renderHTML(blog.excerpt)}
+              {/* {renderHTML(blog.excerpt)} */}
+              {parseHTML(blog.excerpt)}
             </div>
 
             {/* Creating a Button 'Read More' on Blog article section that will refer to the blog url */}
+
             <Link href={`/blogs/${blog.slug}`} passHref>
               <a className="btn btn-primary mt-1 pt-2">Read more</a>
             </Link>
+
           </section>
         </div>
 

@@ -27,19 +27,8 @@ class MyDocument extends Document {
           <meta charSet="UTF-8" />
 
 
-
-          {/* BootStrap css */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
-
-          {/* nProgress Animation CSS file */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
-
-
-          {/* Custom CSS Stylesheet */}
-          <link rel="stylesheet" href="/static/css/styles.css" />
-
-          {/* Blog Editor content created Styleshet */}
-          <link rel="stylesheet" href="/static/css/content-styles.css" type="text/css" />
+          {/* Blog Rich Text Editor CKEditor content created Stylesheet- required for Blogs / quotes and other styles used */}
+          {/* <link rel="stylesheet" href="/static/css/content-styles.css" type="text/css" /> */}
 
           {/* Note: Now Nextjs has inbuild CSS support- https://nextjs.org/docs/basic-features/built-in-css-support */}
 
@@ -65,7 +54,6 @@ class MyDocument extends Document {
             }}
           />
           {/* // --------------- for Google Analytics gtag -------------------------- */}
-
 
         </Head>
 

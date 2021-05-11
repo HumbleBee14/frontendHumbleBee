@@ -3,12 +3,41 @@ import Head from 'next/head';
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+
+// Note: you add CSS directly Import .css files as global stylesheets.
+
 // import '../public/static/css/index.css';
+
+// import '../public/static/css/styles.css';
+
+// import "../styles/global.scss"; // global styles
+// add bootstrap css 
+// import 'bootstrap/dist/css/bootstrap.css'
+// own css files here
+// import "../css/customcss.css";
+
+import "prismjs/themes/prism-tomorrow.css"; // // Global CSS for prism. Needed for code syntax highligting
 
 
 import * as gtag from '../lib/gtag';
 
 // The simplest way to log pageviews in your Next.js app is to subscribe to your router and listen for the routeChangeComplete event. (for Google Analytics )
+
+
+
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    color: #333644;
+    font-family: sans-serif;
+    background: orange;
+  }
+`;
+
 // --------------------------------------------------------------------
 const App = ({ Component, pageProps }) => {
 
@@ -52,10 +81,21 @@ const App = ({ Component, pageProps }) => {
 
         {/* <title>{APP_NAME}</title> */}
 
+        {/* BootStrap css */}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+
+        {/* nProgress Animation CSS file */}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+
+        {/* Custom CSS Stylesheet */}
+        <link rel="stylesheet" href="/static/css/styles.css" />
+
 
       </Head>
 
       <Component {...pageProps} />
+
+      {/* <GlobalStyle /> */}
 
     </>
   );

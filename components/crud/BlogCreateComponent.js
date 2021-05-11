@@ -1,7 +1,7 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useState, useEffect } from 'react';
 // import Router from 'next/router';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 /* We are using this because we'll be using 'react-quill' as rich text editor for blog section. 
 And 'react-quill' only runs on the Client Side !!
 So to make sure this component does not run on Server side, we need to import it Dynamically , so that SSR is False ! hence we'll load this component dynamically load it only on client side.
@@ -33,29 +33,12 @@ import { QuillModules, QuillFormats } from '../../helpers/quill'; // for making 
 // ------------------------------------------------------------------------------------------------------------------
 
 // -============================================================================
-/*
-
-// Dynamically Importing CKEDITOR Rich Text Editor  (to load only on client side)
-
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-
-const CKEditor = dynamic(() => import('@ckeditor/ckeditor5-react'), { ssr: false });
-
-import InlineEditor from '@ckeditor/ckeditor5-editor-inline';
 
 
-// const CustomEditor = dynamic(() => import('../../public/static/ckeditor5-custom-build/build/ckeditor'), { ssr: false });
+// import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
 
-*/
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
+import TextEditor from './EditorTinyMCE'; // TinyMCE Rich Text Editor Component
 
-// const InlineEditor = dynamic(() => import('@ckeditor/ckeditor5-build-inline'), { ssr: false });
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-// import CustomEditor from '../../public/static/ckeditor5-custom-build/build/ckeditor'; // Designed using ckeditor online builder
-
-
-import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
 
 // -============================================================================
 
@@ -248,7 +231,7 @@ const CreateBlog = ({ router }) => {
 
   const handleBody = bdata => {
 
-    // console.log("Return value from Editor Component---->", typeof bdata, bdata);
+    console.log("Return value from Editor Component---->", typeof bdata, bdata);
 
     setBody(bdata);
 
@@ -444,6 +427,8 @@ const CreateBlog = ({ router }) => {
             {/* {console.log("Blog Create Body Data --->", typeof body, body)} */}
 
             <TextEditor text={body} onChangeProp={handleBody} />
+
+            {/* onChange={(e, editor) => { handleBody(editor.getData()); }} */}
 
           </div>
 

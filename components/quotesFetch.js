@@ -6,9 +6,9 @@ import React, { useState, useEffect } from "react";
 // ----------------------------------------------
 function FetchQuote() {
   const [quote, setQuote] = useState('');
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [author, setAuthor] = useState('');
-  const [imgSrc, setImgSrc] = useState('');
+  // const [imgSrc, setImgSrc] = useState('');
 
   useEffect(() => {
     getQuote();
@@ -34,13 +34,13 @@ function FetchQuote() {
             console.log("Quote Fetch Error", data.error);
             setQuote("If you love it, you'll teach yourself. If you don't love it, others teach you.");
             setAuthor("Anonymous");
-            setImgSrc("https://images.pexels.com/photos/1040499/pexels-photo-1040499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+            // setImgSrc("https://images.pexels.com/photos/1040499/pexels-photo-1040499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
             // setImgSrc("https://images.pexels.com/photos/3068707/pexels-photo-3068707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
           }
           else {
             setQuote(data.contents.quotes[0].quote);
             setAuthor(data.contents.quotes[0].author);
-            setImgSrc(data.contents.quotes[0].background);
+            // setImgSrc(data.contents.quotes[0].background);
           }
         })
         .catch(err => {
@@ -53,9 +53,15 @@ function FetchQuote() {
   }
 
   return (
-    <div className="quoteOfTheDay" style={{ position: "relative", textAlign: "center", maxHeight: "400px", alignItems: "center", display: "flex" }}>
+    <div className="quoteOfTheDay" style={{
+      position: "relative",
+      textAlign: "center",
+      //  maxHeight: "400px",
+      alignItems: "center",
+      display: "flex"
+    }}>
 
-      <img src={imgSrc} alt="" style={{
+      {/* <img src={imgSrc} alt="" style={{
         position: "relative",
         display: "block",
         objectFit: "cover",
@@ -64,7 +70,7 @@ function FetchQuote() {
         maxHeight: "400px",
         width: "100vw",
         height: "auto",
-      }} />
+      }} /> */}
 
       <div className="quoteOfTheDayText" style={{
         position: "absolute",
@@ -76,7 +82,7 @@ function FetchQuote() {
         textAlign: "center",
         textSizeAdjust: "inherit",
         // backgroundColor: "black",
-        color: "white",
+        // color: "white",
         paddingLeft: "10px",
         paddingRight: "10px",
         width: "100%",
@@ -84,7 +90,7 @@ function FetchQuote() {
       }}>
         <blockquote className="blockquote text-center">
           <p className="lead" style={{ fontSize: "1rem" }}>{quote}</p>
-          <footer className="blockquote-footer" style={{ color: "white" }}>{author}<cite title="Source Title"></cite></footer>
+          <footer className="blockquote-footer" style={{ color: "dark grey" }}>{author}<cite title="Source Title"></cite></footer>
         </blockquote>
 
       </div>

@@ -5,10 +5,40 @@ import Link from 'next/link';
 // import { withRouter } from 'next/router'; // to grab Router query details (to get the slug from the url) - We have removed it because we are ggeting these details from server side 'query' and getting data through props - getInitialProps
 import Layout from '../../components/Layout';
 import React, { useState, useEffect } from 'react';
+
+//-----------------------------------------------------------------------
+// Code Syntax highligting
+import Prism from "prismjs"; // to style Code samples
+// Note: we need the CSS so import that in _app.js where global CSS is imported.
+
+// import "prismjs/components/prism-jsx.min";
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-cpp.min"; // Note: for CPP C++, we also have to First add for C also. 
+import "prismjs/components/prism-java"; // Note: for CPP C++, we also have to First add for C also. 
+import "prismjs/components/prism-python"; // Note: for CPP C++, we also have to First add for C also. 
+import "prismjs/components/prism-javascript.min";
+
+
+import "prismjs/plugins/unescaped-markup/prism-unescaped-markup.min.js";
+
+// import "prismjs/plugins/autoloader/prism-autoloader";
+
+// import "prismjs/plugins/line-numbers/prism-line-numbers";
+
+
+
+//-----------------------------------------------------------------------
+
 import { getSingleBlog, listRelated } from '../../actions/blogAction'; // Function defined in actions for fetching Blogs from backend
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import renderHTML from 'react-render-html';
-import moment from 'moment'; // for displaying date-time in readable format (' few minutes ago ')
+
+// import renderHTML from 'react-render-html';
+import parseHTML from 'html-react-parser';
+
+import dayjs from 'dayjs';
+import relativeTimePlugin from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTimePlugin);
+
 import SmallCard from '../../components/blog/RelatedBlogSmallCardComponent';
 
 import DisqusThread from '../../components/DisqusThread.js'; // for Disqus Comment Section
@@ -22,7 +52,7 @@ import DisqusThread from '../../components/DisqusThread.js'; // for Disqus Comme
 const SingleBlog = ({ blog, query }) => {
 
 
-  // Once the component Mounts,then we will load and show the related blogs 
+  // Once the component Mounts,then we will load and show the related blogs
   const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   const loadRelatedBlogs = () => {
@@ -30,7 +60,7 @@ const SingleBlog = ({ blog, query }) => {
     // make call to backend to get related blogs using this action
     listRelated({ blog }).then(data => {
 
-      // Error Handling 
+      // Error Handling
       // Check if there's any error while fetching related blogs from backend
       if (data === undefined) {
         console.log("Error Fetching Data (Related blogs) from Backend (Related Blogs)");
@@ -42,7 +72,7 @@ const SingleBlog = ({ blog, query }) => {
       if (data.error) {
         console.log("Related blogs error --> ", data.error);
       } else {
-        setRelatedBlogs(data); // this will update the relatedBlogs in the 'relatedBlogs' state 
+        setRelatedBlogs(data); // this will update the relatedBlogs in the 'relatedBlogs' state
       }
     });
   };
@@ -52,17 +82,14 @@ const SingleBlog = ({ blog, query }) => {
   useEffect(() => {
     loadRelatedBlogs();
 
+    if (typeof window !== 'undefined') {
+      setTimeout(Prism.highlightAll, 2000); // to style Code samples using prism.js (We just want highlightAll() to run once when the component DOM is ready)
+    }
+
     // showDelayedFeaturedImage();
   }, []);
 
 
-  /* useEffect(() => {
-     effect
-     return () => {
-       cleanup
-     }
-   }, [input])
-   */
 
   // ------------------- PAGE HEAD --------------------
   const head = () => (
@@ -86,8 +113,9 @@ const SingleBlog = ({ blog, query }) => {
       <meta property="og:site_name" content={`${APP_NAME}`} />
       <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`} />
       <meta property="og:image:secure_url" content={`${API}/blog/photo/${blog.slug}`} />
-      <meta property="og:image:type" content="image/jpg" />
+      <meta property="og:image:type" content="image/*" />
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+
 
     </Head>
   );
@@ -98,7 +126,7 @@ const SingleBlog = ({ blog, query }) => {
     blog.categories.map((c, i) => (
 
       <Link key={i} href={`/categories/${c.slug}`} passHref>
-        <a className="btn btn-primary mr-1 ml-1 mt-3"> {c.name} </a>
+        <a className="btn btn-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(11px, 1.3vw, 15px)" }}> {c.name} </a>
       </Link>
 
     ))
@@ -110,7 +138,7 @@ const SingleBlog = ({ blog, query }) => {
       blog.tags.map((t, i) => (
 
         <Link key={i} href={`/tags/${t.slug}`} passHref>
-          <a className="btn btn-outline-primary mr-1 ml-1 mt-3"> {t.name} </a>
+          <a className="btn btn-outline-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(11px, 1.3vw, 15px)" }}> {t.name} </a>
         </Link>
       ))
     );
@@ -151,7 +179,7 @@ const SingleBlog = ({ blog, query }) => {
 
 
 
-  // ---------------------- RENDERING ------------------------
+  // ---------------------- RENDERING Blog Page ------------------------
   return ((!blog) ?
     (
       <div>
@@ -185,7 +213,7 @@ const SingleBlog = ({ blog, query }) => {
         <Layout>
 
           <main>
-            <article>
+            <article className="blog-post">
 
               <div>
 
@@ -194,10 +222,17 @@ const SingleBlog = ({ blog, query }) => {
                   {/* {JSON.stringify(blog)} */}
 
                   <div className="row" style={{
-                    // marginTop: '30px'
+                    position: "relative",
+                    overflow: "hidden",
+                    width: "100%",
+                    // marginTop: '30px',
                   }}>
 
-                    <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image" />
+                    <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image" style={{
+                      // position: "absolute",
+                      display: "inline-block",
+                      width: "100%"
+                    }} />
 
                   </div>
 
@@ -225,7 +260,7 @@ const SingleBlog = ({ blog, query }) => {
                         ) : (
                           <a className="text-muted">&lt; User Removed &gt;</a>
                         )
-                      } | Published {moment(blog.updatedAt).fromNow()}
+                      } | Published {dayjs(blog.updatedAt).fromNow()}
                     </p>
 
                     <div className="pb-3">
@@ -248,8 +283,10 @@ const SingleBlog = ({ blog, query }) => {
               }}>
 
                 <section>
-                  <div className="col-md-12 lead main-blog-body ck-content">
-                    {renderHTML(blog.body)}
+                  <div className="col-md-12 lead main-blog-body">
+                    {/* {renderHTML(blog.body)} */}
+                    {parseHTML(blog.body)}
+
                   </div>
                 </section>
 
@@ -257,7 +294,7 @@ const SingleBlog = ({ blog, query }) => {
 
               {/* ------------------------------------------------------------ */}
               <div className="container pb-5">
-                <h4 className="text-center pt-5 pb-5 h2">Related Blogs</h4>
+                <h4 className="text-center pt-5 pb-5 h2">Related blogs you might like</h4>
                 <hr />
 
                 {/* {JSON.stringify(relatedBlogs)} */}
@@ -270,9 +307,12 @@ const SingleBlog = ({ blog, query }) => {
               <div className="container pt-5 pb-5">
                 {showComments()}
               </div>
+
               {/* ------------------------------------------------------------ */}
+
             </article>
           </main>
+
         </Layout>
 
       </React.Fragment >)
@@ -323,7 +363,7 @@ SingleBlog.getInitialProps = ({ query }) => { // grabbing the query
 /*
 // USING AXIOS RESPONSE (incomplete)
 return getSingleBlog(query.slug).then(res => {
-            console.log("response received -->", { res });
+        console.log("response received -->", { res });
 
   // console.log(res.response.status, res.response.data.error);
 
@@ -335,14 +375,14 @@ return getSingleBlog(query.slug).then(res => {
 
   // if (response.data.error) {
   if (res.response.data.error) {
-            console.log(response.data.error);
+        console.log(response.data.error);
   } else {
     return {blog: res.data, query };
   }
 })
   .catch(err => {
-            console.log("\n Error getting this Blog from Backend --> ", err);
-    return { };
+        console.log("\n Error getting this Blog from Backend --> ", err);
+    return {};
   });
 };
 */

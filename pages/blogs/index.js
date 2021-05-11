@@ -234,7 +234,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
                 <br />
                 <h1 className="display-4 font-weight-bold text-center" style={{
                   fontSize: "clamp(35px, calc(35px + (53 - 35) * ((100vw - 420px) / (1200 - 420))), 53px)"
-                }}>Blogs & Random Stuff 😁</h1>
+                }}>Blogs & Random Stuff🧬</h1>
               </div>
 
               <section>

@@ -12,8 +12,8 @@ const CreateBlog = () => {
 
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12 pt-5 pb-5">
-              <h2 style={{ textAlign: "center" }}>Create a new Blog 👩‍🏫</h2>
+            <div className="col-md-12 pt-2 pb-3">
+              <h2 style={{ textAlign: "" }}>Create a new Blog 👩‍🏫</h2>
             </div>
 
             <div className="col-md-12">

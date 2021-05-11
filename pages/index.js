@@ -5,7 +5,7 @@ import { DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
 import UnderMaintSvg from '../public/static/images/svgs/tructor_svg.svg';
 
-import FetchQuote from "../components/quotesFetch";
+// import FetchQuote from "../components/quotesFetch";
 
 
 // import Cookies from 'js-cookie';
@@ -63,7 +63,7 @@ const Index = () => {
 
       <Layout>
 
-        <FetchQuote />
+        {/* <FetchQuote /> */}
 
 
         <article className="overflow-hidden">
@@ -77,7 +77,9 @@ const Index = () => {
                     fontSize: "calc(2em + 1.5vw)",
                   }}
                   className="display-4 font-weight-bold pl-20 pr-20 ">
-                  <small className="text-muted">- - - - - - - - - - - - -</small><br /> PROGRAMMING BLOGS <p className="text-muted">;)</p>
+                  {/* <small className="text-muted">- - - - - - - - - - - - -</small> */}
+                  {/* <br /> */}
+                   PROGRAMMING BLOGS <p className="text-muted">;)</p>
                 </h1>
               </div>
 
@@ -88,7 +90,7 @@ const Index = () => {
             <div className="row">
               <div className="col-md-12 text-center pt-4 pb-5">
                 <p className="lead">
-                  Blogs on various topics that interest me 😵<br />You can share too !🙂
+                  Blogs on various topics that I find interesting.<br />You can share too !🙂
               </p>
               </div>
             </div>
@@ -159,7 +161,7 @@ const Index = () => {
                         <h3 className="h1">Electronics</h3>
                       </a>
                     </Link>
-                    <p className="lead">It all started with a Shock ⚡<br />To Whom? Obviously to me! 😵<br /> That's how our love story started, which made me realised that don't be a resistance, be a good conductor.<br />Anyway, What's your curent state?
+                    <p className="lead">It all started with a Shock ⚡<br />To Whom? Obviously to me! 😵<br /> That's how my love story started, which made me realised that don't be a resistance, be a good conductor.<br />Anyway, What's your curent state?
                   </p>
                   </div>
                 </div>
@@ -185,10 +187,11 @@ const Index = () => {
                 <img src={UnderMaintSvg} style={{
                   // overflow: 'hidden',
                   maxWidth: '100%',
-                  // height: 'auto',
+                  height: 'auto',
                   flex: '1',
                   display: 'block',
                   // width: '100%',
+                  width: 'auto',
                   resizeMode: 'contain',
                   margin: '0'
                 }} />
