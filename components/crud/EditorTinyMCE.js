@@ -57,7 +57,7 @@ export default function MyEditor(props) {
 
   //-----------------------------------------------------------------------------
 
-  return (
+  return process.browser && (
     // <>
 
     <Editor
@@ -71,6 +71,7 @@ export default function MyEditor(props) {
       init={{
 
         init_instance_callback: function (editor) {
+
           tinymce.activeEditor.setContent(props.text); // to load locally saved data
           console.log('Editor: ' + editor.id + ' is now initialized.');
         },

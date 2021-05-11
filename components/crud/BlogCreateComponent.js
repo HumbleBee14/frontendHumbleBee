@@ -58,8 +58,8 @@ const CreateBlog = ({ router }) => {
 
       return JSON.parse(localStorage.getItem('blog')); // to return previously saved blog 'body' (if not published and present in user's local storage) which is stored in localstorage to 'body' state variable
     } else {
-      return false;
-      // return "";
+      // return false;
+      return "";
     }
   };
 
@@ -149,7 +149,7 @@ const CreateBlog = ({ router }) => {
       });
   };
 
-  //--------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------------------------
   // Publish Blog Function to Submit the Blog (sending the blog to backend DB)
 
   const publishBlog = (e) => {
@@ -186,9 +186,14 @@ const CreateBlog = ({ router }) => {
         initTags();
 
         // Clearing/reset all fields
-        setBody(''); // Note: Updating anything in STATE also gets updated in localStorage , therefore clear on successful submission
+        setBody(''); // Note: clear on successful submission
         setCategories([]); // clearing selected categories
         setTags([]); // clearing selected tags
+
+        // To Remove content from localstorage also on successful submission
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('blog');
+        };
       }
     });
   };
