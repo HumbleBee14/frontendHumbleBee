@@ -82,16 +82,48 @@ export default function MyEditor(props) {
 
         // plugins: 'autoresize mediaembed help pageembed permanentpen checklist casechange',
         // toolbar: 'formatselect formatpainter',
-        plugins: [' lists advlist link table advtable pageembed advcode image imagetools code wordcount blockquote autosave autolink codesample',
-          'searchreplace visualblocks fullscreen insertdatetime media   paste fullpage hr pagebreak',
-          'charmap print preview anchor emoticons casechange',
+        plugins: [' lists advlist link table advtable pageembed advcode image imagetools code wordcount autosave autolink codesample',
+          'searchreplace visualblocks fullscreen insertdatetime media   paste fullpage hr pagebreak template nonbreaking toc textpattern',
+          'charmap print preview anchor emoticons casechange ',
         ],
 
-        toolbar: 'bold italic underline backcolor forecolor blockquote | bullist numlist superscript subscript link image | styleselect | alignleft aligncenter alignright | outdent indent lineheight casechange | fontsizeselect | fontselect | codesample emoticons removeformat code fullpage | hr pagebreak | undo redo',
+        toolbar: ' bold italic underline backcolor forecolor blockquote | bullist numlist superscript subscript link image | styleselect | alignleft aligncenter alignright | outdent indent lineheight casechange | fontsizeselect | fontselect | codesample emoticons removeformat code fullpage | hr pagebreak | undo redo',
+
+
+        formats: {
+          // Changes the default format for blockquote to have a custom class of 'tinymceBlockQuote'
+          blockquote: { block: 'blockquote', classes: 'tinymceBlockQuote' }
+        },
+
+
+        // Text Patterns ------------------------------
+        textpattern_patterns: [
+          { start: '*', end: '*', format: 'italic' },
+          { start: '**', end: '**', format: 'bold' },
+          { start: '#', format: 'h1' },
+          { start: '##', format: 'h2' },
+          { start: '###', format: 'h3' },
+          { start: '####', format: 'h4' },
+          { start: '#####', format: 'h5' },
+          { start: '######', format: 'h6' },
+          { start: '1. ', cmd: 'InsertOrderedList' },
+          { start: '* ', cmd: 'InsertUnorderedList' },
+          { start: '- ', cmd: 'InsertUnorderedList' },
+          { start: '//brb', replacement: 'Be Right Back' }
+        ],
+
+
+
+        // Table of Content  ---------------
+        toc_depth: 3, // table of contents
+        toc_header: "div", // case doesn't matter
+        toc_class: "mce-toc",
+        // Table of Content  ---------------
+
 
         // For different custom Styled Blokquotes or other content, refer: https://www.tiny.cloud/blog/blockquote-css-and-styling-in-tinymce/
 
-        codesample_global_prismjs: true,
+        // codesample_global_prismjs: true,
 
         codesample_languages: [
           { text: 'HTML/XML', value: 'markup' },
@@ -131,8 +163,8 @@ export default function MyEditor(props) {
         // inline: true,
 
         // statusbar: false,
-        // skin: 'oxide',
-        skin: "oxide-dark",
+        skin: 'oxide',
+        // skin: "oxide-dark",
         // skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : ""),
 
         // content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : ""),

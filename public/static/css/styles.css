@@ -380,6 +380,26 @@
    
    /* ------------------------------------------------------------------------------------------------------------------------------------------------
    */
+
+   /* To maintain tinymce editor toolbar offset from top to prevent hiding that below Header */
+
+   div.tox-tinymce--toolbar-sticky-on div.tox-editor-header {
+    top: 43px !important;
+    }
+
+    /* Basic styles for Table of Contents plugin (toc) */
+.mce-toc {
+  border: 1px solid gray;
+}
+
+.mce-toc h2 {
+  margin: 4px;
+}
+
+.mce-toc li {
+  list-style-type: none;
+}
+
   
    /* -------------- ADDING MAC BOOK LIKE ICONS ON CODE SNIPPETS ------------- */
 .blog-post pre {
@@ -397,6 +417,19 @@
   background-size: 44px 10px;
   background-position: 16px 14px;
 }
+
+/* Adding custom Blockquote style */
+/* blockquote { */
+.tinymceBlockQuote {
+  overflow: hidden;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  border-left: solid 5px hsl(0, 0%, 80%);
+}
+
 /* /-------------------------------------------------------------------/ */
 
    
@@ -624,6 +657,7 @@ pre[class*="language-"] > code[class*="language-"] {
 	line-height: inherit;
 	white-space: pre;
 }
+
 
 
    /* -------------------------------------------------------------------

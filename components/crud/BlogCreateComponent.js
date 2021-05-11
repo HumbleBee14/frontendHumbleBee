@@ -231,7 +231,7 @@ const CreateBlog = ({ router }) => {
 
   const handleBody = bdata => {
 
-    console.log("Return value from Editor Component---->", typeof bdata, bdata);
+    // console.log("Return value from Editor Component---->", typeof bdata, bdata);
 
     setBody(bdata);
 

@@ -1,7 +1,7 @@
 import Layout from '../../../components/Layout';
 import Private from '../../../components/authComp/Private';
 import BlogCreate from '../../../components/crud/BlogCreateComponent';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 const CreateBlog = () => {
 
