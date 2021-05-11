@@ -57,7 +57,7 @@ export default function MyEditor(props) {
 
   //-----------------------------------------------------------------------------
 
-  return process.browser && (
+  return (
     // <>
 
     <Editor
