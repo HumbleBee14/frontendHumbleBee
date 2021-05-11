@@ -71,7 +71,7 @@ export default function MyEditor(props) {
       init={{
 
         init_instance_callback: function (editor) {
-          tinymce.activeEditor.setContent(props.text); // to load locally saved data 
+          tinymce.activeEditor.setContent(props.text); // to load locally saved data
           console.log('Editor: ' + editor.id + ' is now initialized.');
         },
         // content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
