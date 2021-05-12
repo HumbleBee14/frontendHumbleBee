@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Router from 'next/router';
 // import { DOMAIN } from '../../config';
 
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
 /* We are using this because we'll be using 'react-quill' as rich text editor for blog section. 
 And 'react-quill' only runs on the Client Side !!
@@ -33,8 +33,9 @@ import { getSingleBlog, updateBlog } from '../../actions/blogAction'; // update 
 
 // import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
 
-import TextEditor from './EditorTinyMCE'; // TinyMCE Rich Text Editor Component
+// import TextEditor from './EditorTinyMCE'; // TinyMCE Rich Text Editor Component
 
+const TextEditor = dynamic(() => import('./EditorTinyMCE'), { ssr: false });
 
 import { API } from '../../config';
 
@@ -102,7 +103,7 @@ const BlogUpdate = ({ router }) => {
     // console.log("___________values___________ ", { ...values });
     // console.log("___________FormData___________ ", { formData });
 
-    initBlog(); // to make request to backend to get/load the blog i.e.page load / reload / refresh, we will run thi;
+    initBlog(); // to make request to backend to get/load the blog i.e.page load / reload / refresh, we will run this
     initCategories(); // to get list of all Categories from backend and save in state variable for frontend to show
     initTags();  // to get list of all Tags from backend
 
@@ -123,6 +124,8 @@ const BlogUpdate = ({ router }) => {
           // console.log({ ...values });
 
           setBody(data.body);  // state [body = data.body] this 'body' data we will Populate in the Rich text editor= update/add the blog details in the page on component load (useEffect will runt this and this will set the state variables with blog data that we can populate in the form on page)
+
+          // console.log("----------BLOG State body updated --------> ", body.length);
 
           // set checked categories and checked tags of this blog
           setCategoriesArray(data.categories);
@@ -522,7 +525,7 @@ const BlogUpdate = ({ router }) => {
         {/* CKEDITOR Rich Text Editor */}
 
         <div className="form-group">
-          <div className='custom-ckeditor-editable'>
+          <div>
 
             {/* {console.log("Blog Update Body Data --->", typeof body, body)} */}
 
@@ -577,9 +580,9 @@ const BlogUpdate = ({ router }) => {
 
           </div>
 
-          {/* // Show current Image */}
+          {/* // Show current Featured Image */}
           {body && (
-            <img onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
+            <img onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ maxWidth: "100%", height: "auto" }} />
           )}
 
         </div>

@@ -126,7 +126,7 @@ const SingleBlog = ({ blog, query }) => {
     blog.categories.map((c, i) => (
 
       <Link key={i} href={`/categories/${c.slug}`} passHref>
-        <a className="btn btn-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(11px, 1.3vw, 15px)" }}> {c.name} </a>
+        <a className="btn btn-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(10px, 1.2vw, 15px)" }}> {c.name} </a>
       </Link>
 
     ))
@@ -138,7 +138,7 @@ const SingleBlog = ({ blog, query }) => {
       blog.tags.map((t, i) => (
 
         <Link key={i} href={`/tags/${t.slug}`} passHref>
-          <a className="btn btn-outline-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(11px, 1.3vw, 15px)" }}> {t.name} </a>
+          <a className="btn btn-outline-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(10px, 1.2vw, 15px)" }}> {t.name} </a>
         </Link>
       ))
     );
@@ -212,27 +212,28 @@ const SingleBlog = ({ blog, query }) => {
 
         <Layout>
 
-          <main>
+          <main className="header">
             <article className="blog-post">
-
+              {/* --------------------------------------------------------------------- */}
               <div>
+
+                {/* ------------------------ */}
 
                 <section>
                   {/* {JSON.stringify(router)} */}
                   {/* {JSON.stringify(blog)} */}
 
                   <div className="row" style={{
-                    position: "relative",
-                    overflow: "hidden",
                     width: "100%",
-                    // marginTop: '30px',
+                    margin: "0 auto",
+                    textAlign: "center"
                   }}>
 
-                    <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image" style={{
-                      // position: "absolute",
-                      display: "inline-block",
-                      width: "100%"
-                    }} />
+                    <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image"
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
 
                   </div>
 
@@ -240,18 +241,22 @@ const SingleBlog = ({ blog, query }) => {
                 {/* ------------------------------------------------------------ */}
                 <section>
 
-                  <div className="container">
+                  <div className="container" style={{
+                    width: "100%",
+                    margin: "0 auto",
+                  }}>
 
                     <h1
                       className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title"
                       style={{
                         fontSize: "clamp(2.3rem, 5vw, 5rem)",
-                        whiteSpace: "normal"
+                        whiteSpace: "normal",
+                        margin: "0 auto"
                       }}>
                       {blog.title}
                     </h1>
 
-                    <p className="lead mt-3 mark" style={{}}>
+                    <p className="lead mt-3 mark" style={{ fontSize: "clamp(0.80rem, 2vw, 1.25rem)" }}>
                       Written by {(blog.postedBy) ?
                         (
                           <Link href={`/profile/${blog.postedBy.username}`} passHref>
@@ -279,7 +284,9 @@ const SingleBlog = ({ blog, query }) => {
               {/* ------------------------------------------------------------ */}
 
               <div className="container" style={{
-                overflow: "hidden",
+                // overflow: "hidden",
+                width: "100%",
+                margin: "0 auto",
               }}>
 
                 <section>
@@ -289,6 +296,13 @@ const SingleBlog = ({ blog, query }) => {
 
                   </div>
                 </section>
+
+                {/*  To make images under Blog Body Responsive image, CSS:
+                    .main-blog-body img {
+                          max-width: 100% !important;
+                          height: auto !important;
+                          }
+                */}
 
               </div>
 

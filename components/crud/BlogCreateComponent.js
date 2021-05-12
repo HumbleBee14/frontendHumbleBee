@@ -427,7 +427,7 @@ const CreateBlog = ({ router }) => {
         <div className="form-group">
 
 
-          <div className='custom-ckeditor-editable'>
+          <div>
 
             {/* {console.log("Blog Create Body Data --->", typeof body, body)} */}
 

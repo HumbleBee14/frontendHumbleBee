@@ -13,6 +13,22 @@
 }
 
 
+/* To make img images under Blog Body Responsive image */
+
+.main-blog-body img {
+  max-width: 100% !important;
+    height: auto !important;
+}
+
+aside {
+  width: 30%;
+  padding-left: 15px;
+  margin-left: 15px;
+  float: right;
+  font-style: italic;
+  background-color: lightgray;
+}
+
 .ql-editor {
   min-height: 300px
 }
@@ -402,7 +418,7 @@
 
   
    /* -------------- ADDING MAC BOOK LIKE ICONS ON CODE SNIPPETS ------------- */
-.blog-post pre {
+/* .blog-post pre {
   background-color: #eff0f1;
   padding: 16px;
   border-radius: 4px;
@@ -412,11 +428,11 @@
   padding: 3.7rem 0 1.6rem .4rem;
   border-radius: 12px;
   overflow: hidden;
-  /* background-image: url('../images/window-buttons.png'); */
+  background-image: url('../images/window-buttons.png');
   background-repeat: no-repeat;
   background-size: 44px 10px;
   background-position: 16px 14px;
-}
+} */
 
 /* Adding custom Blockquote style */
 /* blockquote { */

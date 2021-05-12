@@ -1,7 +1,7 @@
 // TinyMCE Rich Text Editor
 
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { Editor } from '@tinymce/tinymce-react';
 
@@ -21,6 +21,20 @@ export default function MyEditor(props) {
   // Check props passed
   // console.log("Props to Editor--> ", props);
 
+  const [editorLoaded, setEditorLoaded] = useState(false); // to show Loading
+
+
+  // to delay loading the Editor component (so that all state variables are updated meanwhile)
+  useEffect(() => {
+
+    setTimeout(function () {
+
+      setEditorLoaded(true);
+
+    }, 2500); // 2 second delay
+
+  }, []);
+
   // useEffect(() => {
   //   const script = document.createElement('script');
   //   script.src = "https://cloud.tinymce.com/stable/tinymce.min.js";
@@ -34,7 +48,6 @@ export default function MyEditor(props) {
   // const [text, setText] = useState("");
 
   const handleEditorChange = (e) => {
-
     // console.log('Content was updated:', e.target.getContent());
 
     // Return back the Data entered in the Editor to callback function (to save data in localstorage and state variable to Send data to backend DB)
@@ -57,7 +70,7 @@ export default function MyEditor(props) {
 
   //-----------------------------------------------------------------------------
 
-  return (
+  return editorLoaded ? (
     // <>
 
     <Editor
@@ -73,22 +86,106 @@ export default function MyEditor(props) {
         init_instance_callback: function (editor) {
 
           tinymce.activeEditor.setContent(props.text); // to load locally saved data
+
           console.log('Editor: ' + editor.id + ' is now initialized.');
         },
         // content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
 
         menubar: true,
 
+
         placeholder: 'Type here...', // available in higher 5.0+ version
 
-        // plugins: 'autoresize mediaembed help pageembed permanentpen checklist casechange',
+        // plugins: 'autoresize mediaembed help pageembed permanentpen checklist casechange autosave',
         // toolbar: 'formatselect formatpainter',
-        plugins: [' lists advlist link table advtable pageembed advcode image imagetools code wordcount autosave autolink codesample',
+        plugins: [' lists advlist link table advtable pageembed advcode image imagetools code wordcount autolink codesample',
           'searchreplace visualblocks fullscreen insertdatetime media   paste fullpage hr pagebreak template nonbreaking toc textpattern',
           'charmap print preview anchor emoticons casechange ',
         ],
 
-        toolbar: ' bold italic underline backcolor forecolor blockquote | bullist numlist superscript subscript link image | styleselect | alignleft aligncenter alignright | outdent indent lineheight casechange | fontsizeselect | fontselect | codesample emoticons removeformat code fullpage | hr pagebreak | undo redo',
+        toolbar: ' bold italic underline backcolor forecolor blockquote | bullist numlist superscript subscript link image | formatselect | alignleft aligncenter alignright | outdent indent lineheight casechange | fontsizeselect | fontselect | styleselect | codesample emoticons removeformat code fullpage | hr pagebreak | undo redo',
+
+        // End container block element when pressing enter inside an empty block
+        end_container_on_empty_block: true,
+
+        br_in_pre: false,
+        custom_undo_redo_levels: 15,
+
+        // Add list of custom classes you want to add to image img tags
+        image_class_list: [
+          { title: 'Bootstrap Responsive image', value: 'img-fluid' },
+          { title: 'No Class', value: '' },
+          { title: 'Bootstrap Image thumbnails', value: 'img-thumbnail' },
+        ],
+
+        // Advanced Image Options, using style Formats, which is more powerful
+
+        // style_formats: [
+        //   {
+        //     title: 'Image Left', selector: 'img', styles: {
+        //       'float': 'left',
+        //       'margin': '0 10px 0 10px'
+        //     }
+        //   },
+        //   {
+        //     title: 'Image Right', selector: 'img', styles: {
+        //       'float': 'right',
+        //       'margin': '0 10px 0 10px'
+        //     }
+        //   },
+        //   {
+        //     title: 'Responsive Image', selector: 'img', styles: {
+        //       'max-width': '100%',
+        //       'height': 'auto',
+        //       'padding': '2px',
+        //       'margin': '0 5px 0 5px'
+        //     }
+        //   },
+        //   {
+        //     title: 'Blockquote Red Style', selector: 'blockquote', styles: {
+        //       "overflow": "hidden",
+        //       "padding-right": "1.5em",
+        //       "padding-left": "1.5em",
+        //       "margin-left": "0",
+        //       "margin-right": "0",
+        //       "font-style": "italic",
+        //       "border-left": "solid 5px hsl(0, 84%, 52%)",
+        //     }
+        //   },
+        // ],
+
+
+        // OR 
+
+        // HTML5 formats
+        style_formats: [
+          { title: 'p', block: 'p' },
+          { title: 'div', block: 'div' },
+          { title: 'blockquote', block: 'blockquote', wrapper: true },
+          { title: 'pre', block: 'pre' },
+          { title: 'section', block: 'section', wrapper: true, merge_siblings: false },
+          { title: 'article', block: 'article', wrapper: true, merge_siblings: false },
+          {
+            title: 'aside', block: 'aside', wrapper: true, styles: {
+              "width": "30%",
+              "padding-left": "15px",
+              "margin-left": "15px",
+              "float": "right",
+              "font-style": "italic",
+              "background-color": "lightgray"
+            }
+          },
+          { title: 'figure', block: 'figure', wrapper: true }
+        ],
+
+
+
+        // ----------------------------------------------------
+
+        image_list: [
+          { title: 'Placeholder Image 150', value: 'https://via.placeholder.com/150' },
+          { title: 'Placeholder Image 300', value: 'https://via.placeholder.com/300' }
+        ],
 
 
         formats: {
@@ -141,11 +238,11 @@ export default function MyEditor(props) {
         <link rel="stylesheet" type="text/css" href="prism.css">
         <script src="prism.js"></script>
         <pre class="language-markup"><code>...</code></pre>
- */
+  */
 
-        end_container_on_empty_block: true,
 
-        toolbar_mode: 'wrap',
+        toolbar_mode: 'floating',
+        // toolbar_mode: 'wrap',
         // toolbar_mode: 'floating', // Possible Values: 'floating', 'sliding', 'scrolling', or 'wrap'
         // toolbar_location: 'bottom', // Possible values: auto, top, bottom
         toolbar_sticky: true,
@@ -154,7 +251,7 @@ export default function MyEditor(props) {
         // resize: false,  // 'both' - for both vertical and horizontal
         // width: 500,
         // max_width: 500,
-        height: 700,
+        height: 600,
         // height: 'calc(100vh - 2rem)',
         // min_height: 600,
         // max_height: 800, // use it with autoresize
@@ -331,6 +428,8 @@ export default function MyEditor(props) {
     //   <button onClick={log}>Log editor content</button>
     // </>
 
+  ) : (
+    <div><h2><span className="spinner-grow spinner-grow-lg"></span> <strong> Editor Loading...</strong></h2></div>
   );
 };
 

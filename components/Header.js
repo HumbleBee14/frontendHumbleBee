@@ -134,7 +134,7 @@ const Header = () => {
               (
                 <NavItem>
                   <Link href="/user">
-                    <NavLink style={{ cursor: 'pointer' }}>{`${isAuth().name}'s Dashboard (U)`}</NavLink>
+                    <NavLink style={{ cursor: 'pointer' }}>{`${isAuth().name.split(" ")[0]}'s Dashboard (U)`}</NavLink>
                   </Link>
                 </NavItem>
               )
@@ -144,7 +144,7 @@ const Header = () => {
               (
                 <NavItem>
                   <Link href="/admin">
-                    <NavLink style={{ cursor: 'pointer' }}>{`${isAuth().name}'s Dashboard (A)`}</NavLink>
+                    <NavLink style={{ cursor: 'pointer' }}>{`${isAuth().name.split(" ")[0]}'s Dashboard (A)`}</NavLink>
                   </Link>
                 </NavItem>
               )
