@@ -119,9 +119,11 @@ const UserProfile = ({ user, blogs, query }) => {
                     <div className="row">
 
                       <div className="col-md-8">
-                        <h5>{user.name}</h5>
+                        <h5><u>{user.name}</u></h5>
                         {/* <Link href={`${user.profile}`} passHref><a>View Profile</a></Link> */}
-                        <Link href={`/profile/${user.username}`} passHref><a>View Profile</a></Link>
+                        {/* <Link href={`/profile/${user.username}`} passHref><a>View Profile</a></Link> */}
+                        <p>About: {user.about}</p>
+
                         <p className="text-muted">Joined {dayjs(user.createdAt).fromNow()}</p>
                       </div>
 
@@ -129,7 +131,7 @@ const UserProfile = ({ user, blogs, query }) => {
                         <img
                           src={`${API}/user/photo/${user.username}`}
                           className="img img-fluid img-thumbnail mb-3"
-                          style={{ maxHeight: '150px', maxWidth: '100%' }}
+                          style={{ maxHeight: '150px', maxWidth: '100%', boxShadow: "rgba(0, 0, 0, 0.56) 0px 18px 50px 3px" }}
                           alt="User Profile Photo"
                         />
 

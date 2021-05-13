@@ -1,5 +1,7 @@
 /* My Custom specifc styles */
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+
 #nprogress .bar {
   height: 4px !important;
 }
@@ -12,6 +14,18 @@
   z-index: 2;
 }
 
+.main-blog-body a {
+  text-decoration: none;
+  color: #343434;
+  border-bottom: 2px solid #44be9b;
+  background-color: #e7faf3;
+  transition: .1s ease-in-out;
+}
+
+.main-blog-body a:hover {
+  text-decoration: none;
+  background-color: #c9f5e9;
+}
 
 /* To make img images under Blog Body Responsive image */
 
@@ -19,7 +33,7 @@
   max-width: 100% !important;
     height: auto !important;
 }
-
+/* --------------------------------------- */
 aside {
   width: 30%;
   padding-left: 15px;
@@ -28,6 +42,179 @@ aside {
   font-style: italic;
   background-color: lightgray;
 }
+
+/* --------------------------------------- */
+/* Blockquote Default Style */
+
+
+blockquote {
+  overflow: hidden;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  border-left: solid 5px hsl(0, 0%, 80%);
+}
+
+blockquote p {
+  overflow: hidden;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  border-left: solid 5px hsl(0, 0%, 80%);
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+/* --------------------------------------- */
+/* Blockquote Style 0 */
+blockquote.style0 {
+  background: #f9f9f9;
+  border-left: 8px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote.style0::before {
+  color: #ccc;
+  /* content: open-quote; */
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote.style0 p {
+  display: inline;
+}
+/* --------------------------------------- */
+
+/* --------------------------------------- */
+/* Blockquote Style 1 */
+blockquote.style1 {
+  font-size: 1.4em;
+  width:60%;
+  margin:50px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #78C0A8 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
+
+blockquote.style1::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+blockquote.style1::after{
+  content: '';
+}
+
+blockquote.style1 span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
+
+/* --------------------------------------- */
+/* BlockQuote Style 2 */
+
+blockquote.style2 {
+  background: #f4f2ff;
+  font-size: 1.2em;
+  font-family:Open Sans;
+  font-style: italic;
+  border-radius: 3px;
+  border-left: 5px solid #8e78fd;
+  margin: 30px 0;
+  padding: 30px;
+}
+
+
+/* --------------------------------------- */
+/* Blockquote Style 3  */
+
+blockquote.style3 {
+  background: #f1fff2b4;
+  font-size: 1.2em;
+  font-family:Open Sans;
+  font-style: italic;
+  border-radius: 3px;
+  border-left: 5px solid #2a421b;
+  margin: 30px 0;
+  padding: 30px;
+}
+
+/* --------------------------------------- */
+/* Blockquote Style 4  */
+
+blockquote.style4 {
+  border: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin: 2.5em auto;
+  max-width: 540px;
+  padding: 0 2rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+blockquote.style4::before {
+  color: #fff200;
+  content: '“';
+  font-family: 'georgia';
+  font-size: 4em;
+  left: 30%;
+  pointer-events: none;
+  position: absolute;
+  top: -.75em;
+}
+
+blockquote.style4::after {
+  bottom: -1.2em;
+  color: #fff200;
+  content: '”';
+  font-family: 'georgia';
+  font-size: 4em;
+  pointer-events: none;
+  position: absolute;
+  right: 30%;
+}
+
+
+
+/* ----------------------------------------------- */
+
+
+/* --------------------------------------------------------------- */
+
+
+
+
+/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- */
+
 
 .ql-editor {
   min-height: 300px
@@ -435,8 +622,8 @@ aside {
 } */
 
 /* Adding custom Blockquote style */
-/* blockquote { */
-.tinymceBlockQuote {
+
+/* .tinymceBlockQuote {
   overflow: hidden;
   padding-right: 1.5em;
   padding-left: 1.5em;
@@ -444,7 +631,8 @@ aside {
   margin-right: 0;
   font-style: italic;
   border-left: solid 5px hsl(0, 0%, 80%);
-}
+} */
+
 
 /* /-------------------------------------------------------------------/ */
 

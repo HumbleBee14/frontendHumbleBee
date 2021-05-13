@@ -157,11 +157,23 @@ export default function MyEditor(props) {
 
         // OR 
 
+        // Register the cite format
+        formats: {
+          // Changes the default format for blockquote to have a custom class of 'tinymceBlockQuote'
+          blockquote: { block: 'blockquote', classes: 'customClassAdded' },
+          cite: { block: 'cite' }
+        },
+
+
         // HTML5 formats
         style_formats: [
-          { title: 'p', block: 'p' },
+          { title: 'Paragraph', block: 'p' },
+          { title: 'Title', format: 'h1' },
+          { title: 'Heading', format: 'h2' },
+          { title: 'Subheading', format: 'h3' },
           { title: 'div', block: 'div' },
           { title: 'blockquote', block: 'blockquote', wrapper: true },
+          { title: 'Cite', format: 'cite' },
           { title: 'pre', block: 'pre' },
           { title: 'section', block: 'section', wrapper: true, merge_siblings: false },
           { title: 'article', block: 'article', wrapper: true, merge_siblings: false },
@@ -188,10 +200,6 @@ export default function MyEditor(props) {
         ],
 
 
-        formats: {
-          // Changes the default format for blockquote to have a custom class of 'tinymceBlockQuote'
-          blockquote: { block: 'blockquote', classes: 'tinymceBlockQuote' }
-        },
 
 
         // Text Patterns ------------------------------
