@@ -85,8 +85,32 @@
 
 .main-blog-body img {
   max-width: 100% !important;
-    height: auto !important;
+  height: auto !important;
 }
+/* --------------------------------------- */
+
+.blog-card-excerpt-container {
+    overflow: hidden;
+    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* max-height: "200px"; */
+}
+
+
+.related-blog-excerpt {
+  font-size: 0.9rem;
+  color: #555;
+  font-family: 'Source Sans Pro', sans-serif;
+/* font-size: "14px", */
+  /* word-spacing:5px; */
+  overflow: hidden;
+/* max-height: 250px; */
+  white-space:normal;
+}
+
+
 /* --------------------------------------- */
 aside {
   width: 30%;

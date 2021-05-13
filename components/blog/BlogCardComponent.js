@@ -113,11 +113,7 @@ const Card = ({ blog }) => {
 
         <div className="col-md-8">
           <section>
-            <div className="pb-3 blog-card-excerpt-container" style={{
-              overflow: "hidden",
-              fontSize: "16px",
-              // maxHeight: "200px",
-            }}>
+            <div className="pb-3 blog-card-excerpt-container" >
               {/* {renderHTML(blog.excerpt)} */}
               {parseHTML(blog.excerpt)}
             </div>

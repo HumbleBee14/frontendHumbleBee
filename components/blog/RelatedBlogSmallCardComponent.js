@@ -85,13 +85,7 @@ const SmallCard = ({ blog }) => {
 
         {/* ----------------------- */}
 
-        <div className="related-blog-excerpt" style={{
-          fontSize: "0.9rem",
-          // fontSize: "14px",
-          overflow: "hidden",
-          // maxHeight: "250px",
-          whiteSpace: "normal",
-        }}>
+        <div className="related-blog-excerpt">
 
           {/* {renderHTML(blog.excerpt)} */}
 
