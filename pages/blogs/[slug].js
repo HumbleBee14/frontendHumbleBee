@@ -265,7 +265,7 @@ const SingleBlog = ({ blog, query }) => {
                         ) : (
                           <a className="text-muted">&lt; User Removed &gt;</a>
                         )
-                      } | Published {dayjs(blog.updatedAt).fromNow()}
+                      } | Published {dayjs(blog.createdAt).fromNow()}
                     </p>
 
                     <div className="pb-3">
