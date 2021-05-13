@@ -32,7 +32,7 @@ const BlogRead = ({ username }) => {
   }, []);
 
 
-  // Load Blogs
+  // Load Blogs from Backend (in blog state variable)
   const loadBlogs = () => {
 
     list(username).then(data => { // username passed as Prop to this component. Passing the prop to the actions module to grab blogs for that username only
@@ -113,7 +113,7 @@ const BlogRead = ({ username }) => {
               ) : (
                 <a className="text-muted">&lt; User Removed &gt;</a>
               )
-            }{' '}| Published {dayjs(blog.updatedAt).fromNow()}
+            }{' '}| Published {dayjs(blog.createdAt).fromNow()} | Last Updated {dayjs(blog.updatedAt).fromNow()}
           </p>
 
           <button className="btn btn-danger btn-sm" onClick={() => deleteConfirm(blog.slug)}>

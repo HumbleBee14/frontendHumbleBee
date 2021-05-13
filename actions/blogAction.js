@@ -136,7 +136,7 @@ export const listRelated = (blog) => {
 // -------------------------------------------------------
 
 
-// List / get all the blogs (of the selected User based on username [passed through Props from component - BlogReadComponent])
+// List / get all the blogs (of the selected User based on username [passed through Props from component - BlogReadComponent]) for Blog Management (Update) page
 
 export const list = (username) => {
 
@@ -147,7 +147,7 @@ export const list = (username) => {
   if (username) { // If Username is present (from Dashboard page)
     listBlogsEndPoint = `${API}/${username}/blogs`; // This endpoint gives only those Blogs written by this user 
   }
-  else { // Else if there's no username (on Header -> 'Blogs' link) -> then show all the Blogs by every author/user
+  else { // Else if there's no username (for 'Blogs' page) show all the Blogs by every author/user
     listBlogsEndPoint = `${API}/blogs`; // This endpoint gives all the blogs on the website (of every author/user)
   }
 
@@ -161,7 +161,7 @@ export const list = (username) => {
     .catch(err => console.log(err));
 };
 
-// ---------------------------------------------------------
+// ------------------------------------------------------------------
 //  Remove / Delete the Blog
 export const removeBlog = (slug, token) => {
 

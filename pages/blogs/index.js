@@ -277,19 +277,19 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 };
 
 // ==========================================================================================================================
-// Below we are fetching the data from backend for server side rendering (FOr first time- this will happen on the server side itself). This data will be available as 'props' as properties to the above functional component
+// Below we are fetching the data from backend for server side rendering (For first time- this will happen on the server side itself). This data will be available as 'props' as properties to the above functional component
 
 // WARNING: 'getInitProps' can be used Only on Pages, Not in components !!
 
 // On First Page Load, this function runs & it return the blogs (limit=2) and anything that happens later will be handled by loadMore
-Blogs.getInitialProps = () => { // Here we just request to backend to get the data and Return the data. So that all these will be available as 'props'
+Blogs.getInitialProps = async () => { // Here we just request to backend to get the data and Return the data. So that all these will be available as 'props'
 
   let skip = 0; // Default skip value
   let limit = 5; // limit = 5 ===> On first page load, we will get 2 blogs first by default
 
 
-  return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
-
+  try {
+    const data = await listBlogsWithCategoriesAndTags(skip, limit);
     if (data.error) {
       console.log("Data Error --> ", data.error);
     }
@@ -299,31 +299,15 @@ Blogs.getInitialProps = () => { // Here we just request to backend to get the da
         blogs: data.blogs,
         categories: data.categories,
         tags: data.tags,
-        totalBlogs: data.size, // Number of Blogs returned at one time from backend  (PAGINATION :)
+        totalBlogs: data.size,
         blogsLimit: limit,
         blogsSkip: skip
       };
     }
-  })
-    .catch(err => {
-      console.log("\n Error getting BLOGS from Backend --> ", err, "\n\n");
-      // console.log("------------- END --------------");
-
-      // return; // undefined - could throw eror
-      return {}; // send empty object, instead of nothing (undefined)
-      // return {blogs: [] };
-
-      // throw new Error(err); // Error objects are thrown when runtime errors occur.
-      // It is more like a return ERROR Object and if there's no further function that will be handling this error, it'll then HALT here with the error , else we can capture it in further function calls where it's called and handle it as we want to.
-
-      /*
-      try {
-        throw new Error('Whoops!')
-        } catch (e) {
-            console.error(e.name + ': ' + e.message)
-          }
-      */
-    });
+  } catch (err) {
+    console.log("\n Error getting BLOGS from Backend --> ", err, "\n\n");
+    return {};
+  }
 };
 
 
