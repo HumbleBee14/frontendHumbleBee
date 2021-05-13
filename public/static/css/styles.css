@@ -13,6 +13,60 @@
 	top: 0;
   z-index: 2;
 }
+/* ---------------------------------------- */
+
+
+.blog-card-excerpt-container {
+  overflow: hidden;
+  max-height: 150px;
+}
+@media screen and (max-width: 800px) {
+  .blog-card-excerpt-container {
+    overflow: hidden;
+    max-height: 150px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .blog-card-excerpt-container {
+    overflow: hidden;
+    max-height: 150px;
+  }
+}
+
+
+/* ---------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
+/* Main Blog Body Paragraph Content */
+.main-blog-body p {
+  line-height: 1.6;
+  font-size: 21px;
+  overflow-wrap: break-word;
+}
+
+/* Main Title */
+.blog-post h1 {
+  /* font-size: clamp(32px, 5vw, 42px); */
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.2;
+  letter-spacing: -.1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  /* font-weight: 600; */
+  margin: 0 auto;
+  white-space: normal;
+}
+
+/* Heading */
+.main-blog-body h2 {
+  font-size: 32px;
+}
+
+/* Subheading */
+.main-blog-body h3 {
+  font-size: 26px;
+}
+
+
 
 .main-blog-body a {
   text-decoration: none;
@@ -26,7 +80,7 @@
   text-decoration: none;
   background-color: #c9f5e9;
 }
-
+/* --------------------------------------------- */
 /* To make img images under Blog Body Responsive image */
 
 .main-blog-body img {
@@ -57,7 +111,7 @@ blockquote {
   border-left: solid 5px hsl(0, 0%, 80%);
 }
 
-blockquote p {
+/* blockquote p {
   overflow: hidden;
   padding-right: 1.5em;
   padding-left: 1.5em;
@@ -65,7 +119,7 @@ blockquote p {
   margin-right: 0;
   font-style: italic;
   border-left: solid 5px hsl(0, 0%, 80%);
-}
+} */
 
 blockquote span{
   display:block;
@@ -164,6 +218,7 @@ blockquote.style3 {
   padding: 30px;
 }
 
+
 /* --------------------------------------- */
 /* Blockquote Style 4  */
 
@@ -202,10 +257,42 @@ blockquote.style4::after {
   right: 30%;
 }
 
+/* --------------------------------------- */
+/* Blockquote Style 5  */
 
+blockquote.style5 {
+  background-color: #f7f7f7;
+  line-height: 26px;
+  margin: 30px 0;
+  padding: 26px 30px;
+  border-left-style: solid;
+  border-left-width: 4px;
+  border-color: #f0533a;
+}
 
 /* ----------------------------------------------- */
+/* Blockquote Style 6  */
+blockquote.style6 {
+  font-size: 1.3rem;
+  letter-spacing: -.02rem;
+  margin: 1.5rem 0;
+  padding: 0 0 0 3rem;
+  position: relative;
+  font-style: italic;
+}
+blockquote.style6 p {
+max-width: 900px;
+}
 
+blockquote.style6>:first-child:before {
+  content: "\0022";
+  width: 100px;
+  opacity: .15;
+  font-size: 100px;
+  line-height: .85;
+  position: absolute;
+  left: -1rem;
+}
 
 /* --------------------------------------------------------------- */
 

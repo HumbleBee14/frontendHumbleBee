@@ -22,7 +22,7 @@ const Card = ({ blog }) => {
     blog.categories.map((c, i) => (
 
       <Link key={i} href={`/categories/${c.slug}`} passHref>
-        <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
+        <a className="btn btn-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{c.name}</a>
       </Link>
 
     ));
@@ -34,7 +34,7 @@ const Card = ({ blog }) => {
       blog.tags.map((t, i) => (
 
         <Link key={i} href={`/tags/${t.slug}`} passHref>
-          <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
+          <a className="btn btn-outline-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{t.name}</a>
         </Link>
       ))
     );
@@ -46,22 +46,22 @@ const Card = ({ blog }) => {
 
   return (
 
-    <div className="lead pb-4">
+    <div className="lead pb-3">
       <hr />
 
       <header>
         <Link href={`/blogs/${blog.slug}`} passHref>
           {/* Blog Link/URL & Blog Title */}
           <a className="textClickOnly" style={{ display: "inline-block" }}>
-            <h2 className="pt-3 pb-3 font-weight-bold">{blog.title}</h2>
+            <h2 className="pt-3 pb-3 font-weight-bold" style={{ fontSize: "" }}>{blog.title}</h2>
           </a>
         </Link>
       </header>
 
       {/* Meta information of Blog - Blog Author and Blog Date / update / create date time.
       NOTE: We are checking if the user who created the original blog Exists or not. If not, then we will show <User Removed> in place of author's username, else it'll crash the app if user deletes accounts */}
-      <section style={{ fontSize: "1.01rem" }}>
-        <p className="mark ml-1 pt-2 pb-2">
+      <section style={{ fontSize: "1.0125rem" }}>
+        <p className="mark ml-1 pt-2 pb-2 pl-2">
           Written by{' '}
           {(blog.postedBy) ?
             (
@@ -71,7 +71,7 @@ const Card = ({ blog }) => {
             ) : (
               <a className="text-muted">&lt; User Removed &gt;</a>
             )
-          }{' '}| Published {dayjs(blog.updatedAt).fromNow()}
+          }{' '}| Published {dayjs(blog.createdAt).fromNow()}
         </p>
       </section>
 
@@ -115,8 +115,8 @@ const Card = ({ blog }) => {
           <section>
             <div className="pb-3 blog-card-excerpt-container" style={{
               overflow: "hidden",
-              height: "200px",
-              // overflow: "scroll",
+              fontSize: "16px",
+              // maxHeight: "200px",
             }}>
               {/* {renderHTML(blog.excerpt)} */}
               {parseHTML(blog.excerpt)}
@@ -134,7 +134,7 @@ const Card = ({ blog }) => {
       </div>
       {/* ------------------------------------------------------BLOG ROW ENDS------------------------------------------------ */}
 
-    </div>
+    </div >
 
   );
 

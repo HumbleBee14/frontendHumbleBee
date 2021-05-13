@@ -256,10 +256,13 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 
           </div>
 
+          <div className="container">
 
-          <div className="container-fluid">{showAllBlogs()}</div>
+            <div className="container-fluid">{showAllBlogs()}</div>
 
-          <div className="container-fluid">{showLoadedBlogs()}</div>
+            <div className="container-fluid">{showLoadedBlogs()}</div>
+
+          </div>
 
           <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
 

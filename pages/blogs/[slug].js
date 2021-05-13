@@ -247,12 +247,7 @@ const SingleBlog = ({ blog, query }) => {
                   }}>
 
                     <h1
-                      className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title"
-                      style={{
-                        fontSize: "clamp(2.3rem, 5vw, 5rem)",
-                        whiteSpace: "normal",
-                        margin: "0 auto"
-                      }}>
+                      className="display-2 pb-3 pt-3 text-center font-weight-bold blog-title">
                       {blog.title}
                     </h1>
 
