@@ -35,9 +35,9 @@ const head = () => (
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${DOMAIN}`} />
     <meta property="og:site_name" content={`${APP_NAME}`} />
-    <meta property="og:image" content={`${DOMAIN}/static/images/web-logo-512.png`} />
-    <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/web-logo-512.png`} />
-    {/* <meta property="og:image:type" content="image/png" /> */}
+    <meta property="og:image" content={`${DOMAIN}/static/images/web-logo-HumbleBee.jpg`} />
+    <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/web-logo-HumbleBee.jpg`} />
+    <meta property="og:image:type" content="image/jpg" />
     <meta property="fb:app_id" content={`${FB_APP_ID}`} />
 
   </Head>

@@ -330,3 +330,20 @@ language: 'en'
 };
 
 ---
+<!-- ------------------------------------------------------------------------------------ -->
+
+# Pre-Render app for SEO 
+
+Refer: https://snipcart.com/blog/react-seo-nextjs-tutorial
+
+To prerender your app, update your next.config.js to the following and run the npm run export command.
+
+const withSass = require('@zeit/next-sass')
+module.exports = withSass({
+  exportPathMap: function () {
+    return {
+      '/': { page: '/' },
+    }
+  }
+});
+This creates a new directory named out at the root of your project which contains all your static pages.

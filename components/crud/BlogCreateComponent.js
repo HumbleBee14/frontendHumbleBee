@@ -15,7 +15,14 @@ import { getTags } from '../../actions/tagAction'; // to Load all the Tags avail
 import { createBlogAction } from '../../actions/blogAction'; // create Blog action, that'll be used to pass the blog created in this frontend component (on client side) to backend (server-side) to save it in Database.
 
 
-// ------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+
+// import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
+
+import TextEditor from './EditorTinyMCE'; // TinyMCE Rich Text Editor Component
+
+// -===========================================================================
 /*
 
 // Importing react-quill Dynamically in the frontend client side (So that it doesn't run on server side), therefore we have set SSR (Server side rendering) to false
@@ -30,19 +37,12 @@ import '../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../helpers/quill'; // for making rich text editor has more advanced featured 
 
 */
-// ------------------------------------------------------------------------------------------------------------------
-
-// -============================================================================
+// ---------------------------------------------------------------------------------------------------
 
 
-// import TextEditor from './Editor'; // CKEDITOR Rich Text Editor Component
+// -===========================================================================
 
-import TextEditor from './EditorTinyMCE'; // TinyMCE Rich Text Editor Component
-
-
-// -============================================================================
-
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 const CreateBlog = ({ router }) => {
 

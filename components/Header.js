@@ -110,6 +110,7 @@ const Header = () => {
           <Nav className="ml-auto" navbar >
 
 
+
             <React.Fragment>
               <NavItem>
                 <Link href="/blogs" passHref>
