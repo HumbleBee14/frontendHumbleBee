@@ -103,13 +103,52 @@ export default function MyEditor(props) {
           'charmap print preview anchor emoticons casechange ',
         ],
 
-        toolbar: ' bold italic underline backcolor forecolor blockquote | bullist numlist superscript subscript link image | formatselect | alignleft aligncenter alignright | outdent indent lineheight casechange | fontsizeselect | fontselect | styleselect | codesample emoticons removeformat code fullpage | hr pagebreak | undo redo',
+        toolbar: 'code bold italic underline | backcolor forecolor | fontsizeselect | blockquote link | alignleft aligncenter alignright | outdent indent | bullist numlist |superscript subscript lineheight | codesample | image media | formatselect | fontselect | styleselect | casechange emoticons removeformat fullpage | hr pagebreak | undo redo ',
 
         // End container block element when pressing enter inside an empty block
         end_container_on_empty_block: true,
 
         br_in_pre: false,
         custom_undo_redo_levels: 15,
+
+
+
+        // toolbar_mode: 'floating',
+        toolbar_mode: 'wrap',
+        // toolbar_mode: 'floating', // Possible Values: 'floating', 'sliding', 'scrolling', or 'wrap'
+        // toolbar_location: 'bottom', // Possible values: auto, top, bottom
+        toolbar_sticky: true,
+
+        // selector: 'textarea',
+        // resize: false,  // 'both' - for both vertical and horizontal
+        // width: 500,
+        // max_width: 500,
+        height: 600,
+        // height: 'calc(100vh - 2rem)',
+        // min_height: 600,
+        // max_height: 800, // use it with autoresize
+
+        branding: false,
+
+        // inline: true,
+
+        // statusbar: false,
+        skin: 'oxide',
+        // skin: "oxide-dark",
+        // skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : ""),
+
+        // content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : ""),
+        // theme: 'silver',
+
+        // contextmenu: 'link image table',
+        // draggable_modal: true,
+        // contextmenu_never_use_native: true,
+
+        // font_formats: 'Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
+        fontsize_formats: '8pt 10pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 36pt 48pt',
+        // lineheight_formats: '1 1.1 1.2 1.3 1.4 1.5 2',
+        // block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3',
+
 
         // Add list of custom classes you want to add to image img tags
         image_class_list: [
@@ -247,44 +286,6 @@ export default function MyEditor(props) {
         <script src="prism.js"></script>
         <pre class="language-markup"><code>...</code></pre>
   */
-
-
-        toolbar_mode: 'floating',
-        // toolbar_mode: 'wrap',
-        // toolbar_mode: 'floating', // Possible Values: 'floating', 'sliding', 'scrolling', or 'wrap'
-        // toolbar_location: 'bottom', // Possible values: auto, top, bottom
-        toolbar_sticky: true,
-
-        // selector: 'textarea',
-        // resize: false,  // 'both' - for both vertical and horizontal
-        // width: 500,
-        // max_width: 500,
-        height: 600,
-        // height: 'calc(100vh - 2rem)',
-        // min_height: 600,
-        // max_height: 800, // use it with autoresize
-
-        branding: false,
-
-        // inline: true,
-
-        // statusbar: false,
-        skin: 'oxide',
-        // skin: "oxide-dark",
-        // skin: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : ""),
-
-        // content_css: (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : ""),
-        // theme: 'silver',
-
-        // contextmenu: 'link image table',
-        // draggable_modal: true,
-        // contextmenu_never_use_native: true,
-
-        // font_formats: 'Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
-        // fontsize_formats: '8pt 10pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',
-        // lineheight_formats: '1 1.1 1.2 1.3 1.4 1.5 2',
-        // block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3',
-
 
 
         // ---------------------------------------------------------------

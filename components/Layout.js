@@ -4,11 +4,25 @@ import Header from './Header';
 
 import PageFooter from './footer/Footer';
 
+// import CookieConsent from "react-cookie-consent";
+
 const Layout = ({ children }) => {
   // Use either <div> or <React.Fragment> to contain more than one element
   return (
     <React.Fragment>
       {<Header />}
+
+      {/*
+       <CookieConsent
+        // debug={true}
+        location="bottom"
+        style={{ background: '#000', textAlign: "left" }}
+        buttonStyle={{ color: '#000', background: "#fff", fontSize: "14px" }}
+        buttonText="Ok Great!"
+        expires={365}>
+        This site uses cookies.</CookieConsent>
+         */}
+
 
       {children}
 

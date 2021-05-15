@@ -224,7 +224,6 @@ const Index = () => {
           </div>
         </div>
 
-
       </Layout>
 
     </div >

@@ -251,7 +251,7 @@ const SingleBlog = ({ blog, query }) => {
                       {blog.title}
                     </h1>
 
-                    <p className="lead mt-3 mark" style={{ fontSize: "clamp(0.80rem, 2vw, 1.25rem)" }}>
+                    <p className="lead mt-3 mark" style={{ fontSize: "clamp(0.95rem, 2vw, 1.25rem)" }}>
                       Written by {(blog.postedBy) ?
                         (
                           <Link href={`/profile/${blog.postedBy.username}`} passHref>
@@ -262,6 +262,9 @@ const SingleBlog = ({ blog, query }) => {
                         )
                       } | Published {dayjs(blog.createdAt).fromNow()}
                     </p>
+
+                    {(dayjs(blog.createdAt).fromNow() !== dayjs(blog.updatedAt).fromNow()) && <p class="text-muted" style={{}}>Last Updated {dayjs(blog.updatedAt).fromNow()}</p>}
+
 
                     <div className="pb-3">
                       {showBlogCategories(blog)}
