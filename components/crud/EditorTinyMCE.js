@@ -82,7 +82,7 @@ export default function MyEditor(props) {
       // initialValue={props.text}
 
       init={{
-
+                
         init_instance_callback: function (editor) {
 
           tinymce.activeEditor.setContent(props.text); // to load locally saved data
@@ -96,19 +96,19 @@ export default function MyEditor(props) {
 
         placeholder: 'Type here...', // available in higher 5.0+ version
 
-        // plugins: 'autoresize mediaembed help pageembed permanentpen checklist casechange autosave',
+        // plugins: 'codeformat autoresize mediaembed help pageembed permanentpen checklist casechange autosave',
         // toolbar: 'formatselect formatpainter',
-        plugins: [' lists advlist link table advtable pageembed advcode image imagetools code wordcount autolink codesample',
-          'searchreplace visualblocks fullscreen insertdatetime media   paste fullpage hr pagebreak template nonbreaking toc textpattern',
-          'charmap print preview anchor emoticons casechange ',
+        plugins: ['checklist lists advlist link table advtable pageembed advcode image imagetools wordcount autolink codesample',
+          'searchreplace visualblocks fullscreen insertdatetime media mediaembed paste fullpage hr pagebreak template nonbreaking toc textpattern',
+          'charmap print preview anchor emoticons casechange',
         ],
 
-        toolbar: 'code bold italic underline | backcolor forecolor | fontsizeselect | blockquote link | alignleft aligncenter alignright | outdent indent | bullist numlist |superscript subscript lineheight | codesample | image media | formatselect | fontselect | styleselect | casechange emoticons removeformat fullpage | hr pagebreak | undo redo ',
+        toolbar: 'code bold italic underline | backcolor forecolor | fontsizeselect | blockquote link | alignleft aligncenter alignright alignnone | outdent indent | bullist numlist checklist |superscript subscript lineheight | codesample | image media | formatselect | fontselect | styleselect | casechange emoticons removeformat fullpage | hr pagebreak | undo redo ',
 
         // End container block element when pressing enter inside an empty block
-        end_container_on_empty_block: true,
 
         br_in_pre: false,
+
         custom_undo_redo_levels: 15,
 
 
@@ -148,6 +148,8 @@ export default function MyEditor(props) {
         fontsize_formats: '8pt 10pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 36pt 48pt',
         // lineheight_formats: '1 1.1 1.2 1.3 1.4 1.5 2',
         // block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3',
+
+        end_container_on_empty_block: true,
 
 
         // Add list of custom classes you want to add to image img tags
@@ -203,6 +205,8 @@ export default function MyEditor(props) {
           cite: { block: 'cite' }
         },
 
+        
+
 
         // HTML5 formats
         style_formats: [
@@ -229,6 +233,13 @@ export default function MyEditor(props) {
           { title: 'figure', block: 'figure', wrapper: true }
         ],
 
+
+        menu: {
+          format: {
+            title: 'Format',
+            items: 'checklist | bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align lineheight | forecolor backcolor | removeformat'
+          }
+        },
 
 
         // ----------------------------------------------------
