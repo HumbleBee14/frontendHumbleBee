@@ -263,7 +263,7 @@ const SingleBlog = ({ blog, query }) => {
                       } | Published {dayjs(blog.createdAt).fromNow()}
                     </p>
 
-                    {(dayjs(blog.createdAt).fromNow() !== dayjs(blog.updatedAt).fromNow()) && <p class="text-muted" style={{}}>Last Updated {dayjs(blog.updatedAt).fromNow()}</p>}
+                    {(dayjs(blog.createdAt).fromNow() !== dayjs(blog.updatedAt).fromNow()) && <p className="text-muted">Last Updated {dayjs(blog.updatedAt).fromNow()}</p>}
 
 
                     <div className="pb-3">

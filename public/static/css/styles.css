@@ -319,8 +319,35 @@ blockquote.style6>:first-child:before {
 }
 
 /* --------------------------------------------------------------- */
+/* Code Tag Style <code> */
+
+/* Note: Default style is inbuilt */
+
+/* Code style 1 */
+code.style1 {
+  background-color: #eee;
+  border-radius: 3px;
+  font-family: courier, monospace;
+  padding: 0 3px;
+}
 
 
+/* Code style 2 */
+code.style2 {
+  background-color: #eee;
+  color: #333;;
+  border-radius: 3px;
+  font-family: courier, monospace;
+  padding: 0 3px;
+}
+
+/* Code style 3 */
+code.style3 {
+  font-size: 20px;
+  line-height: 28px;
+  background-color: lightblue;
+  color: #ffffff;
+}
 
 
 /* --------------------------------------------------------------- */
