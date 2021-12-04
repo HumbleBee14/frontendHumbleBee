@@ -259,7 +259,7 @@ blockquote.style4 {
   text-transform: uppercase;
 }
 
-blockquote.style4::before {
+blockquote.style4:before {
   color: #fff200;
   content: '“';
   font-family: 'georgia';
@@ -270,7 +270,7 @@ blockquote.style4::before {
   top: -.75em;
 }
 
-blockquote.style4::after {
+blockquote.style4:after {
   bottom: -1.2em;
   color: #fff200;
   content: '”';
@@ -317,6 +317,32 @@ blockquote.style6>:first-child:before {
   position: absolute;
   left: -1rem;
 }
+
+/* ----------------------------------------------- */
+/* Blockquote Style 7  */
+
+blockquote.style7 {
+  border-left: 2px solid #000;
+  padding: 0 1.5rem 1.5rem;
+  margin: 6rem 0 0 4.5rem;
+  position: relative;
+  display: block;
+  font-size: 1.75rem;
+  font-style: italic;
+  max-width: 45ch;
+}
+
+blockquote.style7:before, blockquote.style7:after {
+  content: '“';
+  font-size: 3.5rem;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  /* left: -4.5rem; */
+  left: -.4rem;
+  line-height: 1;
+}
+
 
 /* --------------------------------------------------------------- */
 /* Code Tag Style <code> */
