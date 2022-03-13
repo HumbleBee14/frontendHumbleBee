@@ -16,14 +16,14 @@ const head = () => (
     <title>New Blog | {APP_NAME}</title>
     <meta
       name="description"
-      content="Write a blog on HumbleBee. Create a new Blog on HumbleBee.live" />
+      content="Write a blog on grepGuru. Create a new Blog on grepguru.com" />
 
     <link rel="canonical" href={`${DOMAIN}/admin/crud`} />
 
     <meta property="og:title" content={`New Blog | ${APP_NAME}`} />
     <meta
       property="og:description"
-      content="Write a blog on HumbleBee. Create a new Blog on HumbleBee.live" />
+      content="Write a blog on grepGuru. Create a new Blog on grepguru.com" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${DOMAIN}/admin/crud`} />
     <meta property="og:site_name" content={`${APP_NAME}`} />

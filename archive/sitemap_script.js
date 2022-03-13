@@ -4,11 +4,18 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 
 //----------------------------------------------
+/*
 const fetchBlogsAPI = "https://humblebee.live/api/blogs";
 const fetchCategoriesAPI = "https://humblebee.live/api/categories";
 const fetchTagsAPI = "https://humblebee.live/api/tags";
 
 const YOUR_DOMAIN = "https://humblebee.live";
+*/
+const fetchBlogsAPI = "https://grepguru.com/api/blogs";
+const fetchCategoriesAPI = "https://grepguru.com/api/categories";
+const fetchTagsAPI = "https://grepguru.com/api/tags";
+
+const YOUR_DOMAIN = "https://grepguru.com";
 
 // Static Page routes
 const routes = ["", "/index", "/contact", "/blogs", "/signin", "/signup",];

@@ -23,7 +23,7 @@ const head = () => (
     <title>{APP_NAME}</title>
     <meta
       name="description"
-      content="Programming blogs and blogs on some random topics by a budding Software Engineer : HumbleBee" />
+      content="Programming blogs and blogs on some random topics by a budding Software Engineer : grepGuru" />
 
     <link rel="canonical" href={`${DOMAIN}`} />
 
@@ -31,7 +31,7 @@ const head = () => (
     <meta property="og:title" content={`HumblebBee Programming Blogs | ${APP_NAME}`} />
     <meta
       property="og:description"
-      content="Programming Blogs by HumbleBee" />
+      content="Programming Blogs by grepGuru" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${DOMAIN}`} />
     <meta property="og:site_name" content={`${APP_NAME}`} />

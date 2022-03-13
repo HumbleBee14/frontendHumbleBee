@@ -1,165 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-  <loc>https://humblebee.live</loc>
+  <loc>https://grepguru.com</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/index</loc>
+  <loc>https://grepguru.com/index</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/contact</loc>
+  <loc>https://grepguru.com/contact</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/blogs</loc>
+  <loc>https://grepguru.com/blogs</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/signin</loc>
+  <loc>https://grepguru.com/signin</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/signup</loc>
+  <loc>https://grepguru.com/signup</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url>
     <url>
-  <loc>https://humblebee.live/blogs/beginner's-guide-to-rnn-and-lstms</loc>
+  <loc>https://grepguru.com/blogs/beginner's-guide-to-rnn-and-lstms</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>Daily</changefreq>
   <priority>1</priority>
   </url><url>
-  <loc>https://humblebee.live/blogs/handling-cors-with-node.js</loc>
+  <loc>https://grepguru.com/blogs/handling-cors-with-node.js</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>Daily</changefreq>
   <priority>1</priority>
   </url>
     <url>
-  <loc>https://humblebee.live/categories/machine-learning</loc>
+  <loc>https://grepguru.com/categories/machine-learning</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/artificial-intelligence</loc>
+  <loc>https://grepguru.com/categories/artificial-intelligence</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/web-development</loc>
+  <loc>https://grepguru.com/categories/web-development</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/blockchain</loc>
+  <loc>https://grepguru.com/categories/blockchain</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/system-design</loc>
+  <loc>https://grepguru.com/categories/system-design</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/electronics</loc>
+  <loc>https://grepguru.com/categories/electronics</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/cryptography</loc>
+  <loc>https://grepguru.com/categories/cryptography</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/lesscategorygreater</loc>
+  <loc>https://grepguru.com/categories/lesscategorygreater</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/psychology</loc>
+  <loc>https://grepguru.com/categories/psychology</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/astronomy</loc>
+  <loc>https://grepguru.com/categories/astronomy</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/data-structures-and-algorithms</loc>
+  <loc>https://grepguru.com/categories/data-structures-and-algorithms</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/categories/science</loc>
+  <loc>https://grepguru.com/categories/science</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url>
     <url>
-  <loc>https://humblebee.live/tags/ai</loc>
+  <loc>https://grepguru.com/tags/ai</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/ml</loc>
+  <loc>https://grepguru.com/tags/ml</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/backend</loc>
+  <loc>https://grepguru.com/tags/backend</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/frontend</loc>
+  <loc>https://grepguru.com/tags/frontend</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/microcontrollers</loc>
+  <loc>https://grepguru.com/tags/microcontrollers</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/lesstaggreater</loc>
+  <loc>https://grepguru.com/tags/lesstaggreater</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/security</loc>
+  <loc>https://grepguru.com/tags/security</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/algorithms</loc>
+  <loc>https://grepguru.com/tags/algorithms</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/data-structures</loc>
+  <loc>https://grepguru.com/tags/data-structures</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/physics</loc>
+  <loc>https://grepguru.com/tags/physics</loc>
   <lastmod>2021-05-14T21:15:26.688Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/nlp</loc>
+  <loc>https://grepguru.com/tags/nlp</loc>
   <lastmod>2021-05-14T21:15:26.689Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
   </url><url>
-  <loc>https://humblebee.live/tags/computer-vision</loc>
+  <loc>https://grepguru.com/tags/computer-vision</loc>
   <lastmod>2021-05-14T21:15:26.689Z</lastmod> 
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>

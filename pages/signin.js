@@ -17,14 +17,14 @@ const head = () => (
     <title>Signin | {APP_NAME}</title>
     <meta
       name="description"
-      content="Signin on HumbleBee" />
+      content="Signin on grepGuru" />
 
     <link rel="canonical" href={`${DOMAIN}/signin`} />
 
     <meta property="og:title" content={`Signin | ${APP_NAME}`} />
     <meta
       property="og:description"
-      content="Signin on HumbleBee" />
+      content="Signin on grepGuru" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${DOMAIN}/signin`} />
     <meta property="og:site_name" content={`${APP_NAME}`} />
@@ -65,7 +65,7 @@ const Signin = ({ router }) => {
 
         <div className="container-fluid">
           <br />
-          <h2 className="text-center bold pt-5 pv-4" style={{ fontWeight: "bold" }}>Welcome Back to HumbleBee</h2>
+          <h2 className="text-center bold pt-5 pv-4" style={{ fontWeight: "bold" }}>Welcome Back to grepGuru</h2>
           <p className="text-center pt-3 pv-4"><b>Sign in</b> to continue to your account.</p>
           <br />
 

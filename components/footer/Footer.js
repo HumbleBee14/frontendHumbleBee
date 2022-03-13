@@ -78,7 +78,7 @@ const PageFooter = () => {
 
           <FooterSubHeading>
             {/* <p className="pl-5 pr-5">Join our exclusive HumbleBee group to share your blogs with, the world? Nope! only Me 🤖</p> */}
-            Would you like to become a <b>HumbleBee</b>🐝 & share the <b>nectar of knowledge</b> with everyone?
+            Would you like to become part of <b>grepGuru</b> community & share the <b>nectar of knowledge</b> with everyone?
           </FooterSubHeading>
           {/* <FooterSubText>You can unsubscribe at any time</FooterSubText> */}
           <FooterSubText> &lt; Under 👨‍💻 Development &gt; </FooterSubText>
@@ -151,10 +151,10 @@ const PageFooter = () => {
 
             <SocialLogo href="/">
               <SocialIcon />
-            HUMBLEBEE
+            GREPGURU
             </SocialLogo>
 
-            <WebsiteRights>HumbleBee © 2021</WebsiteRights>
+            <WebsiteRights>grepGuru © 2021</WebsiteRights>
 
             <SocialIcons>
 

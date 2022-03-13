@@ -1,4 +1,4 @@
-Sitemap: https://humblebee.live/sitemap.xml
+Sitemap: https://grepguru.com/sitemap.xml
 
 User-agent: *
 Allow: /*
