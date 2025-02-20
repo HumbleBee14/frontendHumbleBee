@@ -100,8 +100,8 @@ const Card = ({ blog }) => {
 
             <img
               onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")}
-              src={`${API}/blog/photo/${blog.slug}`}
-              alt={blog.title}
+              src={blog?.slug ? `${API}/blog/photo/${blog.slug}` : "https://via.placeholder.com/150"}
+              alt={blog?.title || "Blog Image"}
               className="img img-thumbnail mb-3"
               style={{ maxHeight: '150px', width: 'auto' }}
             />

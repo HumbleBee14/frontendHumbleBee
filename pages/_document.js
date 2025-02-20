@@ -1,6 +1,7 @@
 // Base template used by Nextjs for rendering every page
 
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from "styled-components";
 
 
 // import Cookies from 'js-cookie';

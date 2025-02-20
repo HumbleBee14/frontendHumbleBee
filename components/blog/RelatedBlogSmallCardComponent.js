@@ -51,8 +51,8 @@ const SmallCard = ({ blog }) => {
           <a>
             <img
               onError={(image) => image.target.setAttribute("src", `https://via.placeholder.com/150`)}
-              src={`${API}/blog/photo/${blog.slug}`}
-              alt={blog.title}
+              src={blog?.slug ? `${API}/blog/photo/${blog.slug}` : "https://via.placeholder.com/150"}
+              alt={blog?.title || "Related Blog"}
               className="img related-blog-img"
               style={{
                 height: "150px",

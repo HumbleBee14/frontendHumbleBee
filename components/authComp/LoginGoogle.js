@@ -24,7 +24,7 @@ const LoginGoogle = () => {
     loginWithGoogle(user).then(data => {
       // Error Handling
       if (data === undefined) {
-        console.log("GoogleSignin Unable to connect to backend");
+        // console.log("GoogleSignin Unable to connect to backend");
         return; //  if the backend server is down
       }
 

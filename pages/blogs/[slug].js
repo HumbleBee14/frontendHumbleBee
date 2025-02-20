@@ -229,11 +229,14 @@ const SingleBlog = ({ blog, query }) => {
                     textAlign: "center"
                   }}>
 
-                    <img onError={(image) => image.target.setAttribute("src", "/static/images/defaultImagePlaceholder.png")} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image"
-                      style={{
-                        maxWidth: "100%",
-                        height: "auto"
-                      }} />
+                  <img
+                    onError={(e) => (e.target.src = "/static/images/defaultImagePlaceholder.png")}
+                    src={blog?.slug ? `${API}/blog/photo/${blog.slug}` : "/static/images/defaultImagePlaceholder.png"}
+                    alt={blog?.title || "Blog Image"}
+                    className="img img-fluid featured-image"
+                    style={{ maxWidth: "100%", height: "auto" }}
+                  />
+
 
                   </div>
 

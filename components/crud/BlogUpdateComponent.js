@@ -582,7 +582,12 @@ const BlogUpdate = ({ router }) => {
 
           {/* // Show current Featured Image */}
           {body && (
-            <img onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ maxWidth: "100%", height: "auto" }} />
+            <img 
+              onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} 
+              src={router?.query?.slug ? `${API}/blog/photo/${router.query.slug}` : "https://via.placeholder.com/150"}
+              alt={title || "Blog Image"}
+              style={{ maxWidth: "100%", height: "auto" }} 
+            />
           )}
 
         </div>
@@ -629,7 +634,13 @@ const BlogUpdate = ({ router }) => {
             <h5>New Uploaded Image</h5>
 
             {/* // to Show Newly updated Image */}
-            {newFeaturedImage && <img onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} src={newFeaturedImageSrc} style={{ width: '100%' }} />}
+            {newFeaturedImage && (
+              <img
+                onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
+                src={newFeaturedImageSrc || "https://via.placeholder.com/150"}
+                style={{ width: "100%" }}
+              />
+            )}
 
           </div>
 

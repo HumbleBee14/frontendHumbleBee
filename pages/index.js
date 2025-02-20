@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
-import UnderMaintSvg from '../public/static/images/svgs/tructor_svg.svg';
+// import UnderMaintSvg from '../public/static/images/svgs/tructor_svg.svg';
 
 // import FetchQuote from "../components/quotesFetch";
 
@@ -184,17 +184,6 @@ const Index = () => {
 
               <div className="front">
 
-                <img src={UnderMaintSvg} style={{
-                  // overflow: 'hidden',
-                  maxWidth: '100%',
-                  height: 'auto',
-                  flex: '1',
-                  display: 'block',
-                  // width: '100%',
-                  width: 'auto',
-                  resizeMode: 'contain',
-                  margin: '0'
-                }} />
               </div>
 
             </div>

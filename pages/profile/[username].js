@@ -128,12 +128,19 @@ const UserProfile = ({ user, blogs, query }) => {
                       </div>
 
                       <div className="col-md-4">
-                        <img
-                          src={`${API}/user/photo/${user.username}`}
-                          className="img img-fluid img-thumbnail mb-3"
-                          style={{ maxHeight: '150px', maxWidth: '100%', boxShadow: "rgba(0, 0, 0, 0.56) 0px 18px 50px 3px" }}
-                          alt="User Profile Photo"
-                        />
+
+                      <img
+                        onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
+                        src={user?.username ? `${API}/user/photo/${user.username}` : "https://via.placeholder.com/150"}
+                        className="img img-fluid img-thumbnail mb-3"
+                        style={{
+                          maxHeight: "150px",
+                          maxWidth: "100%",
+                          boxShadow: "rgba(0, 0, 0, 0.56) 0px 18px 50px 3px"
+                        }}
+                        alt="User Profile Photo"
+                      />
+
 
                       </div>
 

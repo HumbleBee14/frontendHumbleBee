@@ -233,14 +233,14 @@ const ProfileUpdate = () => {
         <div className='row'>
           <div className='col-md-4'>
 
-            <img
-              // src={`${API}/user/photo/${username}`} // was creating issue When changing the 'username' in form. When username changes in the input filed, the img src tries to fetch image based on that changed username so you get no image.
-              onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")}
-              src={`${API}/user/photo/${usernameImgSrc}`}
-              className="img img-fluid img-thumbnail mb-3"
-              style={{ maxHeight: 'auto', maxWidth: '100%' }}
-              alt="User Profile Photo"
-            />
+          <img
+            onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
+            src={usernameImgSrc ? `${API}/user/photo/${usernameImgSrc}` : "https://via.placeholder.com/150"}
+            className="img img-fluid img-thumbnail mb-3"
+            style={{ maxHeight: "auto", maxWidth: "100%" }}
+            alt="User Profile Photo"
+          />
+
 
           </div>
 

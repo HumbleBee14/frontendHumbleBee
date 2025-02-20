@@ -11,7 +11,7 @@ const Search = dynamic(() => import('./SearchComponent'), { ssr: false });
 
 // import Search from './blog/SearchComponent';
 
-import { signout, isAuth } from '../actions/authAction';
+import { isAuth, signout } from "../actions/authAction";
 
 import NProgress from 'nprogress';
 import '.././node_modules/nprogress/nprogress.css';
@@ -48,7 +48,7 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false); //  toggle Button state - Menu open / closed State (on small screens)
 
-  const [authenticated, setAuthenticated] = useState(false); // User Authentication state
+  const [authenticated, setAuthenticated] = useState(null); // User Authentication state
 
   const toggle = () => { setIsOpen(!isOpen); };
 
@@ -67,10 +67,16 @@ const Header = () => {
 
 
 
+  // useEffect(() => {
+  //   if (!process.browser) return; // if not running on browser/client - i.e. running on server, return nothing, else run below code if on browser
+  //   const user = isAuth();
+  //   setAuthenticated(user);
+  // }, []);
+
   useEffect(() => {
-    if (!process.browser) return; // if not running on browser/client - i.e. running on server, return nothing, else run below code if on browser
-    const user = isAuth();
-    setAuthenticated(user);
+    if (typeof window !== "undefined") {
+      setAuthenticated(isAuth()); // Only runs on client
+    }
   }, []);
 
 
@@ -106,111 +112,40 @@ const Header = () => {
 
         {/* // ----------------- Collapsable ---------------- */}
         <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <Link href="/blogs" passHref>
+                <NavLink>Blogs</NavLink>
+              </Link>
+            </NavItem>
 
-          <Nav className="ml-auto" navbar >
+            <NavItem>
+              <Link href="/contact" passHref>
+                <NavLink>Contact</NavLink>
+              </Link>
+            </NavItem>
 
+            {/* AUTH SECTION - Render only on Client Side */}
+            {authenticated !== null && (
+              <>
+                {authenticated ? (
+                  <>
+                    <NavItem>
+                      <Link href={authenticated.role === 1 ? "/admin" : "/user"} passHref>
+                        <NavLink>{`${authenticated.name.split(" ")[0]}'s Dashboard`}</NavLink>
+                      </Link>
+                    </NavItem>
 
-
-            <React.Fragment>
-              <NavItem>
-                <Link href="/blogs" passHref>
-                  <NavLink style={{ cursor: 'pointer' }}>Blogs</NavLink>
-                </Link>
-              </NavItem>
-            </React.Fragment>
-
-
-
-            <React.Fragment>
-              <NavItem>
-                <Link href="/contact" passHref>
-                  <NavLink style={{ cursor: 'pointer' }}>Contact</NavLink>
-                </Link>
-              </NavItem>
-            </React.Fragment>
-
-
-
-            {process.browser && isAuth() && isAuth().role === 0 &&
-              (
-                <NavItem>
-                  <Link href="/user">
-                    <NavLink style={{ cursor: 'pointer' }}>{`${isAuth().name.split(" ")[0]}'s Dashboard (U)`}</NavLink>
-                  </Link>
-                </NavItem>
-              )
-            }
-
-            {process.browser && isAuth() && isAuth().role === 1 &&
-              (
-                <NavItem>
-                  <Link href="/admin">
-                    <NavLink style={{ cursor: 'pointer' }}>{`${isAuth().name.split(" ")[0]}'s Dashboard (A)`}</NavLink>
-                  </Link>
-                </NavItem>
-              )
-            }
-
-
-            {/* If not authenticated (not logged in), then only we'll see SIGNIN & SIGNUP, else not (only signout) */}
-
-            {/* //-----------------------------------------------------------
-            // option 1 (without state 'authenticated') */}
-
-            {process.browser && !isAuth() && (
-              <React.Fragment>
-
-                <NavItem>
-                  <Link href="/signin">
-                    <NavLink style={{ cursor: 'pointer' }}>Signin</NavLink>
-                  </Link>
-                </NavItem>
-
-                <NavItem>
-                  <Link href="/signup">
-                    <NavLink style={{ cursor: 'pointer' }}>Signup</NavLink>
-                  </Link>
-                </NavItem>
-
-              </React.Fragment>
-            )}
-
-
-
-            {process.browser && isAuth() &&
-              (
-                <NavItem>
-
-                  <NavLink style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))}>
-                    Signout
-                  </NavLink>
-
-                </NavItem>
-              )
-            }
-
-
-
-            {/* Note: This Function 'Router.replace' is next() call back function called inside signout() function */}
-
-            {/* Signout button will be showed only when the user is logged in.
-               We are redirecting user to SIGNIN page (login page) */}
-
-            {/* // ---------------------------------------------- */}
-
-            {/* // option 2: Using state - 'authenticated' */}
-
-            {/* {
-              authenticated ?
-
-                (
-                  <NavItem>
-                    <NavLink onClick={() => signout(() => Router.replace(`/signin`))} style={{ cursor: 'pointer' }}>
-                      Signout
+                    <NavItem>
+                      <NavLink
+                        style={{ cursor: "pointer" }}
+                        onClick={() => signout(() => router.push("/signin"))}
+                      >
+                        Signout
                       </NavLink>
-                  </NavItem>
-                ) :
-                (
+                    </NavItem>
+                  </>
+                ) : (
                   <>
                     <NavItem>
                       <Link href="/signin" passHref>
@@ -219,34 +154,24 @@ const Header = () => {
                     </NavItem>
 
                     <NavItem>
-                      <Link href={"/signup"} passHref>
+                      <Link href="/signup" passHref>
                         <NavLink>Signup</NavLink>
                       </Link>
                     </NavItem>
                   </>
-                )
-            } */}
+                )}
+              </>
+            )}
 
-
-            {/* <NavItem>
-              <a href="/user/crud/blog" className="btn btn-primary text-light">
-                Write a Blog
-              </a>
-            </NavItem> */}
-
-
-            {process.browser &&
-              (<NavItem>
-                <Link href="/user/crud/blog">
-                  <NavLink style={{ cursor: 'pointer' }} className="btn btn-primary text-light">Write a blog</NavLink>
+            {/* Write Blog Button */}
+            {/* {authenticated && ( */}
+              <NavItem>
+                <Link href="/user/crud/blog" passHref>
+                  <NavLink className="btn btn-primary text-light">Write a blog</NavLink>
                 </Link>
-              </NavItem>)
-            }
-
-
-
+              </NavItem>
+            {/* )} */}
           </Nav>
-
         </Collapse>
 
         {/* // ----------------- Collapsable ---------------- */}
