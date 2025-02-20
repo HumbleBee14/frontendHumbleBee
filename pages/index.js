@@ -203,7 +203,7 @@ const Index = () => {
                   margin: '10px',
                   textAlign: 'justify'
                 }}>
-                  Under Development <br />💨💨💨
+                  {/* Under Development <br />💨💨💨 */}
                 </h2>
 
               </div>

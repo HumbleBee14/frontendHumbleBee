@@ -322,7 +322,7 @@ const CreateBlog = ({ router }) => {
   const showCategories = () => {
 
     if (!categories.length) {
-      return <p className="alert alert-danger">ERROR FETCHING DATA</p>;
+      return <p className="alert alert-danger">No Categories found!</p>;
     }
 
     const sortedCategories = categories.slice().sort(sortByStringFunction);
@@ -342,7 +342,7 @@ const CreateBlog = ({ router }) => {
   const showTags = () => {
 
     if (!categories.length) {
-      return <p className="alert alert-danger">ERROR FETCHING DATA</p>;
+      return <p className="alert alert-danger">No Tags found!</p>;
     }
 
     const sortedTags = tags.slice().sort(sortByStringFunction);

@@ -139,7 +139,7 @@ const Header = () => {
                     <NavItem>
                       <NavLink
                         style={{ cursor: "pointer" }}
-                        onClick={() => signout(() => router.push("/signin"))}
+                        onClick={() => signout(() => Router.push("/signin"))}
                       >
                         Signout
                       </NavLink>

@@ -6,6 +6,9 @@ import { getProfile, updateProfile } from "../../actions/userAction";
 import { API, DOMAIN } from '../../config';
 
 const ProfileUpdate = () => {
+
+  const [imgError, setImgError] = useState(false);
+
   const [values, setValues] = useState({
     username: "",
     name: "",
@@ -27,21 +30,33 @@ const ProfileUpdate = () => {
   // Make request to backend and get user information (make it available in state)
 
   const init = () => {
-    getProfile(token).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setValues({
-          ...values,
-          username: data.username,
-          usernameImgSrc: data.username, // using this for user photo (for Image address/API parameter). (Don't update it with event change based on new value in form (untill it is saved), as that may cause issue with actual image address in DB, as the username is passed in the API call for fetching the photo)
-          name: data.name,
-          email: data.email,
-          about: data.about
-        });
-      }
-    });
+    getProfile(token)
+      .then((data) => {
+        if (!data) {
+          // Handle undefined data
+          setValues({ ...values, error: "Failed to fetch profile data" });
+          return;
+        }
+  
+        if (data.error) {
+          setValues({ ...values, error: data.error });
+        } else {
+          setValues({
+            ...values,
+            username: data.username || "",
+            usernameImgSrc: data.username || "", // Ensuring it's always a string
+            name: data.name || "",
+            email: data.email || "",
+            about: data.about || "",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching profile:", err);
+        setValues({ ...values, error: "An error occurred while fetching profile data." });
+      });
   };
+  
 
   // ---------------------
 
@@ -234,8 +249,8 @@ const ProfileUpdate = () => {
           <div className='col-md-4'>
 
           <img
-            onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
-            src={usernameImgSrc ? `${API}/user/photo/${usernameImgSrc}` : "https://via.placeholder.com/150"}
+            onError={() => setImgError(true)} // Set error state
+            src={imgError ? "/static/images/defaultUser.png" : usernameImgSrc ? `${API}/user/photo/${usernameImgSrc}` : "/static/images/defaultUser.png"}
             className="img img-fluid img-thumbnail mb-3"
             style={{ maxHeight: "auto", maxWidth: "100%" }}
             alt="User Profile Photo"
