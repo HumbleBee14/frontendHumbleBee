@@ -18,8 +18,6 @@ const LoginGoogle = () => {
     const tokenId = response.tokenId;
     const user = { tokenId };
 
-    console.log();
-
     // make login request to backend
     loginWithGoogle(user).then(data => {
       // Error Handling
@@ -27,6 +25,9 @@ const LoginGoogle = () => {
         // console.log("GoogleSignin Unable to connect to backend");
         return; //  if the backend server is down
       }
+
+      // Temporary DISABLE google login!
+      // return;
 
       //------------------------
       if (data.error) {

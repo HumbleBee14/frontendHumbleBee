@@ -39,6 +39,8 @@ const ForgotPassword = () => {
       else {
         setValues({ ...values, error: '', message: data.message, email: '', showForm: false });
       }
+    }).catch(err => {
+      setValues({ ...values, error: 'Something went wrong. Please try again later.' });
     });
   };
 

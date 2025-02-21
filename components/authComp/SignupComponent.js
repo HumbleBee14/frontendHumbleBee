@@ -141,7 +141,7 @@ const SignupComponent = () => {
       {showLoading()}
       {showMessage()}
 
-      <LoginGoogle />
+      {/* <LoginGoogle /> */}
 
       {/*  'signupForm()' will be displayed only when showForm is TRUE */}
       {showForm && signupForm()}
