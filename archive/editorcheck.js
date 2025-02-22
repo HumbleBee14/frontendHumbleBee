@@ -43,7 +43,7 @@ export default function MyEditor(props) {
   return (
 
     <Editor
-      apiKey="znu4o7dyg6f3h8xxvb6mpvok4jbytf2i38f16vyllqqetvsx"
+      apiKey="o4f1j2u0gdq6a8copn22ik801gm9j9sanxngz40t3ftiytwk"
       initialValue="<p>This is the initial content of the editor</p>"
 
       init={{

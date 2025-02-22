@@ -293,7 +293,7 @@ const SingleBlog = ({ blog, query }) => {
                 <section>
                   <div className="col-md-12 lead main-blog-body">
                     {/* {renderHTML(blog.body)} */}
-                    {parseHTML(blog.body)}
+                    {parseHTML(Array.isArray(blog.body) ? blog.body.join(' ') : blog.body)}
 
                   </div>
                 </section>

@@ -130,7 +130,7 @@ const UserProfile = ({ user, blogs, query }) => {
                       <div className="col-md-4">
 
                       <img
-                        onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
+                        onError={(e) => (e.target.src = "/static/images/defaultImagePlaceholder.png")}
                         src={user?.username ? `${API}/user/photo/${user.username}` : "https://via.placeholder.com/150"}
                         className="img img-fluid img-thumbnail mb-3"
                         style={{

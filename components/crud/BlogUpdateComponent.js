@@ -99,10 +99,6 @@ const BlogUpdate = ({ router }) => {
 
     // FormData() is a browser API to create new Formdata
 
-
-    // console.log("___________values___________ ", { ...values });
-    // console.log("___________FormData___________ ", { formData });
-
     initBlog(); // to make request to backend to get/load the blog i.e.page load / reload / refresh, we will run this
     initCategories(); // to get list of all Categories from backend and save in state variable for frontend to show
     initTags();  // to get list of all Tags from backend
@@ -163,61 +159,31 @@ const BlogUpdate = ({ router }) => {
   // Categories Toggle Handler
 
   const handleCategoryToggle = (c_id) => () => {
+    const updatedCategories = checkedCat.includes(c_id)
+        ? checkedCat.filter((id) => id !== c_id) // Remove if exists
+        : [...checkedCat, c_id]; // Add if not exists
 
-    // Now check the category state if this c_id - category ID is already in the state or not. Then when toggle happens then we will either push (add - CHECK) to OR pull(remove already selected - UNCHECK) from the state 
+    setCheckedCat(updatedCategories);
 
-    // Find out using indexOf Method which will return the first index (position) if Found (then we will remove it) or -1 if not found in the state (then we will add it)
-    const clickedCategory = checkedCat.indexOf(c_id);
-    const all = [...checkedCat]; //'all' will have all the checked categories values from the curent state
+    // Ensure formData is updated immediately
+    formData.set('categories', JSON.stringify(updatedCategories));
+};
 
-    // If we are adding a new Category (i.e. Checking Box or selecting new category) then we'll PUSH new one to the temp category array - all 
-
-    // On CHECKING box
-    if (clickedCategory === -1) {
-      all.push(c_id);
-    }
-
-    // On Unchecking Box 
-    else {
-      all.splice(clickedCategory, 1); // removing previosuly selected category from the checkedCategory array
-    }
-
-    console.log(all);
-
-    setCheckedCat(all);
-
-    formData.set('categories', all); // saving selected categories in Form for sending data to backend
-
-    // Moved the above formData.set to the 'editBlog' function. (was facing FormData object not instanciated error - formData.set is not function)
-  };
 
   //------------------------------------------------
   // Tags Toggle Handler
+
   const handleTagsToggle = (t_id) => () => {
-    setValues({ ...values, error: '' });
+    const updatedTags = checkedTags.includes(t_id)
+        ? checkedTags.filter((id) => id !== t_id) // Remove if exists
+        : [...checkedTags, t_id]; // Add if not exists
 
-    // return the first index (position)  (if found) or -1 (if not found- i.e. when new category is checked or selected)
-    const clickedTag = checkedTags.indexOf(t_id); // Note; this is just to check if we had already selected this new tag or it's already in the current state variable 'checkedTags'. If it's there, it'll find its positon/index and return that, else if not found it'll return -1 and then we'll add that to our formData
+    setCheckedTags(updatedTags);
 
-    const all = [...checkedTags]; // 'all' will have all the checked tags values from the curent state (if there's any already selected earlier, not current one selected now)
-
-    // On CHECKING - selecting new tag
-    if (clickedTag === -1) {
-      all.push(t_id); // Adding new Tag selected to state
-
-    }
-    // On UNCHECKING (i.e removing previously selected tag)
-    else {
-      all.splice(clickedTag, 1); // Removing the uncheked tag from checked Tags state
-    }
-    console.log(all);
-
-    setCheckedTags(all); // setting the updated CheckedTag state variable 
-
-    formData.set('tags', all); // Saving selected tags list in the formdata through which it'll send all the data to backend
-
-    // Moved the above formData.set to the 'editBlog' function. (was facing FormData object not instanciated error - formData.set is not function)
+    // Ensure formData is updated immediately
+    formData.set('tags', JSON.stringify(updatedTags));
   };
+
 
   //----------------------------------------------
 
@@ -380,60 +346,42 @@ const BlogUpdate = ({ router }) => {
   // Function to submit the edited -updated blog form & send it to backend
 
   const editBlog = (e) => {
-    setValues({ ...values, loading: true }); // Added this for change
+    e.preventDefault(); // Prevent page reload
 
-    e.preventDefault(); // to prevent refresh/reload
-    // console.log('update blog');
+    setValues({ ...values, loading: true });
 
-    // let formData = new FormData(); // instanciate the FormData
+    // Convert categories & tags to JSON string
+    formData.set("categories", JSON.stringify(checkedCat));
+    formData.set("tags", JSON.stringify(checkedTags));
+    formData.set("body", body);
 
-    // formData.set("title", values.title);
-    // formData.set("body", body);
-    // formData.set("categories", checkedCat);
-    // formData.set("tags", checkedTags);
+    console.log("Updated formData before sending:", Object.fromEntries(formData.entries())); // Debugging
 
+    // Sending updated Blog data to the backend
+    updateBlog(formData, token, router.query.slug).then((data) => {
+        if (data.error) {
+            setValues({ ...values, error: data.error, loading: false });
+        } else {
+            setValues({
+                ...values,
+                loading: false,
+                title: "",
+                error: "",
+                success: `Blog titled "${data.title}" is successfully updated`,
+            });
 
-    // console.log('Ready to Submit Blog');
-    // console.log("___________ About to Publish FormData___________ ", { formData });
+            console.log(`Blog titled "${data.title}" is successfully updated`);
 
-    // -------------------------
-    // sending the formData which has Updated Blog Content to Backend
-    updateBlog(formData, token, router.query.slug).then(data => {
-      if (data.error) {
-        setValues({ ...values, error: data.error, loading: false });
-      }
-      else {
-        // On Successful Submission
-        setValues({ ...values, loading: false, title: '', error: '', success: `Blog titled "${data.title}" is successfully updated` }); // successfully updated 
-
-        console.log(`Blog titled "${data.title}" is successfully updated`);
-
-        // redirect to ADMIN Blog Page after submit
-        if (isAuth() && isAuth().role === 1) {
-          // Router.replace(`/admin/crud/${router.query.slug}`);
-
-          // setTimeout(function () {
-          //   Router.replace(`/blogs/${router.query.slug}`);
-          // }, 6000);
-
-          Router.replace(`/blogs/${router.query.slug}`); // Redirecting to the updated Blog on successful submission
-
-          // Router.replace('/admin');  // Redirect to Admin Page
+            // Redirect based on user role
+            if (isAuth() && isAuth().role === 1) {
+                Router.replace(`/blogs/${router.query.slug}`); // Redirect to updated blog
+            } else {
+                Router.replace('/user'); // Redirect to user dashboard
+            }
         }
-        else {
-          // Redirect to User blog page (Multi user Blogging Page :D )
-          if (isAuth() && isAuth().role === 0) {
-            // Router.replace(`/user/crud/${router.query.slug}`);
-
-            // Router.replace(`/blogs/${router.query.slug}`);
-            // Redirect to user Dashboard
-            Router.replace('/user');
-          }
-        }
-
-      }
     });
   };
+
 
 
   /*
@@ -582,9 +530,9 @@ const BlogUpdate = ({ router }) => {
 
           {/* // Show current Featured Image */}
           {body && (
-            <img 
-              onError={(image) => image.target.setAttribute("src", "https://via.placeholder.com/150")} 
-              src={router?.query?.slug ? `${API}/blog/photo/${router.query.slug}` : "https://via.placeholder.com/150"}
+            <img
+              onError={(e) => (e.target.src = "/static/images/defaultImagePlaceholder.png")}
+              src={router?.query?.slug ? `${API}/blog/photo/${router.query.slug}` : "/static/images/defaultImagePlaceholder.png"}
               alt={title || "Blog Image"}
               style={{ maxWidth: "100%", height: "auto" }} 
             />
@@ -636,7 +584,7 @@ const BlogUpdate = ({ router }) => {
             {/* // to Show Newly updated Image */}
             {newFeaturedImage && (
               <img
-                onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
+                onError={(e) => (e.target.src = "/static/images/defaultImagePlaceholder.png")}
                 src={newFeaturedImageSrc || "https://via.placeholder.com/150"}
                 style={{ width: "100%" }}
               />

@@ -50,8 +50,8 @@ const SmallCard = ({ blog }) => {
         <Link href={`/blogs/${blog.slug}`} passHref>
           <a>
             <img
-              onError={(image) => image.target.setAttribute("src", `https://via.placeholder.com/150`)}
-              src={blog?.slug ? `${API}/blog/photo/${blog.slug}` : "https://via.placeholder.com/150"}
+              onError={(image) => image.target.setAttribute("src", `/static/images/defaultImagePlaceholder.png`)}
+              src={blog?.slug ? `${API}/blog/photo/${blog.slug}` : "/static/images/defaultImagePlaceholder.png"}
               alt={blog?.title || "Related Blog"}
               className="img related-blog-img"
               style={{

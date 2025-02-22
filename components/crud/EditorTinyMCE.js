@@ -84,10 +84,21 @@ export default function MyEditor(props) {
       init={{
                 
         init_instance_callback: function (editor) {
-
-          tinymce.activeEditor.setContent(props.text); // to load locally saved data
-
-          console.log('Editor: ' + editor.id + ' is now initialized.');
+          let content = props.text;
+      
+          // If `props.text` is an array, join it to a string
+          if (Array.isArray(content)) {
+              content = content.join(" ");  // Convert array to space-separated string
+          }
+      
+          // Ensure it's a string before setting content
+          if (typeof content === "string") {
+              tinymce.activeEditor.setContent(content);
+          } else {
+              console.error("TinyMCE: Expected string but got", typeof content, content);
+          }
+      
+          // console.log('Editor initialized with:', content);
         },
         // content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
 
@@ -99,7 +110,7 @@ export default function MyEditor(props) {
         // plugins: 'codeformat autoresize mediaembed help pageembed permanentpen checklist casechange autosave',
         // toolbar: 'formatselect formatpainter',
         plugins: ['checklist lists advlist link table advtable pageembed advcode image imagetools wordcount autolink codesample',
-          'searchreplace visualblocks fullscreen insertdatetime media mediaembed paste fullpage hr pagebreak template nonbreaking toc textpattern',
+          'searchreplace visualblocks fullscreen insertdatetime media mediaembed paste hr pagebreak template nonbreaking toc textpattern',
           'charmap print preview anchor emoticons casechange',
         ],
 
@@ -245,8 +256,8 @@ export default function MyEditor(props) {
         // ----------------------------------------------------
 
         image_list: [
-          { title: 'Placeholder Image 150', value: 'https://via.placeholder.com/150' },
-          { title: 'Placeholder Image 300', value: 'https://via.placeholder.com/300' }
+          { title: 'Placeholder Image 150', value: '/static/images/defaultImagePlaceholder.png' },
+          { title: 'Placeholder Image 300', value: '/static/images/defaultImagePlaceholder.png' }
         ],
 
 
@@ -368,7 +379,7 @@ export default function MyEditor(props) {
         imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
 
         // ---------------------------------------------------------------
-        file_browser_callback_types: 'file image media',
+        // file_browser_callback_types: 'file image media', // Deprecated
 
         file_picker_types: 'file image media',
 

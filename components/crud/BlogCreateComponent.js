@@ -558,39 +558,7 @@ and used only in the browser of your NextJS application.
   );
 };
 
-//---------------------------------------------------------------
-/*  $$$$$$$$$$$$_____ MOVING THE BELOW RICH TEXT MODULE to different file ____$$$$$$$$$$$$$$$
-// To make Rich Text editor has more advanced options
-CreateBlog.modules = {
-          toolbar: [
-    [{ header: '1' }, { header: '2' }, { header: [3, 4, 5, 6] }, { font: [] }],
-    [{ size: [] }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    ['link', 'image', 'video'],
-    ['clean'],
-    ['code-block']
-  ]
-};
- 
-CreateBlog.formats = [
-  'header',
-  'font',
-  'size',
-  'bold',
-  'italic',
-  'underline',
-  'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'link',
-  'image',
-  'video',
-  'code-block'
-];
-//-----------------------------------
-*/
+
 //=================================================
 export default withRouter(CreateBlog); // Note that this is the defaut Export, so you can import it with any name without named import { }.
 
