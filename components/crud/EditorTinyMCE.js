@@ -74,7 +74,7 @@ export default function MyEditor(props) {
     // <>
 
     <Editor
-      apiKey="znu4o7dyg6f3h8xxvb6mpvok4jbytf2i38f16vyllqqetvsx"
+      apiKey="o4f1j2u0gdq6a8copn22ik801gm9j9sanxngz40t3ftiytwk"
 
       // onInit={(evt, editor) => editorRef.current = editor}
 
