@@ -63,17 +63,9 @@ const AdminIndex = () => {
 
                   <li className="list-group-item">
                     {/* <Link href="/admin/crud/category-tag" passHref> */}
-                    <a href="/admin/crud/category-tag">Create Category</a>
+                    <a href="/admin/crud/category-tag">Create Category & Tags</a>
                     {/* // Forcing Page Reload/Refresh on clicking Create Category (by using <a> tag and Not using <Link>) above so that all the scripts & css gets properly loaded (for text editor-quill) */}
                   </li>
-
-
-                  <li className="list-group-item">
-                    <Link href="/admin/crud/category-tag" passHref>
-                      <a>Create Tag</a>
-                    </Link>
-                  </li>
-
 
                   <li className="list-group-item">
                     <Link href="/admin/crud/blog" passHref>

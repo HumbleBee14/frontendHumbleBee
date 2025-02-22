@@ -23,7 +23,7 @@ const head = () => (
     <title>{APP_NAME}</title>
     <meta
       name="description"
-      content="Programming blogs and blogs on some random topics by a budding Software Engineer : grepGuru" />
+      content="Programming blogs and blogs on some random topics by a budding Software Engineers" />
 
     <link rel="canonical" href={`${DOMAIN}`} />
 
@@ -31,7 +31,7 @@ const head = () => (
     <meta property="og:title" content={`HumblebBee Programming Blogs | ${APP_NAME}`} />
     <meta
       property="og:description"
-      content="Programming Blogs by grepGuru" />
+      content="Programming Blogs by Dinesh" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${DOMAIN}`} />
     <meta property="og:site_name" content={`${APP_NAME}`} />
@@ -79,7 +79,7 @@ const Index = () => {
                   className="display-4 font-weight-bold pl-20 pr-20 ">
                   {/* <small className="text-muted">- - - - - - - - - - - - -</small> */}
                   {/* <br /> */}
-                   PROGRAMMING BLOGS <p className="text-muted">;)</p>
+                   Tech Blogs <p className="text-muted"></p>
                 </h1>
               </div>
 
@@ -100,74 +100,65 @@ const Index = () => {
           <div className="container-fluid">
             <div className="row">
 
-              <div className="col-md-4">
+              <div className="col-lg-3 col-md-6 col-sm-12">
                 <div className="flip flip-horizontal">
-                  <div
-                    className="front"
-                    style={{
-                      backgroundImage: 'url(' + '/static/images/pexels-photo-min.jpg' + ')'
-                    }}>
-
+                  <div className="front" style={{ backgroundImage: 'url(/static/images/pexels-photo-min.jpg)' }}>
                     <h2 className="text-shadow text-center h1">Machine Learning</h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/machine-learning">
-                      <a>
-                        <h3 className="h1">Machine Learning</h3>
-                      </a>
+                      <a><h3 className="h1">Machine Learning</h3></a>
                     </Link>
-
-                    <p className="lead">Hot dog or Not hot dog?<br />I don't know, even I'm training my Model👨‍💻<br />Nope, It's not bunch of if-else (-_-)</p>
+                    <p className="lead">Hot dog or Not hot dog? I don't know, even I'm training my Model👨‍💻</p>
                   </div>
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-lg-3 col-md-6 col-sm-12">
                 <div className="flip flip-horizontal">
-                  <div
-                    className="front"
-                    style={{
-                      // backgroundImage:'url(' +'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg' +')'}}>
-                      backgroundImage: 'url(' + '/static/images/pexels-antonio-batinic-min.jpg' + ')'
-                    }}>
-
-                    <h2 className="text-shadow text-center h1">Web Development</h2>
+                  <div className="front" style={{ backgroundImage: 'url(/static/images/pexels-antonio-batinic-min.jpg)' }}>
+                    <h2 className="text-shadow text-center h1">Software Development</h2>
                   </div>
-
                   <div className="back text-center">
-                    <Link href="/categories/web-development">
-                      <a>
-                        <h3 className="h1">Web Development</h3>
-                      </a>
+                    <Link href="/categories/Software">
+                      <a><h3 className="h1">Software Development</h3></a>
                     </Link>
-                    <p className="lead">
-                      Do you like building, creating, and Crashing things?<br />Are you a JavaScript Ninjas?🐱‍👤<br />
-                    </p>
+                    <p className="lead">Do you like Building, Creating, and Crashing things? Are you a Coding Ninja?🐱‍👤</p>
                   </div>
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-lg-3 col-md-6 col-sm-12">
                 <div className="flip flip-horizontal">
-                  <div
-                    className="front"
-                    style={{ backgroundImage: 'url(' + '/static/images/pexels-pixabay-min.jpg' + ')' }}>
-
+                  <div className="front" style={{ backgroundImage: 'url(/static/images/pexels-pixabay-min.jpg)' }}>
                     <h2 className="text-shadow text-center h1">Electronics</h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/electronics">
-                      <a>
-                        <h3 className="h1">Electronics</h3>
-                      </a>
+                      <a><h3 className="h1">Electronics</h3></a>
                     </Link>
-                    <p className="lead">It all started with a Shock ⚡<br />To Whom? Obviously to me! 😵<br /> That's how my love story started, which made me realised that don't be a resistance, be a good conductor.<br />Anyway, What's your curent state?
-                  </p>
+                    <p className="lead">It all started with a Shock ⚡ What's your current state (+) or (-)?</p>
                   </div>
                 </div>
               </div>
+
+              <div className="col-lg-3 col-md-6 col-sm-12">
+                <div className="flip flip-horizontal">
+                  <div className="front" style={{ backgroundImage: 'url(/static/images/blockchain-bg.png)' }}>
+                    <h2 className="text-shadow text-center h1">Blockchain</h2>
+                  </div>
+                  <div className="back text-center">
+                    <Link href="/categories/blockchain">
+                      <a><h3 className="h1">Blockchain</h3></a>
+                    </Link>
+                    <p className="lead">Decentralization, Cryptos, Smart Contracts - The future is here! 🔗</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
+
 
         </article>
 
