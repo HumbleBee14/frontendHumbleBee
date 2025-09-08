@@ -8,7 +8,7 @@ import { signup } from '../../../../actions/authAction';
 
 // To decode the jwt TOKEN(to get new user data(name, email, password) from the token url);
 import jwt from 'jsonwebtoken';
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
+// import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 
 
 // ===========================================================
