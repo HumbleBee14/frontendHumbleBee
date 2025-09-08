@@ -153,14 +153,14 @@ const SignupComponent = () => {
       <div className="row">
 
         <div className="pl-2 pt-2">
-          <Link href="/signin">
-            <a className="btn btn-outline-primary btn-sml">Already have account?</a>
+          <Link href="/signin" className="btn btn-outline-primary btn-sml">
+            Already have account?
           </Link>
         </div>
 
         <div className="pl-2 pt-2">
-          <Link href="/auth/password/forgot">
-            <a className="btn btn-outline-secondary btn-sml">Forgot Password?</a>
+          <Link href="/auth/password/forgot" className="btn btn-outline-secondary btn-sml">
+            Forgot Password?
           </Link>
         </div>
 

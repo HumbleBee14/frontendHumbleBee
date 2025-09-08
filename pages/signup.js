@@ -53,7 +53,7 @@ const Signup = () => {
           <h2 className="text-center pt-5 pv-4" style={{ fontWeight: "bold" }}>Signup</h2>
           <p className="text-center pt-4 pv-4">Let's begin your onboarding process 👩‍🚀</p>
           <br />
-          {/* <Link href="/" passHref><a>Home</a></Link> */}
+          {/* <Link href="/">Home</Link> */}
           <div className="row">
             <div className="col-md-6 offset-md-3">
               <SignupComponent />

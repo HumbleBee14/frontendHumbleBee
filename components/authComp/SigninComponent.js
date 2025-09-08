@@ -167,14 +167,14 @@ const SigninComponent = () => {
       <div className="row">
 
         <div className="pl-3 pt-2">
-          <Link href="/signup">
-            <a className="btn btn-outline-dark btn-sml">Create new account</a>
+          <Link href="/signup" className="btn btn-outline-dark btn-sml">
+            Create new account
           </Link>
         </div>
 
         <div className="pl-3 pt-2">
-          <Link href="/auth/password/forgot">
-            <a className="btn btn-outline-danger btn-sml">Forgot Password?</a>
+          <Link href="/auth/password/forgot" className="btn btn-outline-danger btn-sml">
+            Forgot Password?
           </Link>
         </div>
 

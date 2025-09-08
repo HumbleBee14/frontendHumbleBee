@@ -214,6 +214,5 @@ export default Index;
 // This LINK just changes the Component instead of refreshing/reloading the page
 
 <Link href="/signup" passHref>
-<Link href="/signup" passHref legacyBehavior>
-  <Link href="/signup">Signup</Link>
+<Link href="/signup">Signup</Link>
 */
