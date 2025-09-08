@@ -22,7 +22,7 @@ const Tag = ({ tag, blogs, query }) => { // 'tag' & 'blog' is passed as PROP fro
 
     <Head>
 
-      <title>{tag.name} | {APP_NAME}</title>
+  <title>{`${tag.name} | ${APP_NAME}`}</title>
       <meta name="description" content={`Best Programming tutorials on ${tag.name}`} />
 
       <link rel="canonical" href={`${DOMAIN}/tags/${query.slug}`} />

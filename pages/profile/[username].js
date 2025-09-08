@@ -27,7 +27,7 @@ const UserProfile = ({ user, blogs, query }) => {
 
     <Head>
 
-      <title>{user.name} - {user.username} | {APP_NAME}</title>
+  <title>{`${user.name} - ${user.username} | ${APP_NAME}`}</title>
       <meta
         name="description"
         content={`Blogs by ${user.name} | ${user.username}`} />

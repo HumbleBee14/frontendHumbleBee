@@ -72,29 +72,21 @@ const UserIndex = () => {
 
 
                   <li className="list-group-item">
-                    <Link href="/user/crud/blog" passHref>
-                      <a>Create New Blog</a>
-                    </Link>
+                    <Link href="/user/crud/blog">Create New Blog</Link>
                   </li>
 
 
                   <li className="list-group-item">
-                    <Link href="/user/crud/blogs" passHref>
-                      <a>Update/Delete Blog</a>
-                    </Link>
+                    <Link href="/user/crud/blogs">Update/Delete Blog</Link>
                   </li>
 
                   <li className="list-group-item">
-                    <Link href="/user/update" passHref>
-                      <a>Update Profile</a>
-                    </Link>
+                    <Link href="/user/update">Update Profile</Link>
                   </li>
 
 
                   <li className="list-group-item">
-                    <Link href={`/`} passHref>
-                      <a>Your Public Profile</a >
-                    </Link>
+                    <Link href={`/`}>Your Public Profile</Link>
                   </li>
 
 

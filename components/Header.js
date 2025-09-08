@@ -94,13 +94,12 @@ const Header = () => {
       <Navbar color="dark" dark expand="md" className="header-sticky">
 
         <Link href="/" passHref>
-          <div>
-            <NavbarBrand
-              className="font-weight-bold"
-              style={{ cursor: 'pointer' }}>
-              {APP_NAME}
-            </NavbarBrand>
-          </div>
+          <NavbarBrand
+            tag="span"
+            className="font-weight-bold"
+            style={{ cursor: 'pointer' }}>
+            {APP_NAME}
+          </NavbarBrand>
         </Link>
         {/* Website Logo / Website Name */}
         {/* <NavLink className="font-weight-bold" style={{ cursor: 'pointer' }}>{APP_NAME}</NavLink> */}
@@ -114,15 +113,11 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link href="/blogs" passHref>
-                <NavLink>Blogs</NavLink>
-              </Link>
+              <Link href="/blogs" passHref><NavLink tag="span">Blogs</NavLink></Link>
             </NavItem>
 
             <NavItem>
-              <Link href="/contact" passHref>
-                <NavLink>Contact</NavLink>
-              </Link>
+              <Link href="/contact" passHref><NavLink tag="span">Contact</NavLink></Link>
             </NavItem>
 
             {/* AUTH SECTION - Render only on Client Side */}
@@ -131,9 +126,7 @@ const Header = () => {
                 {authenticated ? (
                   <>
                     <NavItem>
-                      <Link href={authenticated.role === 1 ? "/admin" : "/user"} passHref>
-                        <NavLink>{`${authenticated.name.split(" ")[0]}'s Dashboard`}</NavLink>
-                      </Link>
+                      <Link href={authenticated.role === 1 ? "/admin" : "/user"} passHref><NavLink tag="span">{`${authenticated.name.split(" ")[0]}'s Dashboard`}</NavLink></Link>
                     </NavItem>
 
                     <NavItem>
@@ -148,15 +141,11 @@ const Header = () => {
                 ) : (
                   <>
                     <NavItem>
-                      <Link href="/signin" passHref>
-                        <NavLink>Signin</NavLink>
-                      </Link>
+                      <Link href="/signin" passHref><NavLink tag="span">Signin</NavLink></Link>
                     </NavItem>
 
                     <NavItem>
-                      <Link href="/signup" passHref>
-                        <NavLink>Signup</NavLink>
-                      </Link>
+                      <Link href="/signup" passHref><NavLink tag="span">Signup</NavLink></Link>
                     </NavItem>
                   </>
                 )}
@@ -166,9 +155,7 @@ const Header = () => {
             {/* Write Blog Button */}
             {/* {authenticated && ( */}
               <NavItem>
-                <Link href="/user/crud/blog" passHref>
-                  <NavLink className="btn btn-primary text-light">Write a blog</NavLink>
-                </Link>
+                <Link href="/user/crud/blog" passHref><NavLink tag="span" className="btn btn-primary text-light">Write a blog</NavLink></Link>
               </NavItem>
             {/* )} */}
           </Nav>
