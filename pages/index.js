@@ -20,7 +20,7 @@ const head = () => (
 
   <Head>
 
-    <title>{APP_NAME}</title>
+  <title>{String(APP_NAME)}</title>
     <meta
       name="description"
       content="Programming blogs and blogs on some random topics by a budding Software Engineers" />
@@ -106,9 +106,7 @@ const Index = () => {
                     <h2 className="text-shadow text-center h1">Machine Learning</h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/machine-learning">
-                      <a><h3 className="h1">Machine Learning</h3></a>
-                    </Link>
+                    <Link href="/categories/machine-learning"><h3 className="h1">Machine Learning</h3></Link>
                     <p className="lead">Hot dog or Not hot dog? I don't know, even I'm training my Model👨‍💻</p>
                   </div>
                 </div>
@@ -120,9 +118,7 @@ const Index = () => {
                     <h2 className="text-shadow text-center h1">Software Development</h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/Software">
-                      <a><h3 className="h1">Software Development</h3></a>
-                    </Link>
+                    <Link href="/categories/Software"><h3 className="h1">Software Development</h3></Link>
                     <p className="lead">Do you like Building, Creating, and Crashing things? Are you a Coding Ninja?🐱‍👤</p>
                   </div>
                 </div>
@@ -134,9 +130,7 @@ const Index = () => {
                     <h2 className="text-shadow text-center h1">Electronics</h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/electronics">
-                      <a><h3 className="h1">Electronics</h3></a>
-                    </Link>
+                    <Link href="/categories/electronics"><h3 className="h1">Electronics</h3></Link>
                     <p className="lead">It all started with a Shock ⚡ What's your current state (+) or (-)?</p>
                   </div>
                 </div>
@@ -148,9 +142,7 @@ const Index = () => {
                     <h2 className="text-shadow text-center h1">Blockchain</h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/blockchain">
-                      <a><h3 className="h1">Blockchain</h3></a>
-                    </Link>
+                    <Link href="/categories/blockchain"><h3 className="h1">Blockchain</h3></Link>
                     <p className="lead">Decentralization, Cryptos, Smart Contracts - The future is here! 🔗</p>
                   </div>
                 </div>
@@ -222,6 +214,5 @@ export default Index;
 // This LINK just changes the Component instead of refreshing/reloading the page
 
 <Link href="/signup" passHref>
-  <a>Signup</a>
-</Link>
+<Link href="/signup">Signup</Link>
 */

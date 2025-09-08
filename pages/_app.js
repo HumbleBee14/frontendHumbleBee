@@ -69,34 +69,11 @@ const App = ({ Component, pageProps }) => {
   // ------------------------------
   return (
     <>
-
       <Head>
-
-        {/* <link rel="icon" href="/public/images/logo/favicon.png" type="image/png" sizes="16x16" /> */}
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" /> */}
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta> */}
-
-        {/* <title>{APP_NAME}</title> */}
-
-        {/* BootStrap css */}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
-
-        {/* nProgress Animation CSS file */}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
-
-        {/* Custom CSS Stylesheet */}
-        <link rel="stylesheet" href="/static/css/styles.css" />
-
-
       </Head>
-
       <Component {...pageProps} />
-
       {/* <GlobalStyle /> */}
-
     </>
   );
 };

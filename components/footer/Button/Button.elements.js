@@ -7,7 +7,7 @@ export const Button = styled.button`
   padding: ___CSS_1___;
   // color: #fff;
   color: #925;
-  font-size: ___CSS_2___;
+  font-size: ${props => props.$fontBig ? '20px' : '16px'};
   outline: none;
   border: none;
   cursor: pointer;

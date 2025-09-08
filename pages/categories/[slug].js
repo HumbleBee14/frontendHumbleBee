@@ -24,7 +24,7 @@ const Category = ({ category, blogs, query }) => { // 'category' & 'blog' is pas
 
     <Head>
 
-      <title>{category.name} | {APP_NAME}</title>
+  <title>{`${category.name} | ${APP_NAME}`}</title>
       <meta name="description" content={`Best Programming tutorials on ${category.name}`} />
 
       <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />

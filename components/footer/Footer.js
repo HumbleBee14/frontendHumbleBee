@@ -84,8 +84,8 @@ const PageFooter = () => {
           <FooterSubText> &lt; Under 👨‍💻 Development &gt; </FooterSubText>
           <Form>
             <FormInput name="email" type="email" placeholder="Your Email" />
-            {/* <Button fontBig>Subscribe</Button> */}
-            <Button fontBig>Join</Button>
+            {/* <Button $fontBig>Subscribe</Button> */}
+            <Button $fontBig>Join</Button>
           </Form>
 
         </FooterSubscription>

@@ -176,9 +176,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 
     // -----------------------
     return categories.map((c, i) => (
-      <Link href={`/categories/${c.slug}`} key={i} passHref>
-        <a className="btn btn-primary mr-1 ml-1 mt-2" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{c.name}</a>
-      </Link >
+  <Link href={`/categories/${c.slug}`} key={i} className="btn btn-primary mr-1 ml-1 mt-2" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{c.name}</Link>
     ));
   };
 
@@ -206,9 +204,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, rou
 
     // -----------------------
     return tags.map((t, i) => (
-      <Link href={`/tags/${t.slug}`} key={i} passHref>
-        <a className="btn btn-outline-primary mr-1 ml-1 mt-2" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{t.name}</a>
-      </Link>
+  <Link href={`/tags/${t.slug}`} key={i} className="btn btn-outline-primary mr-1 ml-1 mt-2" style={{ fontSize: "clamp(12px, 1.5vw, 15px)" }}>{t.name}</Link>
     ));
   };
 

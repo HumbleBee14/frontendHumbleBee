@@ -96,7 +96,7 @@ const SingleBlog = ({ blog, query }) => {
 
     <Head>
 
-      <title>{blog.title} | {APP_NAME}</title>
+  <title>{`${blog.title} | ${APP_NAME}`}</title>
       <meta
         name="description"
         content={blog.mdesc} />
@@ -124,11 +124,7 @@ const SingleBlog = ({ blog, query }) => {
   // Show Categories associated with the current Blog
   const showBlogCategories = blog => (
     blog.categories.map((c, i) => (
-
-      <Link key={i} href={`/categories/${c.slug}`} passHref>
-        <a className="btn btn-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(10px, 1.2vw, 15px)" }}> {c.name} </a>
-      </Link>
-
+      <Link key={i} href={`/categories/${c.slug}`} className="btn btn-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(10px, 1.2vw, 15px)" }}> {c.name} </Link>
     ))
   );
 
@@ -136,10 +132,7 @@ const SingleBlog = ({ blog, query }) => {
   const showBlogTags = blog => {
     return (
       blog.tags.map((t, i) => (
-
-        <Link key={i} href={`/tags/${t.slug}`} passHref>
-          <a className="btn btn-outline-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(10px, 1.2vw, 15px)" }}> {t.name} </a>
-        </Link>
+        <Link key={i} href={`/tags/${t.slug}`} className="btn btn-outline-primary mr-1 ml-1 mt-3" style={{ fontSize: "clamp(10px, 1.2vw, 15px)" }}> {t.name} </Link>
       ))
     );
   };
