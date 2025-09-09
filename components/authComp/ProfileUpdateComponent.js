@@ -20,7 +20,7 @@ const ProfileUpdate = () => {
     loading: false,
     photo: "",
     usernameImgSrc: "", // username_for_photo
-    userData: process.browser && new FormData() // used a check if we are in client/browser mode. Because Next.js runs in both server and browser mode.
+  userData: typeof window !== 'undefined' && new FormData() // used a check if we are in client/browser mode. Because Next.js runs in both server and browser mode.
   });
 
   const token = getCookie('token');
@@ -62,7 +62,7 @@ const ProfileUpdate = () => {
 
   useEffect(() => {
     init(); // To  get user information from backend and make it available in state variable for frontend to use
-    setValues({ ...values, userData: new FormData() }); // FormData is web API
+    if (typeof window !== 'undefined') setValues({ ...values, userData: new FormData() }); // FormData is web API
   }, []);
 
   // -------------------------------------

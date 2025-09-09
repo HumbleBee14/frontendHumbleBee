@@ -98,15 +98,33 @@ const Category = ({ category, blogs, query }) => { // 'category' & 'blog' is pas
 */
 // Note: getInitalProps runs on Server only on the first request (good for SEO web crwalers), and thereafter it runs on client side 
 
-Category.getInitialProps = ({ query }) => {  // grabbing router query using {query} on server side
-  return singleCategory(query.slug).then(data => {
-    if (data.error) {
-      console.log(data.error);
-    } else {
-      // return { category: data };
-      return { category: data.category, blogs: data.blogs, query };  // Note: returning 'query' to use for HEAD section to determine/grab domain name, slug and etc.
+Category.getInitialProps = async ({ query }) => {  // grabbing router query using {query} on server side
+  try {
+    const data = await singleCategory(query.slug);
+
+    // If backend is down or the response is undefined, return safe defaults
+    if (!data || data.error) {
+      // log for debugging on server
+      if (data && data.error) console.error('singleCategory error:', data.error);
+      else console.error('singleCategory returned no data for slug:', query.slug);
+
+      return {
+        category: { name: query.slug || 'Category' },
+        blogs: [],
+        query,
+      };
     }
-  });
+
+    return { category: data.category, blogs: data.blogs, query };
+  } catch (err) {
+    // network/server error: return safe defaults so page renders gracefully
+    console.error('singleCategory fetch failed:', err && err.message ? err.message : err);
+    return {
+      category: { name: query.slug || 'Category' },
+      blogs: [],
+      query,
+    };
+  }
 };
 
 

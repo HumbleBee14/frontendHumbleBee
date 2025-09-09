@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import Router from 'next/router';
 
-import cookie, { remove } from 'js-cookie';
+import Cookies from 'js-cookie';
 
 
 
@@ -118,8 +118,8 @@ export const signout = (next) => {
 // Setting Cookie
 export const setCookie = (key, value) => {
   // Checking if Process is BROWSER (client side)- bcoz Nextjs runs both on client side & server side
-  if (process.browser) {
-    cookie.set(key, value, {
+  if (typeof window !== 'undefined') {
+    Cookies.set(key, value, {
       expires: 1
     });
   }
@@ -127,8 +127,8 @@ export const setCookie = (key, value) => {
 
 // Removing Cookie
 export const removeCookie = (key) => {
-  if (process.browser) {
-    cookie.remove(key, {
+  if (typeof window !== 'undefined') {
+    Cookies.remove(key, {
       expires: 1
     });
   }
@@ -137,8 +137,8 @@ export const removeCookie = (key) => {
 // -------- get cookie -----------
 // ( get that cookie so that we can validate & authenticate the USER )
 export const getCookie = (key, value) => {
-  if (process.browser) {
-    return cookie.get(key);
+  if (typeof window !== 'undefined') {
+    return Cookies.get(key);
   }
 };
 
@@ -146,14 +146,14 @@ export const getCookie = (key, value) => {
 // ( functions that'll allow us to get the information from the local storage )
 
 export const setLocalStorage = (key, value) => {
-  if (process.browser) {
+  if (typeof window !== 'undefined') {
     localStorage.setItem(key, JSON.stringify(value));
   }
 };
 
 // remove local Storage
 export const removeLocalStorage = (key) => {
-  if (process.browser) {
+  if (typeof window !== 'undefined') {
     localStorage.removeItem(key);
   }
 };
@@ -171,7 +171,7 @@ export const authenticate = (data, next) => {
 
 //-------this will give us Currently logged in USER's info that is stored in localstorage if it exists -- authenticated user's info from localstorage so that we can use that info anywhere in app ------
 export const isAuth = () => {
-  if (process.browser) {
+  if (typeof window !== 'undefined') {
     const cookieChecked = getCookie('token');
 
     if (cookieChecked) {
@@ -192,7 +192,7 @@ export const updateUser = (user, next) => { // next => callback function
   // 2) Clear the state in Update Component
 
   // Check if you are at the client side (bcoz Nextjs runs on both client & server side)
-  if (process.browser) {
+  if (typeof window !== 'undefined') {
     if (localStorage.getItem('user')) {
       let auth = JSON.parse(localStorage.getItem('user')); // Old user info
       auth = user; // now Updated info added in auth variable (from 'user' parameter)
