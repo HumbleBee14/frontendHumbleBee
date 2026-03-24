@@ -1,352 +1,119 @@
-# frontendHumbleBee
+# Multi-User Blogging Platform - Frontend
 
-Frontend code for Blogging website (nextjs-mongodb)
+Next.js frontend for a multi-user blogging platform with SSR, SEO optimization, Google OAuth, and a rich text editor.
 
-// ----------------------------------------------------
+## Tech Stack
 
-Setup CKEDITOR Rich Text Editor
+- **Framework:** Next.js 15 (React 18)
+- **UI:** Ant Design, Reactstrap (Bootstrap), Styled Components
+- **Rich Text Editor:** TinyMCE
+- **Auth:** JWT + Google OAuth
+- **Comments:** Disqus
+- **Analytics:** Google Analytics (gtag.js)
+- **Syntax Highlighting:** Prism.js
 
-- First Install the CKEditor 5 WYSIWYG editor component for React and the editor build of your
+## Features
 
-  --> `npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic`
+- Server-side rendered pages for SEO
+- User signup with email-based account activation
+- Google OAuth login
+- Password reset flow
+- Blog creation with rich text editor and image upload
+- Blog listing with categories, tags, and search
+- Related posts
+- SEO meta tags (Open Graph, title, description)
+- User profiles (public and private)
+- Admin dashboard (blog/category/tag management)
+- User dashboard (manage own blogs and profile)
+- Contact form and author messaging
+- Disqus comment threads on blog posts
+- Google Analytics integration
+- Responsive design
 
-Use the <CKEditor> component inside your project:
+## Project Structure
 
-Refer: https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/react.html
+```
+pages/               # Next.js pages (file-based routing)
+  admin/             # Admin dashboard pages
+  auth/              # Account activation, password reset
+  blogs/             # Blog listing and detail pages
+  categories/        # Category pages
+  tags/              # Tag pages
+  user/              # User dashboard pages
+  profile/           # Public user profiles
+components/          # Reusable React components
+  authComp/          # Auth components (signin, signup, Google login)
+  blogComp/          # Blog components (cards, CRUD, search)
+  crud/              # Category and tag CRUD components
+  form/              # Contact form
+actions/             # API action creators (fetch calls to backend)
+lib/                 # Utility libraries (Google Analytics)
+config.js            # App configuration (reads from next.config.js)
+```
 
-For Online CKeditor custom build, refer: https://stackoverflow.com/questions/62243323/reactjs-import-ckeditor-5-from-online-build
+## Getting Started
 
-npm add file:./ckeditor5 (ckeditor5 is the online downloaded)
+### Prerequisites
 
-add the dependices in config file - src/ckeditor.js and Plugin name
+- Node.js (v18+)
+- Backend API running (see [backend repo](../backendHumbleBee))
 
-then build the project - npm run build
+### Installation
 
-- npm install --save @ckeditor/ckeditor5-upload --dev
-- npm install --save-dev @ckeditor/ckeditor5-clipboard
-- npm install --save-dev @ckeditor/ckeditor5-alignment
+```bash
+git clone <repo-url>
+cd frontendHumbleBee
+npm install
+```
 
-Refer:https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installing-plugins.html#adding-a-plugin-to-a-build
+### Configuration
 
----
+Copy the example config and fill in your values:
 
-Alignment
-AlignmentEditing
-AlignmentUI
-AutoImage
-AutoLink
-AutoMediaEmbed
-Autoformat
-Autosave
-BalloonToolbar
-Base64UploadAdapter
-BlockQuote
-BlockQuoteEditing
-BlockQuoteUI
-BlockToolbar
-Bold
-BoldEditing
-BoldUI
-CKFinder
-CKFinderEditing
-CKFinderUI
-CKFinderUploadAdapter
-Clipboard
-ClipboardPipeline
-CloudServicesUploadAdapter
-Code
-CodeBlock
-CodeBlockEditing
-CodeBlockUI
-CodeEditing
-CodeUI
-ColorUI
-CommentsOnly
-ContextualBalloon
-Delete
-DragDrop
-EasyImage
-EditorAnnotations
-Enter
-Essentials
-ExportPdf
-ExportWord
-FileRepository
-Font
-FontBackgroundColor
-FontBackgroundColorEditing
-FontBackgroundColorUI
-FontColor
-FontColorEditing
-FontColorUI
-FontFamily
-FontFamilyEditing
-FontFamilyUI
-FontSize
-FontSizeEditing
-FontSizeUI
-Heading
-HeadingButtonsUI
-HeadingEditing
-HeadingUI
-Highlight
-HighlightEditing
-HighlightUI
-HorizontalLine
-HorizontalLineEditing
-HorizontalLineUI
-HtmlEmbed
-HtmlEmbedEditing
-HtmlEmbedUI
-Image
-ImageCaption
-ImageCaptionEditing
-ImageEditing
-ImageInsert
-ImageInsertUI
-ImageResize
-ImageResizeButtons
-ImageResizeEditing
-ImageResizeHandles
-ImageStyle
-ImageStyleEditing
-ImageStyleUI
-ImageTextAlternative
-ImageTextAlternativeEditing
-ImageTextAlternativeUI
-ImageToolbar
-ImageUpload
-ImageUploadEditing
-ImageUploadProgress
-ImageUploadUI
-Indent
-IndentBlock
-IndentEditing
-IndentUI
-InlineAnnotations
-Input
-Italic
-ItalicEditing
-ItalicUI
-Link
-LinkEditing
-LinkImage
-LinkImageEditing
-LinkImageUI
-LinkUI
-List
-ListEditing
-ListStyle
-ListStyleEditing
-ListStyleUI
-ListUI
-Markdown
-MediaEmbed
-MediaEmbedEditing
-MediaEmbedToolbar
-MediaEmbedUI
-Mention
-MentionEditing
-MentionUI
-PageBreak
-PageBreakEditing
-PageBreakUI
-Pagination
-Paragraph
-ParagraphButtonUI
-PasteFromOffice
-PastePlainText
-RealTimeCollaborativeComments
-RealTimeCollaborativeEditing
-RealTimeCollaborativeTrackChanges
-RemoveFormat
-RemoveFormatEditing
-RemoveFormatUI
-RestrictedEditingMode
-RestrictedEditingModeEditing
-RestrictedEditingModeUI
-SelectAll
-SelectAllEditing
-SelectAllUI
-ShiftEnter
-SimpleUploadAdapter
-SpecialCharacters
-SpecialCharactersArrows
-SpecialCharactersCurrency
-SpecialCharactersEssentials
-SpecialCharactersLatin
-SpecialCharactersMathematical
-SpecialCharactersText
-StandardEditingMode
-StandardEditingModeEditing
-StandardEditingModeUI
-Strikethrough
-StrikethroughEditing
-StrikethroughUI
-Subscript
-SubscriptEditing
-SubscriptUI
-Superscript
-SuperscriptEditing
-SuperscriptUI
-Table
-TableCellProperties
-TableCellPropertiesEditing
-TableCellPropertiesUI
-TableClipboard
-TableEditing
-TableKeyboard
-TableMouse
-TableProperties
-TablePropertiesEditing
-TablePropertiesUI
-TableSelection
-TableToolbar
-TableUI
-TableUtils
-TextPartLanguage
-TextPartLanguageEditing
-TextPartLanguageUI
-TextTransformation
-Title
-TodoList
-TodoListEditing
-TodoListUI
-TrackChanges
-TrackChangesData
-TrackChangesEditing
-Typing
-Underline
-UnderlineEditing
-UnderlineUI
-Undo
-UndoEditing
-UndoUI
-Widget
-WidgetResize
-WidgetTypeAround
-WordCount
+```bash
+cp next.config.example.js next.config.js
+```
 
----
+Edit `next.config.js` with your settings:
 
-import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+| Key | Description |
+|-----|-------------|
+| `APP_NAME` | Your application name |
+| `API_DEVELOPMENT` | Backend API URL for development |
+| `API_PRODUCTION` | Backend API URL for production |
+| `PRODUCTION` | Set to `true` for production mode |
+| `DOMAIN_DEVELOPMENT` | Frontend URL for development |
+| `DOMAIN_PRODUCTION` | Frontend URL for production |
+| `FB_APP_ID` | Facebook App ID (Open Graph / SEO) |
+| `SHORTNAME` | Disqus shortname for comments |
+| `GOOGLE_CLIENT_ID` | Google OAuth Client ID |
+| `GA_TRACKING_ID` | Google Analytics Measurement ID |
 
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
-import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
-import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
-import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
-import Heading from '@ckeditor/ckeditor5-heading/src/heading';
-import Image from '@ckeditor/ckeditor5-image/src/image';
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
-import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
-import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-import Link from '@ckeditor/ckeditor5-link/src/link';
-import List from '@ckeditor/ckeditor5-list/src/list';
-import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
-import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
-import Table from '@ckeditor/ckeditor5-table/src/table';
-import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
-import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
-import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
-import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
-import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
-import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+### Run
 
-import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+```bash
+# Development
+npm run dev
 
-export default class ClassicEditor extends ClassicEditorBase {}
+# Production build
+npm run build
+npm start
+```
 
-// Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
-Essentials,
-UploadAdapter,
-Autoformat,
-Bold,
-Italic,
-BlockQuote,
-CKFinder,
-EasyImage,
-Heading,
-Image,
-ImageCaption,
-ImageStyle,
-ImageToolbar,
-ImageUpload,
-Link,
-List,
-MediaEmbed,
-Paragraph,
-PasteFromOffice,
-Table,
-TableToolbar,
-Alignment, Underline, Strikethrough, Code, Subscript, Superscript
-];
+The app runs on `http://localhost:3000` by default.
 
-// Editor configuration.
-ClassicEditor.defaultConfig = {
-toolbar: {
-items: [
-'heading',
-'|',
-'bold',
-'italic','Underline', 'Strikethrough', 'Code', 'Subscript', 'Superscript',
-'alignment',
-'link',
-'bulletedList',
-'numberedList',
-'imageUpload',
-'blockQuote',
-'insertTable',
-'mediaEmbed',
-'undo',
-'redo'
-]
-},
+## Deployment
 
-image: {
-toolbar: [
-'imageStyle:full',
-'imageStyle:side',
-'|',
-'imageTextAlternative'
-]
-},
+The app is designed to run behind a reverse proxy (e.g., Nginx) that routes:
+- `/api/*` to the backend (port 8000)
+- `/*` to the frontend (port 3000)
 
-table: {
-contentToolbar: [
-'tableColumn',
-'tableRow',
-'mergeTableCells'
-]
-},
-// This value must be kept in sync with the language defined in webpack.config.js.
-language: 'en'
-};
+Use a process manager like PM2 for production:
 
----
-<!-- ------------------------------------------------------------------------------------ -->
+```bash
+pm2 start npm -- start
+```
 
-# Pre-Render app for SEO 
+## License
 
-Refer: https://snipcart.com/blog/react-seo-nextjs-tutorial
-
-To prerender your app, update your next.config.js to the following and run the npm run export command.
-
-const withSass = require('@zeit/next-sass')
-module.exports = withSass({
-  exportPathMap: function () {
-    return {
-      '/': { page: '/' },
-    }
-  }
-});
-This creates a new directory named out at the root of your project which contains all your static pages.
-
-
-// ------------------------------------------------------------------------------------------
+ISC
